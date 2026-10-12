@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1B2D5B">
-<meta name="description" content="Packing and setup checklist for a postdoc move from Pune to NC State University, Raleigh.">
+<meta name="description" content="Packing, bills and setup checklist for a J-1 postdoc move from Pune to NC State University, Raleigh.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -12,167 +12,277 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>
-/* Layout: a luggage-tag header over stacked section cards; a sticky save bar at the bottom. */
+/* Layout: app bar on top, one scrolling view, bottom tab bar (Overview / Checklist / Bills). Luggage-tag header on Overview. */
 :root{
-  --bg:#F3F5F9; --surface:#FFFFFF; --ink:#16213A; --muted:#5A6580; --line:#DCE1EC;
-  --navy:#1B2D5B; --saffron:#E58A12; --saffron-ink:#7A4300; --ok:#1E7A46; --ok-bg:#E3F3EA;
-  --warn-bg:#FFF2DF; --danger:#B3261E; --chip:#EEF1F7;
-  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg:#F2F4F8; --surface:#FFFFFF; --surface-2:#F7F8FB; --ink:#16213A; --muted:#5A6580; --line:#DFE3EC;
+  --navy:#1B2D5B; --navy-2:#2A417A; --saffron:#E58A12; --on-saffron:#1B1200;
+  --ok:#1E8A50; --ok-bg:#E2F4EA; --mid:#2F6FDB; --mid-bg:#E5EEFC; --warn:#C27500; --warn-bg:#FFF1DB; --low:#C9372C; --low-bg:#FDE7E5;
+  --chip:#EEF1F7; --shadow:0 1px 2px rgba(22,33,58,.06),0 4px 14px rgba(22,33,58,.06);
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F1524; --surface:#18213A; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
-  --navy:#22386F; --saffron:#F2A23C; --saffron-ink:#FFD9A6; --ok:#5FD08F; --ok-bg:#163526;
-  --warn-bg:#3A2A12; --danger:#FF8A80; --chip:#222C48; color-scheme:dark}}
+  --bg:#0E1422; --surface:#18213A; --surface-2:#1D2744; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
+  --navy:#22386F; --navy-2:#2E4887; --saffron:#F2A23C; --on-saffron:#1B1200;
+  --ok:#5FD08F; --ok-bg:#153424; --mid:#7FA8F5; --mid-bg:#1B2A4D; --warn:#F2B04C; --warn-bg:#3A2A12; --low:#FF8A80; --low-bg:#3D1C1A;
+  --chip:#222C48; --shadow:none; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F1524; --surface:#18213A; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
-  --navy:#22386F; --saffron:#F2A23C; --saffron-ink:#FFD9A6; --ok:#5FD08F; --ok-bg:#163526;
-  --warn-bg:#3A2A12; --danger:#FF8A80; --chip:#222C48; color-scheme:dark}
+  --bg:#0E1422; --surface:#18213A; --surface-2:#1D2744; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
+  --navy:#22386F; --navy-2:#2E4887; --saffron:#F2A23C; --on-saffron:#1B1200;
+  --ok:#5FD08F; --ok-bg:#153424; --mid:#7FA8F5; --mid-bg:#1B2A4D; --warn:#F2B04C; --warn-bg:#3A2A12; --low:#FF8A80; --low-bg:#3D1C1A;
+  --chip:#222C48; --shadow:none; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4}
-.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:16px 110px;display:flex;flex-direction:column;gap:14px}
-button,select,input{font:inherit;color:inherit}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4}
+[hidden]{display:none!important}
+button,select,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+svg.i{width:20px;height:20px;flex:none}
+
+/* app bar */
+.appbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid transparent}
+.appbar.scrolled{border-bottom-color:var(--line)}
+.appbar h1{font-family:var(--display);font-weight:800;font-size:20px;margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.savebtn{border:0;border-radius:999px;padding:9px 16px;font-weight:700;background:var(--saffron);color:var(--on-saffron);min-height:40px}
+.savebtn:disabled{background:var(--chip);color:var(--muted)}
+#status{font-size:12px;color:var(--muted);text-align:right;max-width:40%}
+#status.dirty{color:var(--warn);font-weight:700}#status.ok{color:var(--ok);font-weight:700}#status.err{color:var(--low);font-weight:700}
+
+.view{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:6px 120px;display:flex;flex-direction:column;gap:14px}
 
 /* luggage tag */
-.tag{background:var(--navy);color:#fff;border-radius:14px;padding:16px 18px 18px;position:relative;overflow:hidden}
-.tag::after{content:"";position:absolute;right:18px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
-.route{font-family:var(--display);font-weight:800;font-size:clamp(28px,8vw,40px);letter-spacing:.02em;line-height:1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
-.route small{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
-.tag h1{font-family:var(--display);font-weight:600;font-size:18px;margin:8px 0 12px;text-wrap:balance}
-.bar{height:10px;border-radius:6px;background:rgba(255,255,255,.18);overflow:hidden}
-.bar>i{display:block;height:100%;background:var(--saffron);width:0;transition:width .3s}
-.stats{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:13px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
-.bags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.bags span{font-size:12px;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4);padding:3px 8px;border-radius:6px;font-variant-numeric:tabular-nums}
+.tag{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:18px;padding:18px;position:relative;overflow:hidden}
+.tag::after{content:"";position:absolute;right:18px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.route{font-family:var(--display);font-weight:800;font-size:clamp(28px,8vw,38px);line-height:1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.route small{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.tag .sub{margin:6px 0 14px;font-size:14px;opacity:.85}
+.ring-row{display:flex;gap:16px;align-items:center}
+.ring{width:84px;height:84px;flex:none}
+.ring circle{fill:none;stroke-width:9}
+.ring .bgc{stroke:rgba(255,255,255,.18)}
+.ring .fg{stroke:var(--saffron);stroke-linecap:round;transition:stroke-dashoffset .4s}
+.ring text{fill:#fff;font-family:var(--display);font-weight:800;font-size:22px}
+.ring-meta{display:flex;flex-direction:column;gap:6px;min-width:0;font-variant-numeric:tabular-nums}
+.ring-meta b{font-size:18px}
+.bagpills{display:flex;gap:6px;flex-wrap:wrap}
+.bagpills span{font-size:12px;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4);padding:3px 8px;border-radius:6px}
 
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 6px;gap:10px}
+.card-h h2{font-family:var(--display);font-weight:600;font-size:17px;margin:0}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:0 16px 10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* progress rows */
+.prow{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);background:none;border-left:0;border-right:0;border-bottom:0;width:100%;text-align:left}
+.prow .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--chip);color:var(--navy)}
+:root[data-theme="dark"] .prow .ic{color:var(--mid)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .prow .ic{color:var(--mid)}}
+.prow .nm{font-weight:700;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{height:8px;border-radius:6px;background:var(--chip);overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;border-radius:6px;width:0;transition:width .35s}
+.left{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.lv-done{background:var(--ok-bg);color:var(--ok)} .lv-hi{background:var(--mid-bg);color:var(--mid)} .lv-mid{background:var(--warn-bg);color:var(--warn)} .lv-low{background:var(--low-bg);color:var(--low)}
+.fill-done{background:var(--ok)} .fill-hi{background:var(--mid)} .fill-mid{background:var(--warn)} .fill-low{background:var(--low)}
+
+/* checklist */
 .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.tools label{font-size:13px;color:var(--muted);font-weight:700}
-.sel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:42px}
-.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;min-height:42px;font-weight:700}
-.btn.primary{background:var(--saffron);border-color:var(--saffron);color:#1B1200}
-.btn:disabled{opacity:.5;cursor:default}
-.grow{flex:1}
-
-.sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.sec-h{display:flex;align-items:center;gap:10px;padding:14px 14px;width:100%;background:none;border:0;text-align:left}
-.sec-h h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0;flex:1;min-width:0}
-.count{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;padding:3px 9px;border-radius:20px;background:var(--chip);color:var(--muted);white-space:nowrap}
-.count.full{background:var(--ok-bg);color:var(--ok)}
-.chev{width:18px;height:18px;transition:transform .2s;flex:none;color:var(--muted)}
-.open>.sec-h .chev,.item.open .chev{transform:rotate(180deg)}
-.note{margin:0 14px 10px;padding:9px 11px;border-radius:9px;background:var(--warn-bg);color:var(--saffron-ink);font-size:14px}
+.sel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 10px;min-height:42px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 14px;min-height:42px;font-weight:700;display:inline-flex;gap:6px;align-items:center}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.danger{color:var(--low)}
+.grow{flex:1;min-width:140px}
+.sec{overflow:hidden}
+.sec-h{display:grid;grid-template-columns:34px 1fr auto 18px;gap:10px;align-items:center;padding:14px 14px 12px 16px;width:100%;background:none;border:0;text-align:left}
+.sec-h .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--chip);color:var(--navy)}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:17px;margin:0}
+.chev{width:18px;height:18px;transition:transform .2s;color:var(--muted)}
+.open>.sec-h .chev{transform:rotate(180deg)}
+.note{margin:0 16px 10px;padding:9px 11px;border-radius:10px;background:var(--warn-bg);color:var(--warn);font-size:14px}
 .body{border-top:1px solid var(--line)}
 .item{border-bottom:1px solid var(--line)}
-.row{display:flex;align-items:center;gap:10px;padding:9px 12px 9px 14px;min-height:52px}
-.txt{flex:1;min-width:0;overflow-wrap:anywhere}
-.done>.row .txt,.sub.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
-.cb{appearance:none;-webkit-appearance:none;width:26px;height:26px;border:2px solid var(--muted);border-radius:7px;flex:none;display:grid;place-items:center;background:var(--surface);margin:0}
+.row{display:flex;align-items:flex-start;gap:12px;padding:12px 10px 10px 16px}
+.main{flex:1;min-width:0}
+.txt{overflow-wrap:anywhere;padding-top:2px}
+.done>.row .txt,.sub.done .txt{color:var(--muted);text-decoration:line-through}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;align-items:center}
+.cb{appearance:none;-webkit-appearance:none;width:26px;height:26px;border:2px solid var(--muted);border-radius:8px;flex:none;display:grid;place-items:center;background:var(--surface);margin:0;transition:background .15s,border-color .15s}
 .cb:checked{background:var(--ok);border-color:var(--ok)}
 .cb:checked::after{content:"";width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
 .cb.part{border-color:var(--saffron)}
 .cb.part::after{content:"";width:12px;height:3px;background:var(--saffron);border-radius:2px}
-.bagsel{font-size:12px;padding:4px 6px;border-radius:8px;border:1px solid var(--line);background:var(--chip);max-width:96px;min-height:32px}
-.mini{border:0;background:none;padding:6px;border-radius:8px;color:var(--muted);display:grid;place-items:center;min-width:36px;min-height:36px}
-.mini svg{width:18px;height:18px}
-.subs-toggle{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--muted);background:var(--chip);border:0;border-radius:20px;padding:5px 9px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.rm-confirm{background:var(--danger);color:#fff;border:0;border-radius:8px;font-size:12px;font-weight:700;padding:7px 9px}
-.subs{background:var(--bg);padding:4px 0 8px}
-.sub{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 48px;min-height:44px}
+.pill{font-size:12px;font-weight:700;border:0;border-radius:999px;padding:5px 10px;background:var(--chip);color:var(--muted);display:inline-flex;gap:4px;align-items:center;min-height:30px;font-variant-numeric:tabular-nums}
+.pill svg{width:14px;height:14px}
+.pill.has{background:var(--mid-bg);color:var(--mid)}
+select.pill{appearance:none;-webkit-appearance:none;padding-right:10px;max-width:120px}
+.mini{border:0;background:none;padding:6px;border-radius:10px;color:var(--muted);display:grid;place-items:center;min-width:38px;min-height:38px}
+.rm-confirm{background:var(--low);color:#fff;border:0;border-radius:10px;font-size:12px;font-weight:700;padding:8px 10px}
+.subs{background:var(--surface-2);padding:4px 0 8px}
+.sub{display:flex;align-items:center;gap:10px;padding:6px 10px 6px 54px;min-height:44px}
+.sub .txt{flex:1;min-width:0;padding:0}
 .sub .cb{width:22px;height:22px;border-radius:6px}
 .sub .cb:checked::after{width:6px;height:11px}
-.add{display:flex;gap:8px;padding:8px 12px 10px 14px;flex-wrap:wrap}
-.subs .add{padding-left:48px}
-.add input{flex:1;min-width:140px;border:1px dashed var(--line);background:var(--surface);border-radius:9px;padding:8px 10px;min-height:40px}
-.add button{border:0;background:var(--navy);color:#fff;border-radius:9px;padding:8px 12px;font-weight:700;min-height:40px}
-.empty{padding:12px 14px;color:var(--muted);font-size:14px}
+.add{display:flex;gap:8px;padding:10px 12px 12px 16px;flex-wrap:wrap}
+.subs .add{padding-left:54px}
+.add input{flex:1;min-width:140px;border:1px dashed var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;min-height:42px}
+.add button{border:0;background:var(--navy);color:#fff;border-radius:10px;padding:8px 14px;font-weight:700;min-height:42px}
+.empty{padding:14px 16px;color:var(--muted);font-size:14px}
 
-.savebar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
-.savebar .in{max-width:760px;margin:0 auto;display:flex;gap:10px;align-items:center}
-#status{flex:1;min-width:0;font-size:14px;color:var(--muted)}
-#status.dirty{color:var(--saffron-ink);font-weight:700}
-#status.ok{color:var(--ok);font-weight:700}
-#status.err{color:var(--danger);font-weight:700}
+/* bills */
+.billsum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{padding:12px 14px}
+.stat b{display:block;font-family:var(--display);font-size:22px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.bill{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px;border:0;background:none;width:100%;text-align:left;border-top:1px solid var(--line)}
+.bill:first-child{border-top:0}
+.thumb{width:64px;height:80px;border-radius:10px;background:var(--chip);overflow:hidden;display:grid;place-items:center;color:var(--muted);font-size:11px;font-weight:700}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.bill h3{margin:0;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bill .amt{font-variant-numeric:tabular-nums;font-weight:700}
+.bill .meta{margin-top:6px}
+.due{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.due.late{background:var(--low-bg);color:var(--low)} .due.soon{background:var(--warn-bg);color:var(--warn)} .due.ok{background:var(--ok-bg);color:var(--ok)} .due.none{background:var(--chip);color:var(--muted)}
+.fab{position:fixed;right:max(16px,calc(50% - 364px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:15;border:0;border-radius:18px;background:var(--saffron);color:var(--on-saffron);font-weight:800;padding:14px 18px;display:flex;gap:8px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+
+/* bottom nav */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(3,1fr)}
+.tabs button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:var(--muted);padding:6px 0;border-radius:12px;min-height:52px}
+.tabs button[aria-current="page"]{color:var(--navy);background:var(--chip)}
+:root[data-theme="dark"] .tabs button[aria-current="page"]{color:var(--saffron)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tabs button[aria-current="page"]{color:var(--saffron)}}
+.tabs .badge{font-size:10px;background:var(--low);color:#fff;border-radius:999px;padding:0 6px;margin-left:2px}
+
+/* sheet */
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:640px;max-height:92vh;border-radius:20px 20px 0 0;background:var(--surface);color:var(--ink)}
+@media (min-width:700px){dialog.sheet{margin:auto;border-radius:20px}}
+dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
+.sheet-h{position:sticky;top:0;background:var(--surface);display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);z-index:1}
+.sheet-h h2{flex:1;margin:0;font-family:var(--display);font-size:18px}
+.sheet-b{padding:14px 16px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label,.fld .lb{font-size:13px;font-weight:700;color:var(--muted)}
+.fld input,.fld select,.fld textarea{border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:10px 12px;min-height:44px;width:100%}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scanbox{border:2px dashed var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.scanbtns{display:flex;gap:8px;flex-wrap:wrap}
+.scanbtns label{flex:1;min-width:130px;justify-content:center;cursor:pointer}
+.shots{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.shot{position:relative;flex:none;width:86px;height:110px;border-radius:10px;overflow:hidden;background:var(--chip);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--muted)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot button{position:absolute;top:4px;right:4px;border:0;border-radius:999px;background:rgba(0,0,0,.6);color:#fff;width:26px;height:26px;display:grid;place-items:center;padding:0}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px}
+.pick{max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.pick details{border-bottom:1px solid var(--line)}
+.pick summary{padding:10px 12px;font-weight:700;cursor:pointer}
+.pick label{display:flex;gap:10px;align-items:center;padding:8px 12px 8px 20px;font-size:14px}
+.pick input{width:20px;height:20px}
+.viewer img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv dt{color:var(--muted);font-weight:700}.kv dd{margin:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips span{font-size:12px;background:var(--chip);border-radius:999px;padding:4px 10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.tip{font-size:13px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:50;max-width:90vw}
 .foot{font-size:13px;color:var(--muted);text-align:center}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-
-html{-webkit-text-size-adjust:100%}body{margin:0;padding-top:env(safe-area-inset-top,0px)}[hidden]{display:none!important}
 
 @media print{
   body{background:#fff;color:#000}
-  .tools,.savebar,.add,.mini,.rm-confirm,.foot,#installBox{display:none!important}
-  .wrap{padding:0;max-width:none}
-  .tag{background:#fff;color:#000;border:2px solid #000}
-  .tag::after{display:none}
-  .sec{break-inside:auto;border-color:#999}
+  .appbar,.tabs,.tools,.add,.mini,.rm-confirm,.foot,.fab,.pill.att{display:none!important}
+  .view{padding:0;max-width:none}
+  .card{box-shadow:none;border-color:#999}
   .item{break-inside:avoid}
-  .bagsel{border:0;background:none;appearance:none;-webkit-appearance:none}
-  .cb{border-color:#000!important}
-  .subs{background:#fff}
+  select.pill{border:0;background:none}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+<header class="appbar" id="appbar">
+  <h1 id="title">Overview</h1>
+  <div id="status" role="status"></div>
+  <button class="savebtn" id="saveBtn" type="button" disabled>Save</button>
+</header>
 
-
-<div class="wrap">
-  <header class="tag" aria-label="Trip summary">
-    <div class="route">PNQ <span aria-hidden="true">&rarr;</span> RDU <small>Raleigh-Durham</small></div>
-    <h1>Postdoc move to NC State University</h1>
-    <div class="bar" aria-hidden="true"><i id="pbar"></i></div>
-    <div class="stats"><span id="ptext">0 of 0 done</span><span id="pct">0%</span></div>
-    <div class="bags" id="bagSummary"></div>
-  </header>
-
-  <div class="tools">
-    <label for="filter">Show</label>
-    <select id="filter" class="sel grow">
-      <option value="all">Everything</option>
-      <option value="todo">Still to pack / do</option>
-      <option value="Cabin">Cabin bag only</option>
-      <option value="Bag 1">Bag 1 only</option>
-      <option value="Bag 2">Bag 2 only</option>
-      <option value="Wear">Wear on flight</option>
-      <option value="Buy in US">Buy in US</option>
-    </select>
-    <button class="btn" id="expandAll" type="button">Open all</button>
-    <button class="btn" id="pdfBtn" type="button">Download PDF</button>
-    <button class="btn" id="printBtn" type="button">Print</button>
-    <button class="btn" id="installBtn" type="button" hidden>Install app</button>
-  </div>
-
-  <main id="sections"></main>
-
-  <div class="sec" style="padding:12px 0 2px">
-    <div class="add" style="padding-top:0">
+<main>
+  <section class="view" id="v-overview"></section>
+  <section class="view" id="v-list" hidden>
+    <div class="tools">
+      <select id="filter" class="sel grow" aria-label="Show">
+        <option value="all">Show: everything</option>
+        <option value="todo">Show: still to do</option>
+        <option value="Cabin">Show: cabin bag</option>
+        <option value="Bag 1">Show: bag 1</option>
+        <option value="Bag 2">Show: bag 2</option>
+        <option value="Wear">Show: wear on flight</option>
+        <option value="Buy in US">Show: buy in US</option>
+      </select>
+      <button class="btn" id="expandAll" type="button">Open all</button>
+    </div>
+    <div id="sections" style="display:flex;flex-direction:column;gap:14px"></div>
+    <div class="card"><div class="add">
       <input id="newSec" placeholder="Add a new list, e.g. Gifts for family" aria-label="New list name">
       <button type="button" id="addSec">Add list</button>
+    </div></div>
+    <div class="tools">
+      <button class="btn" id="pdfBtn" type="button">Download PDF</button>
+      <button class="btn" id="printBtn" type="button">Print</button>
+      <button class="btn" id="installBtn" type="button" hidden>Install app</button>
     </div>
-  </div>
+    <p class="foot">Tap a box to tick. Tap the count chip for sub-items, the bag chip to choose a bag, and the clip to attach a bill. Press Save to keep changes on this phone.</p>
+  </section>
+  <section class="view" id="v-bills" hidden></section>
+</main>
 
-  <p class="foot">Tap a box to tick. Tap the count chip to open sub-items. Use the bag menu to choose where each item is packed. Press Save so changes stay on this phone for next time.</p>
-</div>
+<button class="fab" id="fab" type="button" hidden></button>
 
-<div class="savebar"><div class="in">
-  <div id="status" role="status">Loading list...</div>
-  <button class="btn primary" id="saveBtn" type="button" disabled>Save</button>
-</div></div>
+<nav class="tabs" aria-label="Sections">
+  <button type="button" data-tab="overview" aria-current="page"></button>
+  <button type="button" data-tab="list"></button>
+  <button type="button" data-tab="bills"></button>
+</nav>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheetTitle">
+  <div class="sheet-h"><h2 id="sheetTitle"></h2><button class="mini" type="button" id="sheetClose" aria-label="Close"></button></div>
+  <div class="sheet-b" id="sheetBody"></div>
+</dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-const DEFAULT_DATA = {"version":1,"updatedAt":"2026-10-12T16:20:00+05:30","nextId":233,"sections":[{"id":"before","title":"Before the flight","note":"Tasks to finish in the weeks before leaving.","kind":"task","items":[{"id":"i1","text":"Visa stamped on passport","done":false,"bag":""},{"id":"i2","text":"Flight booked (2 checked bags of 23 kg each)","done":false,"bag":""},{"id":"i3","text":"Temporary stay fixed for first 2-4 weeks in Raleigh","done":false,"bag":""},{"id":"i4","text":"Medical, dental and eye check-up done","done":false,"bag":""},{"id":"i5","text":"Forex card loaded and some US dollars in cash","done":false,"bag":""},{"id":"i6","text":"Indian bank informed; international card use switched on","done":false,"bag":""},{"id":"i7","text":"Photocopies and scans of all documents made","done":false,"bag":""},{"id":"i8","text":"Bags weighed (keep each at about 22 kg)","done":false,"bag":""},{"id":"i9","text":"Web check-in done","done":false,"bag":""},{"id":"i10","text":"Offline Google Map of Raleigh downloaded","done":false,"bag":""}]},{"id":"docs","title":"Documents (in hand)","note":"Originals in one waterproof folder in the cabin bag. Never in checked luggage.","kind":"pack","items":[{"id":"i11","text":"Passport with US visa stamp","done":false,"bag":"Cabin"},{"id":"i12","text":"DS-2019 (J-1) or I-797 (H-1B)","done":false,"bag":"Cabin"},{"id":"i13","text":"SEVIS fee receipt (J-1 only)","done":false,"bag":"Cabin"},{"id":"i14","text":"NCSU offer / appointment letter","done":false,"bag":"Cabin"},{"id":"i15","text":"Funding / salary letter","done":false,"bag":"Cabin"},{"id":"i16","text":"Address of first stay + NCSU contact number","done":false,"bag":"Cabin"},{"id":"i17","text":"Education certificates","done":false,"bag":"Cabin","subs":[{"id":"i18","text":"PhD degree / provisional certificate","done":false},{"id":"i19","text":"PhD transcripts","done":false},{"id":"i20","text":"Master's marksheets and degree","done":false},{"id":"i21","text":"Bachelor's marksheets and degree","done":false},{"id":"i22","text":"12th marksheet","done":false},{"id":"i23","text":"10th marksheet","done":false}]},{"id":"i24","text":"Vaccination record and medical reports (English)","done":false,"bag":"Cabin"},{"id":"i25","text":"Health insurance proof","done":false,"bag":"Cabin"},{"id":"i26","text":"Indian ID documents","done":false,"bag":"Cabin","subs":[{"id":"i27","text":"Aadhaar card","done":false},{"id":"i28","text":"PAN card","done":false},{"id":"i29","text":"Indian driving licence","done":false},{"id":"i30","text":"Birth certificate","done":false},{"id":"i31","text":"Bank passbook / cheque book","done":false}]},{"id":"i32","text":"Photocopies set 1","done":false,"bag":"Cabin"},{"id":"i33","text":"Photocopies set 2","done":false,"bag":"Bag 1"},{"id":"i34","text":"Passport photos (US 2x2 inch + Indian size)","done":false,"bag":"Cabin"},{"id":"i35","text":"Diary with emergency numbers handwritten","done":false,"bag":"Cabin"}]},{"id":"food","title":"Food, masala and groceries","note":"Declare ALL food at US customs (answer YES). No rice of any kind, no meat or egg, no fresh vegetables, fruits or curry leaves. Keep home food to 3-4 kg total.","kind":"pack","items":[{"id":"i36","text":"Masalas (sealed / labelled)","done":false,"bag":"Bag 2","subs":[{"id":"i37","text":"Haldi (turmeric)","done":false},{"id":"i38","text":"Lal mirchi powder","done":false},{"id":"i39","text":"Dhaniya powder","done":false},{"id":"i40","text":"Jeera powder","done":false},{"id":"i41","text":"Garam masala","done":false},{"id":"i42","text":"Goda masala","done":false},{"id":"i43","text":"Kanda-lasun masala","done":false},{"id":"i44","text":"Kala masala","done":false},{"id":"i45","text":"Sambar masala","done":false},{"id":"i46","text":"Pav bhaji masala","done":false},{"id":"i47","text":"Chaat masala","done":false},{"id":"i48","text":"Kitchen king masala","done":false},{"id":"i49","text":"Hing","done":false},{"id":"i50","text":"Whole jeera","done":false},{"id":"i51","text":"Mohri (mustard seeds)","done":false},{"id":"i52","text":"Methi seeds","done":false},{"id":"i53","text":"Whole spices (lavang, elaichi, dalchini)","done":false}]},{"id":"i54","text":"Pickles (lonche) - sealed jars, double zip-bagged","done":false,"bag":"Bag 2","subs":[{"id":"i55","text":"Mango (kairi)","done":false},{"id":"i56","text":"Lime (limbu)","done":false},{"id":"i57","text":"Mixed","done":false},{"id":"i58","text":"Green chilli","done":false},{"id":"i59","text":"Garlic","done":false},{"id":"i60","text":"Thecha / chutney powder","done":false}]},{"id":"i61","text":"Ghee - sealed tin, double zip-bagged","done":false,"bag":"Bag 2"},{"id":"i62","text":"Dal and flours (1-2 kg each max)","done":false,"bag":"Bag 2","subs":[{"id":"i63","text":"Toor dal","done":false},{"id":"i64","text":"Moong dal","done":false},{"id":"i65","text":"Masoor dal","done":false},{"id":"i66","text":"Chana dal","done":false},{"id":"i67","text":"Besan","done":false},{"id":"i68","text":"Jowar / bajra atta","done":false},{"id":"i69","text":"Poha","done":false},{"id":"i70","text":"Rava","done":false},{"id":"i71","text":"Sabudana","done":false}]},{"id":"i72","text":"Snacks and sweets","done":false,"bag":"Bag 2","subs":[{"id":"i73","text":"Chivda","done":false},{"id":"i74","text":"Chakli","done":false},{"id":"i75","text":"Shev","done":false},{"id":"i76","text":"Besan laddoo","done":false},{"id":"i77","text":"Shankarpali","done":false},{"id":"i78","text":"Karanji","done":false},{"id":"i79","text":"Biscuits","done":false},{"id":"i80","text":"Thepla / khakhra for the flight","done":false}]},{"id":"i81","text":"Ready mixes","done":false,"bag":"Bag 2","subs":[{"id":"i82","text":"Instant upma","done":false},{"id":"i83","text":"Instant poha","done":false},{"id":"i84","text":"Dosa / idli mix","done":false},{"id":"i85","text":"Dhokla mix","done":false},{"id":"i86","text":"Gulab jamun mix","done":false}]},{"id":"i87","text":"Tea and coffee powder","done":false,"bag":"Bag 2"},{"id":"i88","text":"Roasted packaged dry fruits","done":false,"bag":"Bag 2"},{"id":"i89","text":"Checked: NO rice or akshata in any bag","done":false,"bag":""}]},{"id":"clothes","title":"Clothing","note":"Raleigh winters reach about 0 C at night. Buy the heavy jacket there.","kind":"pack","items":[{"id":"i90","text":"Daily and lab wear","done":false,"bag":"Bag 1","subs":[{"id":"i91","text":"6-7 tops / kurtis / shirts","done":false},{"id":"i92","text":"4-5 bottoms","done":false},{"id":"i93","text":"2 formal outfits","done":false},{"id":"i94","text":"1 full-sleeve lab outfit","done":false},{"id":"i95","text":"2-3 nightwear sets","done":false}]},{"id":"i96","text":"Innerwear and socks","done":false,"bag":"Bag 1","subs":[{"id":"i97","text":"7-10 innerwear sets","done":false},{"id":"i98","text":"6 cotton socks","done":false},{"id":"i99","text":"4 thick woollen socks","done":false}]},{"id":"i100","text":"Winter starter set","done":false,"bag":"Bag 1","subs":[{"id":"i101","text":"2 thermal sets","done":false},{"id":"i102","text":"2 sweaters / cardigans","done":false},{"id":"i103","text":"1 fleece or hoodie","done":false},{"id":"i104","text":"Woollen cap","done":false},{"id":"i105","text":"Muffler / scarf","done":false},{"id":"i106","text":"Gloves","done":false}]},{"id":"i107","text":"Light jacket for the flight","done":false,"bag":"Wear"},{"id":"i108","text":"Traditional and festival wear","done":false,"bag":"Bag 1","subs":[{"id":"i109","text":"2-3 sarees or salwar suits","done":false},{"id":"i110","text":"Blouses and petticoat","done":false},{"id":"i111","text":"Dupattas","done":false},{"id":"i112","text":"Shawl","done":false},{"id":"i113","text":"Bangles and safety pins","done":false}]},{"id":"i114","text":"Footwear (max 4 pairs)","done":false,"bag":"Bag 1","subs":[{"id":"i115","text":"Walking shoes","done":false},{"id":"i116","text":"Formal shoes / bellies","done":false},{"id":"i117","text":"Home chappals","done":false},{"id":"i118","text":"Waterproof boots","done":false}]},{"id":"i119","text":"Umbrella and raincoat","done":false,"bag":"Bag 1"},{"id":"i120","text":"Sunglasses and summer cap","done":false,"bag":"Bag 1"},{"id":"i121","text":"Small sewing kit","done":false,"bag":"Bag 1"},{"id":"i122","text":"Heavy winter jacket","done":false,"bag":"Buy in US"}]},{"id":"kitchen","title":"Kitchen and utensils","note":"US stoves are electric, not gas: carry flat-bottom vessels. Indian 230 V appliances will not work.","kind":"pack","items":[{"id":"i123","text":"Cooking vessels (flat bottom)","done":false,"bag":"Bag 2","subs":[{"id":"i124","text":"Pressure cooker 3 or 5 L","done":false},{"id":"i125","text":"Spare gasket and whistle","done":false},{"id":"i126","text":"Flat tawa","done":false},{"id":"i127","text":"Small kadhai","done":false},{"id":"i128","text":"Patila (tope)","done":false}]},{"id":"i129","text":"Tools","done":false,"bag":"Bag 2","subs":[{"id":"i130","text":"Polpat-latna","done":false},{"id":"i131","text":"Masala dabba","done":false},{"id":"i132","text":"Tea strainer","done":false},{"id":"i133","text":"Chimta","done":false},{"id":"i134","text":"Jhara","done":false},{"id":"i135","text":"Ladles","done":false},{"id":"i136","text":"Grater","done":false},{"id":"i137","text":"Peeler","done":false},{"id":"i138","text":"Knife (checked bag only)","done":false}]},{"id":"i139","text":"Plates and tiffin","done":false,"bag":"Bag 2","subs":[{"id":"i140","text":"2 steel thalis","done":false},{"id":"i141","text":"2 bowls","done":false},{"id":"i142","text":"2 glasses","done":false},{"id":"i143","text":"Tiffin box for lab","done":false}]},{"id":"i144","text":"Bedding for first nights","done":false,"bag":"Bag 1","subs":[{"id":"i145","text":"1 bedsheet","done":false},{"id":"i146","text":"1 pillow cover","done":false},{"id":"i147","text":"Light blanket / dohar","done":false},{"id":"i148","text":"2 bath towels","done":false},{"id":"i149","text":"2 hand towels","done":false}]},{"id":"i150","text":"Mixer-grinder (110 V)","done":false,"bag":"Buy in US"},{"id":"i151","text":"Rice cooker, kettle, non-stick pans","done":false,"bag":"Buy in US"},{"id":"i152","text":"Pillow and comforter","done":false,"bag":"Buy in US"}]},{"id":"meds","title":"Medicines and health","note":"Original strips + doctor's prescription in English. Keep in the cabin bag.","kind":"pack","items":[{"id":"i153","text":"Regular prescribed medicines (3-6 months)","done":false,"bag":"Cabin"},{"id":"i154","text":"Prescription letter with generic names","done":false,"bag":"Cabin"},{"id":"i155","text":"Common tablets","done":false,"bag":"Cabin","subs":[{"id":"i156","text":"Fever / pain (paracetamol)","done":false},{"id":"i157","text":"Cold and allergy","done":false},{"id":"i158","text":"Acidity","done":false},{"id":"i159","text":"Loose-motion (doctor prescribed)","done":false},{"id":"i160","text":"ORS packets","done":false},{"id":"i161","text":"Eno sachets","done":false}]},{"id":"i162","text":"Small cough syrup","done":false,"bag":"Bag 1"},{"id":"i163","text":"First-aid kit","done":false,"bag":"Bag 1","subs":[{"id":"i164","text":"Band-aids","done":false},{"id":"i165","text":"Cotton","done":false},{"id":"i166","text":"Antiseptic cream","done":false},{"id":"i167","text":"Pain-relief spray / balm","done":false},{"id":"i168","text":"Crepe bandage","done":false},{"id":"i169","text":"Thermometer","done":false}]},{"id":"i170","text":"Vicks / balm","done":false,"bag":"Cabin"},{"id":"i171","text":"Branded ayurvedic items","done":false,"bag":"Bag 1","subs":[{"id":"i172","text":"Chyawanprash","done":false},{"id":"i173","text":"Hajmola","done":false},{"id":"i174","text":"Triphala","done":false}]},{"id":"i175","text":"Sanitary pads (1 month)","done":false,"bag":"Bag 1"},{"id":"i176","text":"Spare spectacles / lenses + solution","done":false,"bag":"Cabin"}]},{"id":"tech","title":"Electronics, money and phone","note":"US sockets are 110-120 V, flat two-pin. Phone and laptop chargers work with a plug adapter.","kind":"pack","items":[{"id":"i177","text":"Laptop + charger","done":false,"bag":"Cabin"},{"id":"i178","text":"Phone + charger + spare cable","done":false,"bag":"Cabin"},{"id":"i179","text":"Travel adapters (India to US) x2-3","done":false,"bag":"Cabin"},{"id":"i180","text":"Power bank under 20,000 mAh","done":false,"bag":"Cabin"},{"id":"i181","text":"Small Indian extension board","done":false,"bag":"Bag 1"},{"id":"i182","text":"Earphones","done":false,"bag":"Cabin"},{"id":"i183","text":"Research data backed up","done":false,"bag":"Cabin"},{"id":"i184","text":"US dollars cash in small notes","done":false,"bag":"Cabin"},{"id":"i185","text":"Forex card","done":false,"bag":"Cabin"},{"id":"i186","text":"Indian debit / credit card","done":false,"bag":"Cabin"},{"id":"i187","text":"Indian SIM kept active for OTPs","done":false,"bag":"Cabin"},{"id":"i188","text":"WhatsApp, Uber / Lyft, Google Maps ready","done":false,"bag":"Cabin"}]},{"id":"pooja","title":"Pooja and personal care","note":"Keep pooja items small and sealed. Use electric diyas; no rice.","kind":"pack","items":[{"id":"i189","text":"Pooja items","done":false,"bag":"Bag 2","subs":[{"id":"i190","text":"Small idol / deity photo","done":false},{"id":"i191","text":"Pooja thali","done":false},{"id":"i192","text":"Kalash","done":false},{"id":"i193","text":"Bell","done":false},{"id":"i194","text":"Kumkum","done":false},{"id":"i195","text":"Haldi","done":false},{"id":"i196","text":"Ashtagandh","done":false},{"id":"i197","text":"Agarbatti","done":false},{"id":"i198","text":"Dhoop","done":false},{"id":"i199","text":"LED diyas","done":false}]},{"id":"i200","text":"Family photos and Marathi book / pothi","done":false,"bag":"Bag 1"},{"id":"i201","text":"Gifts for professor and lab-mates","done":false,"bag":"Bag 2"},{"id":"i202","text":"Personal care (1 month)","done":false,"bag":"Bag 1","subs":[{"id":"i203","text":"Hair oil (sealed)","done":false},{"id":"i204","text":"Shampoo","done":false},{"id":"i205","text":"Soap","done":false},{"id":"i206","text":"Toothpaste","done":false},{"id":"i207","text":"Toothbrush","done":false},{"id":"i208","text":"Comb","done":false},{"id":"i209","text":"Hair bands and clips","done":false},{"id":"i210","text":"Nail cutter","done":false},{"id":"i211","text":"Moisturiser","done":false},{"id":"i212","text":"Lip balm","done":false},{"id":"i213","text":"Kajal","done":false},{"id":"i214","text":"Bindi","done":false}]}]},{"id":"cabin","title":"Cabin bag check","note":"Enough to get through 2-3 days if checked bags are delayed.","kind":"pack","items":[{"id":"i215","text":"2 sets of clothes, innerwear, socks","done":false,"bag":"Cabin"},{"id":"i216","text":"Toiletries under 100 ml in a clear bag","done":false,"bag":"Cabin"},{"id":"i217","text":"Empty water bottle","done":false,"bag":"Cabin"},{"id":"i218","text":"Pen for customs forms","done":false,"bag":"Cabin"},{"id":"i219","text":"Neck pillow and eye mask","done":false,"bag":"Cabin"}]},{"id":"arrive","title":"After arriving in Raleigh","note":"First weeks setup.","kind":"task","items":[{"id":"i220","text":"Message family on arrival","done":false,"bag":""},{"id":"i221","text":"Buy US SIM / eSIM","done":false,"bag":""},{"id":"i222","text":"Download I-94 record from CBP website","done":false,"bag":""},{"id":"i223","text":"Check in with NCSU Office of International Services","done":false,"bag":""},{"id":"i224","text":"Get WolfCard ID and university email","done":false,"bag":""},{"id":"i225","text":"Enrol in health insurance","done":false,"bag":""},{"id":"i226","text":"Open US bank account","done":false,"bag":""},{"id":"i227","text":"Apply for Social Security Number (SSN)","done":false,"bag":""},{"id":"i228","text":"Sign long-term apartment lease","done":false,"bag":""},{"id":"i229","text":"Learn Wolfline and GoRaleigh buses","done":false,"bag":""},{"id":"i230","text":"Get a secured credit card","done":false,"bag":""},{"id":"i231","text":"NC driving licence or state ID","done":false,"bag":""},{"id":"i232","text":"Join Indian association / Marathi Mandal","done":false,"bag":""}]}]};
+const DEFAULT_DATA = {"version":2,"updatedAt":"2026-10-12T16:20:00+05:30","nextId":237,"sections":[{"id":"before","title":"Before the flight","note":"Tasks to finish in the weeks before leaving.","kind":"task","items":[{"id":"i1","text":"Visa stamped on passport","done":false,"bag":""},{"id":"i233","text":"J-1 visa stamp checked: name, dates, programme number match DS-2019","done":false,"bag":""},{"id":"i234","text":"Flight lands no earlier than 30 days before DS-2019 start date","done":false,"bag":""},{"id":"i2","text":"Flight booked (2 checked bags of 23 kg each)","done":false,"bag":""},{"id":"i3","text":"Temporary stay fixed for first 2-4 weeks in Raleigh","done":false,"bag":""},{"id":"i4","text":"Medical, dental and eye check-up done","done":false,"bag":""},{"id":"i5","text":"Forex card loaded and some US dollars in cash","done":false,"bag":""},{"id":"i6","text":"Indian bank informed; international card use switched on","done":false,"bag":""},{"id":"i7","text":"Photocopies and scans of all documents made","done":false,"bag":""},{"id":"i8","text":"Bags weighed (keep each at about 22 kg)","done":false,"bag":""},{"id":"i9","text":"Web check-in done","done":false,"bag":""},{"id":"i10","text":"Offline Google Map of Raleigh downloaded","done":false,"bag":""}]},{"id":"docs","title":"Documents (in hand)","note":"Originals in one waterproof folder in the cabin bag. Never in checked luggage.","kind":"pack","items":[{"id":"i11","text":"Passport with US visa stamp","done":false,"bag":"Cabin"},{"id":"i12","text":"DS-2019 form (signed by NCSU and her)","done":false,"bag":"Cabin"},{"id":"i13","text":"SEVIS I-901 fee payment receipt","done":false,"bag":"Cabin"},{"id":"i14","text":"NCSU offer / appointment letter","done":false,"bag":"Cabin"},{"id":"i15","text":"Funding / salary letter (proof of funds for J-1)","done":false,"bag":"Cabin"},{"id":"i16","text":"Address of first stay + NCSU contact number","done":false,"bag":"Cabin"},{"id":"i17","text":"Education certificates","done":false,"bag":"Cabin","subs":[{"id":"i18","text":"PhD degree / provisional certificate","done":false},{"id":"i19","text":"PhD transcripts","done":false},{"id":"i20","text":"Master's marksheets and degree","done":false},{"id":"i21","text":"Bachelor's marksheets and degree","done":false},{"id":"i22","text":"12th marksheet","done":false},{"id":"i23","text":"10th marksheet","done":false}]},{"id":"i24","text":"Vaccination record and medical reports (English)","done":false,"bag":"Cabin"},{"id":"i25","text":"Health insurance card meeting J-1 rules","done":false,"bag":"Cabin"},{"id":"i26","text":"Indian ID documents","done":false,"bag":"Cabin","subs":[{"id":"i27","text":"Aadhaar card","done":false},{"id":"i28","text":"PAN card","done":false},{"id":"i29","text":"Indian driving licence","done":false},{"id":"i30","text":"Birth certificate","done":false},{"id":"i31","text":"Bank passbook / cheque book","done":false}]},{"id":"i32","text":"Photocopies set 1","done":false,"bag":"Cabin"},{"id":"i33","text":"Photocopies set 2","done":false,"bag":"Bag 1"},{"id":"i34","text":"Passport photos (US 2x2 inch + Indian size)","done":false,"bag":"Cabin"},{"id":"i35","text":"Diary with emergency numbers handwritten","done":false,"bag":"Cabin"}]},{"id":"food","title":"Food, masala and groceries","note":"Declare ALL food at US customs (answer YES). No rice of any kind, no meat or egg, no fresh vegetables, fruits or curry leaves. Keep home food to 3-4 kg total.","kind":"pack","items":[{"id":"i36","text":"Masalas (sealed / labelled)","done":false,"bag":"Bag 2","subs":[{"id":"i37","text":"Haldi (turmeric)","done":false},{"id":"i38","text":"Lal mirchi powder","done":false},{"id":"i39","text":"Dhaniya powder","done":false},{"id":"i40","text":"Jeera powder","done":false},{"id":"i41","text":"Garam masala","done":false},{"id":"i42","text":"Goda masala","done":false},{"id":"i43","text":"Kanda-lasun masala","done":false},{"id":"i44","text":"Kala masala","done":false},{"id":"i45","text":"Sambar masala","done":false},{"id":"i46","text":"Pav bhaji masala","done":false},{"id":"i47","text":"Chaat masala","done":false},{"id":"i48","text":"Kitchen king masala","done":false},{"id":"i49","text":"Hing","done":false},{"id":"i50","text":"Whole jeera","done":false},{"id":"i51","text":"Mohri (mustard seeds)","done":false},{"id":"i52","text":"Methi seeds","done":false},{"id":"i53","text":"Whole spices (lavang, elaichi, dalchini)","done":false}]},{"id":"i54","text":"Pickles (lonche) - sealed jars, double zip-bagged","done":false,"bag":"Bag 2","subs":[{"id":"i55","text":"Mango (kairi)","done":false},{"id":"i56","text":"Lime (limbu)","done":false},{"id":"i57","text":"Mixed","done":false},{"id":"i58","text":"Green chilli","done":false},{"id":"i59","text":"Garlic","done":false},{"id":"i60","text":"Thecha / chutney powder","done":false}]},{"id":"i61","text":"Ghee - sealed tin, double zip-bagged","done":false,"bag":"Bag 2"},{"id":"i62","text":"Dal and flours (1-2 kg each max)","done":false,"bag":"Bag 2","subs":[{"id":"i63","text":"Toor dal","done":false},{"id":"i64","text":"Moong dal","done":false},{"id":"i65","text":"Masoor dal","done":false},{"id":"i66","text":"Chana dal","done":false},{"id":"i67","text":"Besan","done":false},{"id":"i68","text":"Jowar / bajra atta","done":false},{"id":"i69","text":"Poha","done":false},{"id":"i70","text":"Rava","done":false},{"id":"i71","text":"Sabudana","done":false}]},{"id":"i72","text":"Snacks and sweets","done":false,"bag":"Bag 2","subs":[{"id":"i73","text":"Chivda","done":false},{"id":"i74","text":"Chakli","done":false},{"id":"i75","text":"Shev","done":false},{"id":"i76","text":"Besan laddoo","done":false},{"id":"i77","text":"Shankarpali","done":false},{"id":"i78","text":"Karanji","done":false},{"id":"i79","text":"Biscuits","done":false},{"id":"i80","text":"Thepla / khakhra for the flight","done":false}]},{"id":"i81","text":"Ready mixes","done":false,"bag":"Bag 2","subs":[{"id":"i82","text":"Instant upma","done":false},{"id":"i83","text":"Instant poha","done":false},{"id":"i84","text":"Dosa / idli mix","done":false},{"id":"i85","text":"Dhokla mix","done":false},{"id":"i86","text":"Gulab jamun mix","done":false}]},{"id":"i87","text":"Tea and coffee powder","done":false,"bag":"Bag 2"},{"id":"i88","text":"Roasted packaged dry fruits","done":false,"bag":"Bag 2"},{"id":"i89","text":"Checked: NO rice or akshata in any bag","done":false,"bag":""}]},{"id":"clothes","title":"Clothing","note":"Raleigh winters reach about 0 C at night. Buy the heavy jacket there.","kind":"pack","items":[{"id":"i90","text":"Daily and lab wear","done":false,"bag":"Bag 1","subs":[{"id":"i91","text":"6-7 tops / kurtis / shirts","done":false},{"id":"i92","text":"4-5 bottoms","done":false},{"id":"i93","text":"2 formal outfits","done":false},{"id":"i94","text":"1 full-sleeve lab outfit","done":false},{"id":"i95","text":"2-3 nightwear sets","done":false}]},{"id":"i96","text":"Innerwear and socks","done":false,"bag":"Bag 1","subs":[{"id":"i97","text":"7-10 innerwear sets","done":false},{"id":"i98","text":"6 cotton socks","done":false},{"id":"i99","text":"4 thick woollen socks","done":false}]},{"id":"i100","text":"Winter starter set","done":false,"bag":"Bag 1","subs":[{"id":"i101","text":"2 thermal sets","done":false},{"id":"i102","text":"2 sweaters / cardigans","done":false},{"id":"i103","text":"1 fleece or hoodie","done":false},{"id":"i104","text":"Woollen cap","done":false},{"id":"i105","text":"Muffler / scarf","done":false},{"id":"i106","text":"Gloves","done":false}]},{"id":"i107","text":"Light jacket for the flight","done":false,"bag":"Wear"},{"id":"i108","text":"Traditional and festival wear","done":false,"bag":"Bag 1","subs":[{"id":"i109","text":"2-3 sarees or salwar suits","done":false},{"id":"i110","text":"Blouses and petticoat","done":false},{"id":"i111","text":"Dupattas","done":false},{"id":"i112","text":"Shawl","done":false},{"id":"i113","text":"Bangles and safety pins","done":false}]},{"id":"i114","text":"Footwear (max 4 pairs)","done":false,"bag":"Bag 1","subs":[{"id":"i115","text":"Walking shoes","done":false},{"id":"i116","text":"Formal shoes / bellies","done":false},{"id":"i117","text":"Home chappals","done":false},{"id":"i118","text":"Waterproof boots","done":false}]},{"id":"i119","text":"Umbrella and raincoat","done":false,"bag":"Bag 1"},{"id":"i120","text":"Sunglasses and summer cap","done":false,"bag":"Bag 1"},{"id":"i121","text":"Small sewing kit","done":false,"bag":"Bag 1"},{"id":"i122","text":"Heavy winter jacket","done":false,"bag":"Buy in US"}]},{"id":"kitchen","title":"Kitchen and utensils","note":"US stoves are electric, not gas: carry flat-bottom vessels. Indian 230 V appliances will not work.","kind":"pack","items":[{"id":"i123","text":"Cooking vessels (flat bottom)","done":false,"bag":"Bag 2","subs":[{"id":"i124","text":"Pressure cooker 3 or 5 L","done":false},{"id":"i125","text":"Spare gasket and whistle","done":false},{"id":"i126","text":"Flat tawa","done":false},{"id":"i127","text":"Small kadhai","done":false},{"id":"i128","text":"Patila (tope)","done":false}]},{"id":"i129","text":"Tools","done":false,"bag":"Bag 2","subs":[{"id":"i130","text":"Polpat-latna","done":false},{"id":"i131","text":"Masala dabba","done":false},{"id":"i132","text":"Tea strainer","done":false},{"id":"i133","text":"Chimta","done":false},{"id":"i134","text":"Jhara","done":false},{"id":"i135","text":"Ladles","done":false},{"id":"i136","text":"Grater","done":false},{"id":"i137","text":"Peeler","done":false},{"id":"i138","text":"Knife (checked bag only)","done":false}]},{"id":"i139","text":"Plates and tiffin","done":false,"bag":"Bag 2","subs":[{"id":"i140","text":"2 steel thalis","done":false},{"id":"i141","text":"2 bowls","done":false},{"id":"i142","text":"2 glasses","done":false},{"id":"i143","text":"Tiffin box for lab","done":false}]},{"id":"i144","text":"Bedding for first nights","done":false,"bag":"Bag 1","subs":[{"id":"i145","text":"1 bedsheet","done":false},{"id":"i146","text":"1 pillow cover","done":false},{"id":"i147","text":"Light blanket / dohar","done":false},{"id":"i148","text":"2 bath towels","done":false},{"id":"i149","text":"2 hand towels","done":false}]},{"id":"i150","text":"Mixer-grinder (110 V)","done":false,"bag":"Buy in US"},{"id":"i151","text":"Rice cooker, kettle, non-stick pans","done":false,"bag":"Buy in US"},{"id":"i152","text":"Pillow and comforter","done":false,"bag":"Buy in US"}]},{"id":"meds","title":"Medicines and health","note":"Original strips + doctor's prescription in English. Keep in the cabin bag.","kind":"pack","items":[{"id":"i153","text":"Regular prescribed medicines (3-6 months)","done":false,"bag":"Cabin"},{"id":"i154","text":"Prescription letter with generic names","done":false,"bag":"Cabin"},{"id":"i155","text":"Common tablets","done":false,"bag":"Cabin","subs":[{"id":"i156","text":"Fever / pain (paracetamol)","done":false},{"id":"i157","text":"Cold and allergy","done":false},{"id":"i158","text":"Acidity","done":false},{"id":"i159","text":"Loose-motion (doctor prescribed)","done":false},{"id":"i160","text":"ORS packets","done":false},{"id":"i161","text":"Eno sachets","done":false}]},{"id":"i162","text":"Small cough syrup","done":false,"bag":"Bag 1"},{"id":"i163","text":"First-aid kit","done":false,"bag":"Bag 1","subs":[{"id":"i164","text":"Band-aids","done":false},{"id":"i165","text":"Cotton","done":false},{"id":"i166","text":"Antiseptic cream","done":false},{"id":"i167","text":"Pain-relief spray / balm","done":false},{"id":"i168","text":"Crepe bandage","done":false},{"id":"i169","text":"Thermometer","done":false}]},{"id":"i170","text":"Vicks / balm","done":false,"bag":"Cabin"},{"id":"i171","text":"Branded ayurvedic items","done":false,"bag":"Bag 1","subs":[{"id":"i172","text":"Chyawanprash","done":false},{"id":"i173","text":"Hajmola","done":false},{"id":"i174","text":"Triphala","done":false}]},{"id":"i175","text":"Sanitary pads (1 month)","done":false,"bag":"Bag 1"},{"id":"i176","text":"Spare spectacles / lenses + solution","done":false,"bag":"Cabin"}]},{"id":"tech","title":"Electronics, money and phone","note":"US sockets are 110-120 V, flat two-pin. Phone and laptop chargers work with a plug adapter.","kind":"pack","items":[{"id":"i177","text":"Laptop + charger","done":false,"bag":"Cabin"},{"id":"i178","text":"Phone + charger + spare cable","done":false,"bag":"Cabin"},{"id":"i179","text":"Travel adapters (India to US) x2-3","done":false,"bag":"Cabin"},{"id":"i180","text":"Power bank under 20,000 mAh","done":false,"bag":"Cabin"},{"id":"i181","text":"Small Indian extension board","done":false,"bag":"Bag 1"},{"id":"i182","text":"Earphones","done":false,"bag":"Cabin"},{"id":"i183","text":"Research data backed up","done":false,"bag":"Cabin"},{"id":"i184","text":"US dollars cash in small notes","done":false,"bag":"Cabin"},{"id":"i185","text":"Forex card","done":false,"bag":"Cabin"},{"id":"i186","text":"Indian debit / credit card","done":false,"bag":"Cabin"},{"id":"i187","text":"Indian SIM kept active for OTPs","done":false,"bag":"Cabin"},{"id":"i188","text":"WhatsApp, Uber / Lyft, Google Maps ready","done":false,"bag":"Cabin"}]},{"id":"pooja","title":"Pooja and personal care","note":"Keep pooja items small and sealed. Use electric diyas; no rice.","kind":"pack","items":[{"id":"i189","text":"Pooja items","done":false,"bag":"Bag 2","subs":[{"id":"i190","text":"Small idol / deity photo","done":false},{"id":"i191","text":"Pooja thali","done":false},{"id":"i192","text":"Kalash","done":false},{"id":"i193","text":"Bell","done":false},{"id":"i194","text":"Kumkum","done":false},{"id":"i195","text":"Haldi","done":false},{"id":"i196","text":"Ashtagandh","done":false},{"id":"i197","text":"Agarbatti","done":false},{"id":"i198","text":"Dhoop","done":false},{"id":"i199","text":"LED diyas","done":false}]},{"id":"i200","text":"Family photos and Marathi book / pothi","done":false,"bag":"Bag 1"},{"id":"i201","text":"Gifts for professor and lab-mates","done":false,"bag":"Bag 2"},{"id":"i202","text":"Personal care (1 month)","done":false,"bag":"Bag 1","subs":[{"id":"i203","text":"Hair oil (sealed)","done":false},{"id":"i204","text":"Shampoo","done":false},{"id":"i205","text":"Soap","done":false},{"id":"i206","text":"Toothpaste","done":false},{"id":"i207","text":"Toothbrush","done":false},{"id":"i208","text":"Comb","done":false},{"id":"i209","text":"Hair bands and clips","done":false},{"id":"i210","text":"Nail cutter","done":false},{"id":"i211","text":"Moisturiser","done":false},{"id":"i212","text":"Lip balm","done":false},{"id":"i213","text":"Kajal","done":false},{"id":"i214","text":"Bindi","done":false}]}]},{"id":"cabin","title":"Cabin bag check","note":"Enough to get through 2-3 days if checked bags are delayed.","kind":"pack","items":[{"id":"i215","text":"2 sets of clothes, innerwear, socks","done":false,"bag":"Cabin"},{"id":"i216","text":"Toiletries under 100 ml in a clear bag","done":false,"bag":"Cabin"},{"id":"i217","text":"Empty water bottle","done":false,"bag":"Cabin"},{"id":"i218","text":"Pen for customs forms","done":false,"bag":"Cabin"},{"id":"i219","text":"Neck pillow and eye mask","done":false,"bag":"Cabin"}]},{"id":"arrive","title":"After arriving in Raleigh","note":"First weeks setup.","kind":"task","items":[{"id":"i220","text":"Message family on arrival","done":false,"bag":""},{"id":"i221","text":"Buy US SIM / eSIM","done":false,"bag":""},{"id":"i222","text":"Download I-94 record from CBP website","done":false,"bag":""},{"id":"i235","text":"Check I-94 says J-1 and D/S (duration of status)","done":false,"bag":""},{"id":"i223","text":"Check in with NCSU OIS (J-1 SEVIS validation)","done":false,"bag":""},{"id":"i224","text":"Get WolfCard ID and university email","done":false,"bag":""},{"id":"i225","text":"Enrol in health insurance","done":false,"bag":""},{"id":"i226","text":"Open US bank account","done":false,"bag":""},{"id":"i227","text":"Apply for Social Security Number (SSN)","done":false,"bag":""},{"id":"i228","text":"Sign long-term apartment lease","done":false,"bag":""},{"id":"i229","text":"Learn Wolfline and GoRaleigh buses","done":false,"bag":""},{"id":"i230","text":"Get a secured credit card","done":false,"bag":""},{"id":"i231","text":"NC driving licence or state ID","done":false,"bag":""},{"id":"i232","text":"Join Indian association / Marathi Mandal","done":false,"bag":""},{"id":"i236","text":"Before any trip outside the US: DS-2019 travel signature from OIS","done":false,"bag":""}]}],"bills":[]};
 const BAGS = ["", "Cabin", "Bag 1", "Bag 2", "Wear", "Buy in US"];
-const DRAFT_KEY = "raleigh-pack-draft-v1", SAVED_KEY = "raleigh-pack-saved-v1";
-let printing = false;
-let state = null, baseStamp = "", dirty = false, readOnly = false;
+const BILL_TYPES = ["Invoice / bill", "Payment proof", "Warranty card", "Product photo", "Delivery / box label", "Other proof"];
+const DRAFT_KEY = "raleigh-pack-draft-v1", SAVED_KEY = "raleigh-pack-saved-v1", TAB_KEY = "raleigh-pack-tab";
+let state = null, dirty = false, printing = false, tab = "overview";
 const openSecs = new Set(), openItems = new Set();
 let pendingRemove = null, removeTimer = null;
 const $ = s => document.querySelector(s);
-const ICON = {
-  chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
-  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+
+// ---------- icons ----------
+const P = {
+  chev:'<path d="M6 9l6 6 6-6"/>', x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  clip:'<path d="M21 11.5l-8.6 8.6a5 5 0 01-7.1-7.1l8.6-8.6a3.4 3.4 0 014.8 4.8l-8.6 8.6a1.7 1.7 0 01-2.4-2.4l7.9-7.9"/>',
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',
+  list:'<path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/>',
+  bill:'<path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/>',
+  cam:'<path d="M4 7h3l2-3h6l2 3h3a1 1 0 011 1v11a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1z"/><circle cx="12" cy="13" r="4"/>',
+  up:'<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/>',
+  share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  before:'<path d="M12 7v5l3 3"/><circle cx="12" cy="12" r="9"/>',
+  docs:'<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17h8"/>',
+  food:'<path d="M5 11h14v2a7 7 0 01-14 0z"/><path d="M8 4c0 2 2 2 2 4M12 4c0 2 2 2 2 4"/>',
+  clothes:'<path d="M8 3l4 2 4-2 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/>',
+  kitchen:'<path d="M4 10h16v3a6 6 0 01-6 6h-4a6 6 0 01-6-6z"/><path d="M2 10h20M12 4v3"/>',
+  meds:'<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V5h8v3M12 11v6M9 14h6"/>',
+  tech:'<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/>',
+  pooja:'<path d="M12 3c2 3 3 5 3 7a3 3 0 01-6 0c0-2 1-4 3-7z"/><path d="M5 17h14l-2 4H7z"/>',
+  cabin:'<rect x="6" y="6" width="12" height="15" rx="2"/><path d="M9 6V3h6v3M10 21v1M14 21v1"/>',
+  arrive:'<path d="M2 16h20M5 16l-2-5h3l2 2h4l-2-7h3l4 7h4a2 2 0 010 4"/>',
+  other:'<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>'
 };
+const ico = (n, cls = "i") => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${P[n] || P.other}</svg>`;
 
 function el(tag, attrs = {}, kids = []) {
   const e = document.createElement(tag);
@@ -185,18 +295,113 @@ function el(tag, attrs = {}, kids = []) {
   for (const k of kids) if (k) e.append(k);
   return e;
 }
-function newId() { return "i" + (state.nextId++); }
+function toast(msg) { const t = el("div", { class: "toast", role: "status", text: msg }); document.body.append(t); setTimeout(() => t.remove(), 2600); }
+function newId(p = "i") { return p + (state.nextId++); }
 function itemDone(it) { return it.subs && it.subs.length ? it.subs.every(s => s.done) : it.done; }
 function counts(items) { let d = 0; for (const it of items) if (itemDone(it)) d++; return [d, items.length]; }
+function level(d, t) { if (!t || d === t) return "done"; const p = d / t; return p >= .67 ? "hi" : p >= .34 ? "mid" : "low"; }
+function allItems() { const out = []; for (const s of state.sections) for (const it of s.items) out.push([s, it]); return out; }
+function findItem(id) { for (const s of state.sections) for (const it of s.items) if (it.id === id) return it; return null; }
+function billsFor(id) { return (state.bills || []).filter(b => (b.itemIds || []).includes(id)); }
 
+// ---------- file store (IndexedDB) ----------
+let dbp = null;
+function db() {
+  if (!dbp) dbp = new Promise((res, rej) => { const r = indexedDB.open("raleigh-pack", 1); r.onupgradeneeded = () => r.result.createObjectStore("files"); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  return dbp;
+}
+async function putFile(id, blob) { const d = await db(); return new Promise((res, rej) => { const t = d.transaction("files", "readwrite"); t.objectStore("files").put(blob, id); t.oncomplete = res; t.onerror = () => rej(t.error); }); }
+async function getFile(id) { const d = await db(); return new Promise((res, rej) => { const r = d.transaction("files").objectStore("files").get(id); r.onsuccess = () => res(r.result || null); r.onerror = () => rej(r.error); }); }
+async function delFile(id) { const d = await db(); return new Promise(res => { const t = d.transaction("files", "readwrite"); t.objectStore("files").delete(id); t.oncomplete = res; t.onerror = res; }); }
+const urlCache = new Map();
+async function fileUrl(id) { if (urlCache.has(id)) return urlCache.get(id); const b = await getFile(id); if (!b) return null; const u = URL.createObjectURL(b); urlCache.set(id, u); return u; }
+
+// "scanner": shrink photo, optional document clean-up (grey + contrast)
+async function processImage(file, docMode) {
+  const bmp = await createImageBitmap(file).catch(() => null);
+  if (!bmp) return file;
+  const max = 1800, sc = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * sc); c.height = Math.round(bmp.height * sc);
+  const g = c.getContext("2d"); g.drawImage(bmp, 0, 0, c.width, c.height);
+  if (docMode) {
+    const im = g.getImageData(0, 0, c.width, c.height), a = im.data;
+    let lo = 255, hi = 0; const hist = new Uint32Array(256);
+    for (let i = 0; i < a.length; i += 4) { const y = (a[i] * 299 + a[i + 1] * 587 + a[i + 2] * 114) / 1000 | 0; hist[y]++; }
+    let n = 0, tot = a.length / 4; for (let i = 0; i < 256; i++) { n += hist[i]; if (n > tot * .02) { lo = i; break; } }
+    n = 0; for (let i = 255; i >= 0; i--) { n += hist[i]; if (n > tot * .05) { hi = i; break; } }
+    const r = Math.max(1, hi - lo);
+    for (let i = 0; i < a.length; i += 4) { const y = (a[i] * 299 + a[i + 1] * 587 + a[i + 2] * 114) / 1000; const v = Math.max(0, Math.min(255, (y - lo) * 255 / r)); a[i] = a[i + 1] = a[i + 2] = v; }
+    g.putImageData(im, 0, 0);
+  }
+  return await new Promise(res => c.toBlob(b => res(b || file), "image/jpeg", .82));
+}
+
+// ---------- state ----------
 function markDirty() {
   dirty = true;
   try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {}
-  setStatus("Unsaved changes", "dirty");
-  $("#saveBtn").disabled = false;
+  setStatus("Not saved", "dirty"); $("#saveBtn").disabled = false;
   render();
 }
 function setStatus(msg, cls = "") { const s = $("#status"); s.textContent = msg; s.className = cls; }
+function save() {
+  if (!dirty) return;
+  state.updatedAt = new Date().toISOString();
+  try { localStorage.setItem(SAVED_KEY, JSON.stringify(state)); localStorage.removeItem(DRAFT_KEY); dirty = false; $("#saveBtn").disabled = true; setStatus("Saved", "ok"); toast("Saved on this phone"); }
+  catch (e) { setStatus("Not saved", "err"); toast("Could not save. Storage may be full or blocked."); }
+}
+function migrate(s) {
+  if (!s.bills) s.bills = [];
+  if ((s.version || 1) < 2) {
+    const fresh = DEFAULT_DATA, map = {};
+    for (const sec of fresh.sections) for (const it of sec.items) map[it.id] = it;
+    for (const sec of s.sections) for (const it of sec.items) if (["i12", "i13", "i15", "i25", "i223"].includes(it.id) && map[it.id]) it.text = map[it.id].text;
+    const have = new Set(); for (const sec of s.sections) for (const it of sec.items) have.add(it.id);
+    for (const fsec of fresh.sections) {
+      const sec = s.sections.find(x => x.id === fsec.id); if (!sec) continue;
+      fsec.items.forEach((it, i) => { if (!have.has(it.id)) sec.items.splice(Math.min(i, sec.items.length), 0, JSON.parse(JSON.stringify(it))); });
+    }
+    s.version = 2; s.nextId = Math.max(s.nextId || 0, fresh.nextId);
+  }
+  return s;
+}
+
+// ---------- render ----------
+function render() {
+  renderOverview(); renderList(); renderBills(); renderTabs();
+}
+function progressRow(icon, name, d, t, onClick) {
+  const lv = level(d, t), left = t - d;
+  const b = el(onClick ? "button" : "div", { class: "prow", type: onClick ? "button" : null, onclick: onClick || null });
+  b.innerHTML = `<span class="ic">${ico(icon)}</span>`;
+  const mid = el("div", { style: "min-width:0" }, [el("div", { class: "nm", text: name }), el("div", { class: "bar", html: `<i class="fill-${lv}" style="width:${t ? Math.round(d / t * 100) : 100}%"></i>` })]);
+  b.append(mid, el("span", { class: "left lv-" + lv, text: left ? `${left} left` : "Done" }));
+  return b;
+}
+function renderOverview() {
+  const v = $("#v-overview"); v.replaceChildren();
+  let d = 0, t = 0; const bag = {};
+  for (const [, it] of allItems()) { t++; if (itemDone(it)) d++; if (it.bag && it.bag !== "Buy in US") { bag[it.bag] = bag[it.bag] || [0, 0]; bag[it.bag][1]++; if (itemDone(it)) bag[it.bag][0]++; } }
+  const pct = t ? Math.round(d / t * 100) : 0, C = 2 * Math.PI * 36;
+  const tag = el("div", { class: "tag" });
+  tag.innerHTML = `<div class="route">PNQ <span aria-hidden="true">&rarr;</span> RDU <small>Raleigh-Durham</small></div>
+    <p class="sub">J-1 postdoc move to NC State University</p>
+    <div class="ring-row"><svg class="ring" viewBox="0 0 84 84" role="img" aria-label="${pct}% done"><circle class="bgc" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct / 100)}" transform="rotate(-90 42 42)"/><text x="42" y="50" text-anchor="middle">${pct}%</text></svg>
+    <div class="ring-meta"><b>${d} of ${t} done</b><span>${t - d} items left</span><div class="bagpills" id="bp"></div></div></div>`;
+  const bp = tag.querySelector("#bp");
+  for (const b of ["Cabin", "Bag 1", "Bag 2"]) if (bag[b]) bp.append(el("span", { text: `${b}: ${bag[b][0]}/${bag[b][1]}` }));
+  v.append(tag);
+  const card = el("div", { class: "card" });
+  card.append(el("div", { class: "card-h" }, [el("h2", { text: "Progress by section" })]));
+  card.append(el("div", { class: "legend", html: `<span><i class="fill-low"></i>Under a third</span><span><i class="fill-mid"></i>Halfway</span><span><i class="fill-hi"></i>Nearly there</span><span><i class="fill-done"></i>Done</span>` }));
+  for (const s of state.sections) { const [cd, ct] = counts(s.items); card.append(progressRow(s.id, s.title, cd, ct, () => { openSecs.add(s.id); go("list"); setTimeout(() => document.getElementById("sec-" + s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); })); }
+  v.append(card);
+  const bills = state.bills || [], dueSoon = bills.filter(b => dueLevel(b) === "soon" || dueLevel(b) === "late").length;
+  const bc = el("div", { class: "card" });
+  bc.append(el("div", { class: "card-h" }, [el("h2", { text: "Bills and proofs" }), el("button", { class: "btn", type: "button", text: "Open", onclick: () => go("bills") })]));
+  bc.append(el("p", { class: "empty", style: "padding-top:4px", text: bills.length ? `${bills.length} saved. ${dueSoon ? dueSoon + " with a return or exchange date coming up." : "No return dates due soon."}` : "No bills yet. Scan shop bills so exchanges and refunds are easy." }));
+  v.append(bc);
+}
 
 function visible(sec, it) {
   const f = $("#filter").value;
@@ -204,32 +409,24 @@ function visible(sec, it) {
   if (f === "todo") return !itemDone(it);
   return sec.kind !== "task" && it.bag === f;
 }
-
-function render() {
-  // progress
-  let d = 0, t = 0; const bagTotals = {};
-  for (const s of state.sections) for (const it of s.items) {
-    t++; if (itemDone(it)) d++;
-    if (it.bag && it.bag !== "Buy in US") { bagTotals[it.bag] = bagTotals[it.bag] || [0, 0]; bagTotals[it.bag][1]++; if (itemDone(it)) bagTotals[it.bag][0]++; }
-  }
-  const pct = t ? Math.round(d / t * 100) : 0;
-  $("#pbar").style.width = pct + "%";
-  $("#ptext").textContent = `${d} of ${t} done`;
-  $("#pct").textContent = pct + "%";
-  const bs = $("#bagSummary"); bs.replaceChildren();
-  for (const b of ["Cabin", "Bag 1", "Bag 2"]) if (bagTotals[b]) bs.append(el("span", { text: `${b === "Cabin" ? "Cabin 7 kg" : b + " 23 kg"}: ${bagTotals[b][0]}/${bagTotals[b][1]}` }));
-
+function removeBtn(key, doRemove, label) {
+  if (pendingRemove === key) return el("button", { class: "rm-confirm", type: "button", text: "Remove?", onclick: () => { clearTimeout(removeTimer); pendingRemove = null; doRemove(); markDirty(); } });
+  return el("button", { class: "mini", type: "button", "aria-label": label, html: ico("x"), onclick: () => { pendingRemove = key; clearTimeout(removeTimer); removeTimer = setTimeout(() => { pendingRemove = null; render(); }, 3000); render(); } });
+}
+function renderList() {
   const root = $("#sections"); root.replaceChildren();
   const filtering = $("#filter").value !== "all";
   for (const sec of state.sections) {
     const shown = sec.items.filter(it => visible(sec, it));
     if (filtering && !shown.length) continue;
-    const [cd, ct] = counts(sec.items);
+    const [cd, ct] = counts(sec.items), lv = level(cd, ct);
     const isOpen = openSecs.has(sec.id) || filtering || printing;
-    const card = el("section", { class: "sec" + (isOpen ? " open" : "") });
-    const head = el("button", { class: "sec-h", type: "button", "aria-expanded": String(isOpen), onclick: () => { openSecs.has(sec.id) ? openSecs.delete(sec.id) : openSecs.add(sec.id); render(); } },
-      [el("h2", { text: sec.title }), el("span", { class: "count" + (ct && cd === ct ? " full" : ""), text: `${cd}/${ct}` })]);
-    head.insertAdjacentHTML("beforeend", ICON.chev);
+    const card = el("section", { class: "card sec" + (isOpen ? " open" : ""), id: "sec-" + sec.id });
+    const head = el("button", { class: "sec-h", type: "button", "aria-expanded": String(isOpen), onclick: () => { openSecs.has(sec.id) ? openSecs.delete(sec.id) : openSecs.add(sec.id); render(); } });
+    head.innerHTML = `<span class="ic">${ico(sec.id)}</span>`;
+    head.append(el("div", { style: "min-width:0" }, [el("h2", { text: sec.title }), el("div", { class: "bar", html: `<i class="fill-${lv}" style="width:${ct ? Math.round(cd / ct * 100) : 100}%"></i>` })]),
+      el("span", { class: "left lv-" + lv, text: ct - cd ? `${ct - cd} left` : "Done" }));
+    head.insertAdjacentHTML("beforeend", ico("chev", "chev"));
     card.append(head);
     if (isOpen) {
       if (sec.note) card.append(el("p", { class: "note", text: sec.note }));
@@ -237,60 +434,44 @@ function render() {
       for (const it of shown) body.append(renderItem(sec, it));
       if (!shown.length) body.append(el("p", { class: "empty", text: "Nothing here yet. Add the first item below." }));
       const inp = el("input", { placeholder: "Add an item", "aria-label": "Add item to " + sec.title, id: "add-" + sec.id });
-      const add = () => { const v = inp.value.trim(); if (!v) return; sec.items.push({ id: newId(), text: v, done: false, bag: sec.kind === "task" ? "" : ($("#filter").value.match(/^(Cabin|Bag 1|Bag 2|Wear|Buy in US)$/) ? $("#filter").value : "") }); markDirty(); setTimeout(() => { const n = document.getElementById("add-" + sec.id); n && n.focus(); }); };
+      const add = () => { const v = inp.value.trim(); if (!v) return; sec.items.push({ id: newId(), text: v, done: false, bag: sec.kind === "task" ? "" : (BAGS.includes($("#filter").value) ? $("#filter").value : "") }); markDirty(); setTimeout(() => document.getElementById("add-" + sec.id)?.focus()); };
       inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
-      const row = el("div", { class: "add" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]);
-      const rmSec = removeBtn("sec:" + sec.id, () => { state.sections = state.sections.filter(s => s !== sec); }, "Remove list");
-      row.append(rmSec);
-      body.append(row);
+      body.append(el("div", { class: "add" }, [inp, el("button", { type: "button", text: "Add", onclick: add }), removeBtn("sec:" + sec.id, () => { state.sections = state.sections.filter(s => s !== sec); }, "Remove list " + sec.title)]));
       card.append(body);
     }
     root.append(card);
   }
 }
-
-function removeBtn(key, doRemove, label) {
-  if (pendingRemove === key) {
-    return el("button", { class: "rm-confirm", type: "button", text: "Remove?", onclick: () => { clearTimeout(removeTimer); pendingRemove = null; doRemove(); markDirty(); } });
-  }
-  return el("button", { class: "mini", type: "button", "aria-label": label, html: ICON.x, onclick: () => { pendingRemove = key; clearTimeout(removeTimer); removeTimer = setTimeout(() => { pendingRemove = null; render(); }, 3000); render(); } });
-}
-
 function renderItem(sec, it) {
-  const hasSubs = Array.isArray(it.subs);
-  const done = itemDone(it);
-  const open = openItems.has(it.id) || (printing && Array.isArray(it.subs) && it.subs.length > 0);
+  const hasSubs = Array.isArray(it.subs), done = itemDone(it);
+  const open = openItems.has(it.id) || (printing && hasSubs && it.subs.length > 0);
   const box = el("input", { type: "checkbox", class: "cb", "aria-label": it.text });
   box.checked = done;
   if (hasSubs && it.subs.length && !done && it.subs.some(s => s.done)) box.classList.add("part");
-  box.addEventListener("change", () => {
-    if (hasSubs && it.subs.length) it.subs.forEach(s => s.done = box.checked); else it.done = box.checked;
-    markDirty();
-  });
-  const wrap = el("div", { class: "item" + (done ? " done" : "") + (open ? " open" : "") });
-  const row = el("div", { class: "row" }, [box, el("span", { class: "txt", text: it.text })]);
+  box.addEventListener("change", () => { if (hasSubs && it.subs.length) it.subs.forEach(s => s.done = box.checked); else it.done = box.checked; markDirty(); });
+  const meta = el("div", { class: "meta" });
   if (sec.kind !== "task") {
-    const s = el("select", { class: "bagsel", "aria-label": "Where to pack " + it.text });
-    for (const b of BAGS) { const o = el("option", { value: b, text: b || "Bag?" }); if (b === (it.bag || "")) o.selected = true; s.append(o); }
+    const s = el("select", { class: "pill" + (it.bag ? " has" : ""), "aria-label": "Where to pack " + it.text });
+    for (const b of BAGS) { const o = el("option", { value: b, text: b || "Choose bag" }); if (b === (it.bag || "")) o.selected = true; s.append(o); }
     s.addEventListener("change", () => { it.bag = s.value; markDirty(); });
-    row.append(s);
+    meta.append(s);
   }
-  const toggle = el("button", { class: "subs-toggle", type: "button", "aria-expanded": String(open), onclick: () => { open ? openItems.delete(it.id) : openItems.add(it.id); render(); } });
-  if (hasSubs) { toggle.textContent = `${it.subs.filter(s => s.done).length}/${it.subs.length}`; toggle.insertAdjacentHTML("beforeend", ICON.chev); }
-  else { toggle.textContent = "+ list"; toggle.setAttribute("aria-label", "Add sub-items to " + it.text); }
-  row.append(toggle);
-  row.append(removeBtn("it:" + it.id, () => { sec.items = sec.items.filter(x => x !== it); }, "Remove " + it.text));
-  wrap.append(row);
+  const tg = el("button", { class: "pill" + (hasSubs && it.subs.length ? " has" : ""), type: "button", "aria-expanded": String(open), onclick: () => { open ? openItems.delete(it.id) : openItems.add(it.id); render(); } });
+  if (hasSubs && it.subs.length) tg.innerHTML = `${it.subs.filter(s => s.done).length}/${it.subs.length} types ${ico("chev")}`; else { tg.textContent = "+ types"; tg.setAttribute("aria-label", "Add types under " + it.text); }
+  meta.append(tg);
+  const nb = billsFor(it.id).length;
+  meta.append(el("button", { class: "pill att" + (nb ? " has" : ""), type: "button", "aria-label": nb ? `${nb} bills attached to ${it.text}` : "Attach a bill to " + it.text, html: `${ico("clip")}${nb ? nb + " bill" + (nb > 1 ? "s" : "") : "Bill"}`, onclick: () => itemBills(it) }));
+  const wrap = el("div", { class: "item" + (done ? " done" : "") });
+  wrap.append(el("div", { class: "row" }, [box, el("div", { class: "main" }, [el("div", { class: "txt", text: it.text }), meta]), removeBtn("it:" + it.id, () => { sec.items = sec.items.filter(x => x !== it); }, "Remove " + it.text)]));
   if (open) {
     const subs = el("div", { class: "subs" });
     for (const s of (it.subs || [])) {
       const sb = el("input", { type: "checkbox", class: "cb", "aria-label": s.text }); sb.checked = s.done;
       sb.addEventListener("change", () => { s.done = sb.checked; markDirty(); });
-      subs.append(el("div", { class: "sub" + (s.done ? " done" : "") }, [sb, el("span", { class: "txt", text: s.text }),
-        removeBtn("sub:" + s.id, () => { it.subs = it.subs.filter(x => x !== s); }, "Remove " + s.text)]));
+      subs.append(el("div", { class: "sub" + (s.done ? " done" : "") }, [sb, el("span", { class: "txt", text: s.text }), removeBtn("sub:" + s.id, () => { it.subs = it.subs.filter(x => x !== s); }, "Remove " + s.text)]));
     }
-    const inp = el("input", { placeholder: "Add type, e.g. " + (it.text.toLowerCase().includes("masala") ? "Misal masala" : "another one"), "aria-label": "Add sub-item to " + it.text, id: "addsub-" + it.id });
-    const add = () => { const v = inp.value.trim(); if (!v) return; if (!it.subs) { it.subs = []; } if (!it.subs.length && it.done) it.done = false; it.subs.push({ id: newId(), text: v, done: false }); markDirty(); setTimeout(() => { const n = document.getElementById("addsub-" + it.id); n && n.focus(); }); };
+    const inp = el("input", { placeholder: "Add type, e.g. " + (/masala/i.test(it.text) ? "Misal masala" : "another one"), "aria-label": "Add type under " + it.text, id: "addsub-" + it.id });
+    const add = () => { const v = inp.value.trim(); if (!v) return; if (!it.subs) it.subs = []; if (!it.subs.length && it.done) it.done = false; it.subs.push({ id: newId(), text: v, done: false }); markDirty(); setTimeout(() => document.getElementById("addsub-" + it.id)?.focus()); };
     inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
     subs.append(el("div", { class: "add" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]));
     wrap.append(subs);
@@ -298,75 +479,231 @@ function renderItem(sec, it) {
   return wrap;
 }
 
-// ---------- save ----------
-function save() {
-  if (!dirty) return;
-  state.updatedAt = new Date().toISOString();
-  try {
-    localStorage.setItem(SAVED_KEY, JSON.stringify(state));
-    localStorage.removeItem(DRAFT_KEY);
-    dirty = false; $("#saveBtn").disabled = true;
-    setStatus("Saved on this phone", "ok");
-  } catch (err) {
-    setStatus("Could not save. Phone storage may be full or blocked in private mode.", "err");
+// ---------- bills ----------
+function today() { const d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+function dueLevel(b) { if (!b.returnBy) return "none"; const days = Math.round((new Date(b.returnBy + "T00:00") - today()) / 864e5); return days < 0 ? "late" : days <= 7 ? "soon" : "ok"; }
+function dueText(b) { if (!b.returnBy) return "No return date"; const days = Math.round((new Date(b.returnBy + "T00:00") - today()) / 864e5); return days < 0 ? "Return date passed" : days === 0 ? "Return by today" : `Return in ${days} day${days > 1 ? "s" : ""}`; }
+function money(b) { if (b.amount === "" || b.amount == null) return ""; const n = Number(b.amount); return (b.currency === "USD" ? "$" : "₹") + n.toLocaleString(b.currency === "USD" ? "en-US" : "en-IN", { maximumFractionDigits: 2 }); }
+function renderBills() {
+  const v = $("#v-bills"); v.replaceChildren();
+  const bills = [...(state.bills || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  let inr = 0, usd = 0; for (const b of bills) { const n = Number(b.amount) || 0; b.currency === "USD" ? usd += n : inr += n; }
+  const due = bills.filter(b => ["soon", "late"].includes(dueLevel(b))).length;
+  v.append(el("div", { class: "billsum" }, [
+    el("div", { class: "card stat" }, [el("b", { text: String(bills.length) }), el("span", { text: "bills and proofs" })]),
+    el("div", { class: "card stat" }, [el("b", { text: "₹" + inr.toLocaleString("en-IN") }), el("span", { text: usd ? "+ $" + usd.toLocaleString("en-US") : "total spent" })]),
+    el("div", { class: "card stat" }, [el("b", { text: String(due), style: due ? "color:var(--warn)" : "" }), el("span", { text: "returns due in 7 days" })])
+  ]));
+  const list = el("div", { class: "card" });
+  if (!bills.length) list.append(el("p", { class: "empty", text: "No bills yet. Tap “Scan bill” to photograph a shop bill, payment screenshot or warranty card, then link it to the items it covers." }));
+  for (const b of bills) {
+    const th = el("div", { class: "thumb", text: (b.files || []).length ? "PDF" : "No file" });
+    const f0 = (b.files || [])[0];
+    if (f0 && f0.type !== "pdf") fileUrl(f0.id).then(u => { if (u) { th.textContent = ""; th.append(el("img", { src: u, alt: "" })); } });
+    const names = (b.itemIds || []).map(id => findItem(id)?.text).filter(Boolean);
+    list.append(el("button", { class: "bill", type: "button", onclick: () => billView(b) }, [th, el("div", { style: "min-width:0" }, [
+      el("h3", { text: b.shop || b.type || "Bill" }),
+      el("div", { class: "tip", text: [b.type, b.date ? new Date(b.date + "T00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""].filter(Boolean).join(" · ") }),
+      el("div", { class: "meta" }, [money(b) ? el("span", { class: "amt", text: money(b) }) : null, el("span", { class: "due " + dueLevel(b), text: dueText(b) })]),
+      names.length ? el("div", { class: "tip", style: "margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap", text: "For: " + names.join(", ") }) : null
+    ])]));
   }
+  v.append(list);
+  v.append(el("p", { class: "foot", text: "Photos are kept only on this phone. For refunds, open a bill and tap Share to send it to the shop on WhatsApp or email." }));
+}
+
+// sheet helpers
+function openSheet(title, build) {
+  $("#sheetTitle").textContent = title; const b = $("#sheetBody"); b.replaceChildren(); build(b);
+  const d = $("#sheet"); if (!d.open) d.showModal(); b.scrollTop = 0;
+}
+function closeSheet() { const d = $("#sheet"); if (d.open) d.close(); }
+
+function itemBills(it) {
+  openSheet("Bills for this item", b => {
+    b.append(el("p", { class: "tip", style: "margin:0", text: it.text }));
+    const linked = billsFor(it.id);
+    if (linked.length) { const c = el("div", { class: "card" }); for (const x of linked) c.append(el("button", { class: "bill", type: "button", style: "grid-template-columns:1fr", onclick: () => billView(x) }, [el("div", {}, [el("h3", { text: x.shop || x.type }), el("div", { class: "meta" }, [el("span", { class: "amt", text: money(x) }), el("span", { class: "due " + dueLevel(x), text: dueText(x) })])])])); b.append(c); }
+    else b.append(el("p", { class: "tip", text: "No bill attached yet." }));
+    b.append(el("button", { class: "btn primary", type: "button", html: ico("cam") + "Scan a new bill for this item", onclick: () => billForm(null, [it.id]) }));
+    const others = (state.bills || []).filter(x => !(x.itemIds || []).includes(it.id));
+    if (others.length) {
+      const s = el("select", { class: "sel", "aria-label": "Link an existing bill" }, [el("option", { value: "", text: "Link an existing bill..." }), ...others.map(x => el("option", { value: x.id, text: (x.shop || x.type) + (money(x) ? " – " + money(x) : "") }))]);
+      s.addEventListener("change", () => { const x = state.bills.find(y => y.id === s.value); if (x) { x.itemIds = [...(x.itemIds || []), it.id]; markDirty(); itemBills(it); toast("Bill linked"); } });
+      b.append(s);
+    }
+  });
+}
+
+function billForm(bill, preItems = []) {
+  const editing = !!bill;
+  const draft = bill ? JSON.parse(JSON.stringify(bill)) : { id: newId("b"), type: BILL_TYPES[0], shop: "", amount: "", currency: "INR", date: new Date().toISOString().slice(0, 10), returnBy: "", notes: "", itemIds: [...preItems], files: [] };
+  const newFiles = []; // {id, blob, type}
+  openSheet(editing ? "Edit bill" : "Add bill or proof", b => {
+    // scanner
+    const shots = el("div", { class: "shots" });
+    const drawShots = () => {
+      shots.replaceChildren();
+      for (const f of draft.files) {
+        const s = el("div", { class: "shot", text: f.type === "pdf" ? "PDF" : "" });
+        if (f.type !== "pdf") { const nf = newFiles.find(n => n.id === f.id); const p = nf ? Promise.resolve(URL.createObjectURL(nf.blob)) : fileUrl(f.id); p.then(u => u && s.append(el("img", { src: u, alt: "Page" }))); }
+        s.append(el("button", { type: "button", "aria-label": "Remove page", html: ico("x"), onclick: () => { draft.files = draft.files.filter(x => x !== f); drawShots(); } }));
+        shots.append(s);
+      }
+      if (!draft.files.length) shots.append(el("p", { class: "tip", style: "margin:0", text: "No photo yet. Add one or more pages." }));
+    };
+    const docMode = el("input", { type: "checkbox", id: "docmode" }); docMode.checked = true;
+    const handle = async files => {
+      for (const file of files) {
+        const isPdf = file.type === "application/pdf";
+        const blob = isPdf ? file : await processImage(file, docMode.checked);
+        const id = newId("f"); newFiles.push({ id, blob }); draft.files.push({ id, type: isPdf ? "pdf" : "img" });
+      }
+      drawShots();
+    };
+    const cam = el("input", { type: "file", accept: "image/*", capture: "environment", hidden: true, id: "camIn" });
+    const up = el("input", { type: "file", accept: "image/*,application/pdf", multiple: true, hidden: true, id: "upIn" });
+    cam.addEventListener("change", () => { handle([...cam.files]); cam.value = ""; });
+    up.addEventListener("change", () => { handle([...up.files]); up.value = ""; });
+    b.append(el("div", { class: "scanbox" }, [
+      el("div", { class: "scanbtns" }, [el("label", { class: "btn primary", for: "camIn", html: ico("cam") + "Scan with camera" }), el("label", { class: "btn", for: "upIn", html: ico("up") + "Choose photo / PDF" }), cam, up]),
+      el("label", { class: "chk", for: "docmode" }, [docMode, document.createTextNode("Clean up like a scanner (black and white, sharper text)")]),
+      shots
+    ]));
+    drawShots();
+    // fields
+    const f = (lab, input) => el("div", { class: "fld" }, [el("label", { for: input.id, text: lab }), input]);
+    const type = el("select", { id: "bType" }, BILL_TYPES.map(t => el("option", { value: t, text: t })));
+    type.value = draft.type;
+    const shop = el("input", { id: "bShop", value: draft.shop, placeholder: "e.g. Reliance Digital, Amazon, Walmart" });
+    const amount = el("input", { id: "bAmt", type: "number", inputmode: "decimal", min: "0", step: "0.01", value: draft.amount, placeholder: "0" });
+    const cur = el("select", { id: "bCur" }, [el("option", { value: "INR", text: "₹ Rupees" }), el("option", { value: "USD", text: "$ Dollars" })]); cur.value = draft.currency;
+    const date = el("input", { id: "bDate", type: "date", value: draft.date });
+    const ret = el("input", { id: "bRet", type: "date", value: draft.returnBy });
+    const notes = el("textarea", { id: "bNotes", rows: "2", placeholder: "Order number, warranty period, shop phone..." }); notes.value = draft.notes;
+    b.append(f("Type of proof", type), f("Shop or website", shop), el("div", { class: "two" }, [f("Amount", amount), f("Currency", cur)]), el("div", { class: "two" }, [f("Bought on", date), f("Return / exchange by", ret)]));
+    // quick return-window buttons
+    b.append(el("div", { class: "actions" }, [7, 10, 30].map(n => el("button", { class: "pill", type: "button", text: `+${n} days`, onclick: () => { const d = new Date((date.value || new Date().toISOString().slice(0, 10)) + "T00:00"); d.setDate(d.getDate() + n); ret.value = d.toISOString().slice(0, 10); } }))));
+    // item picker
+    const pick = el("div", { class: "pick" });
+    for (const s of state.sections) {
+      const det = el("details", {}, [el("summary", { text: s.title })]);
+      let any = false;
+      for (const it of s.items) { const c = el("input", { type: "checkbox", value: it.id }); c.checked = draft.itemIds.includes(it.id); if (c.checked) any = true; det.append(el("label", {}, [c, document.createTextNode(it.text)])); }
+      if (any) det.open = true;
+      pick.append(det);
+    }
+    b.append(el("div", { class: "fld" }, [el("span", { class: "lb", text: "Which items does this cover?" }), pick]), f("Notes", notes));
+    const saveB = el("button", { class: "btn primary", type: "button", text: editing ? "Save changes" : "Add bill", onclick: async () => {
+      Object.assign(draft, { type: type.value, shop: shop.value.trim(), amount: amount.value, currency: cur.value, date: date.value, returnBy: ret.value, notes: notes.value.trim(), itemIds: [...pick.querySelectorAll("input:checked")].map(c => c.value) });
+      if (!draft.files.length && !draft.shop && !draft.amount) { toast("Add a photo or at least the shop name"); return; }
+      try { for (const nf of newFiles) if (draft.files.some(x => x.id === nf.id)) await putFile(nf.id, nf.blob); }
+      catch (e) { toast("Could not store the photo on this phone"); return; }
+      if (editing) { const old = state.bills.find(x => x.id === draft.id); for (const of of old.files || []) if (!draft.files.some(x => x.id === of.id)) delFile(of.id); Object.assign(old, draft); }
+      else state.bills.push(draft);
+      closeSheet(); markDirty(); save(); if (tab !== "bills" && !preItems.length) go("bills");
+    } });
+    b.append(el("div", { class: "actions" }, [saveB, el("button", { class: "btn", type: "button", text: "Cancel", onclick: closeSheet })]));
+  });
+}
+
+function billView(bill) {
+  openSheet(bill.shop || bill.type || "Bill", b => {
+    const files = bill.files || [];
+    const viewer = el("div", { class: "viewer", style: "display:flex;flex-direction:column;gap:10px" });
+    for (const f of files) {
+      if (f.type === "pdf") viewer.append(el("button", { class: "btn", type: "button", text: "Open PDF", onclick: async () => { const u = await fileUrl(f.id); if (u) window.open(u, "_blank"); } }));
+      else fileUrl(f.id).then(u => u && viewer.append(el("img", { src: u, alt: "Bill photo" })));
+    }
+    if (!files.length) viewer.append(el("p", { class: "tip", text: "No photo attached." }));
+    b.append(viewer);
+    const dl = el("dl", { class: "kv" });
+    const add = (k, v) => { if (v) dl.append(el("dt", { text: k }), el("dd", { text: v })); };
+    add("Type", bill.type); add("Amount", money(bill)); add("Bought", bill.date); add("Return by", bill.returnBy ? bill.returnBy + " (" + dueText(bill).toLowerCase() + ")" : ""); add("Notes", bill.notes);
+    b.append(dl);
+    const names = (bill.itemIds || []).map(id => findItem(id)?.text).filter(Boolean);
+    if (names.length) b.append(el("div", { class: "fld" }, [el("span", { class: "lb", text: "Covers" }), el("div", { class: "chips" }, names.map(n => el("span", { text: n })))]));
+    const share = el("button", { class: "btn primary", type: "button", html: ico("share") + "Share for refund", onclick: async () => {
+      const text = `${bill.type}: ${bill.shop || ""}${money(bill) ? ", " + money(bill) : ""}${bill.date ? ", bought " + bill.date : ""}${names.length ? ". Items: " + names.join(", ") : ""}${bill.notes ? ". " + bill.notes : ""}`;
+      try {
+        const fl = []; for (const [i, f] of files.entries()) { const bl = await getFile(f.id); if (bl) fl.push(new File([bl], `bill-${i + 1}.${f.type === "pdf" ? "pdf" : "jpg"}`, { type: bl.type || (f.type === "pdf" ? "application/pdf" : "image/jpeg") })); }
+        if (navigator.canShare && fl.length && navigator.canShare({ files: fl })) await navigator.share({ files: fl, text, title: "Bill" });
+        else if (navigator.share) await navigator.share({ text, title: "Bill" });
+        else { await navigator.clipboard.writeText(text); toast("Details copied"); }
+      } catch (e) { if (e && e.name !== "AbortError") toast("Sharing is not available here"); }
+    } });
+    const save1 = el("button", { class: "btn", type: "button", html: ico("up") + "Save photo", onclick: async () => {
+      for (const [i, f] of files.entries()) { const bl = await getFile(f.id); if (!bl) continue; const a = el("a", { href: URL.createObjectURL(bl), download: `${(bill.shop || "bill").replace(/\W+/g, "_")}-${i + 1}.${f.type === "pdf" ? "pdf" : "jpg"}` }); document.body.append(a); a.click(); a.remove(); }
+    } });
+    b.append(el("div", { class: "actions" }, [share, save1, el("button", { class: "btn", type: "button", text: "Edit", onclick: () => billForm(bill) })]));
+    let armed = false;
+    const del = el("button", { class: "btn danger", type: "button", text: "Delete this bill", onclick: () => {
+      if (!armed) { armed = true; del.textContent = "Tap again to delete"; setTimeout(() => { armed = false; del.textContent = "Delete this bill"; }, 3000); return; }
+      for (const f of bill.files || []) delFile(f.id);
+      state.bills = state.bills.filter(x => x !== bill); closeSheet(); markDirty(); save();
+    } });
+    b.append(del);
+  });
+}
+
+// ---------- tabs ----------
+const TABS = { overview: ["Overview", "home"], list: ["Checklist", "list"], bills: ["Bills", "bill"] };
+function renderTabs() {
+  const due = (state.bills || []).filter(b => ["soon", "late"].includes(dueLevel(b))).length;
+  document.querySelectorAll(".tabs button").forEach(b => {
+    const k = b.dataset.tab; b.innerHTML = ico(TABS[k][1]) + `<span>${TABS[k][0]}${k === "bills" && due ? `<span class="badge">${due}</span>` : ""}</span>`;
+    b.setAttribute("aria-current", k === tab ? "page" : "false");
+  });
+  $("#title").textContent = k2title(tab);
+  const fab = $("#fab"); fab.hidden = tab !== "bills"; fab.innerHTML = ico("cam") + "Scan bill";
+}
+function k2title(k) { return k === "overview" ? "Raleigh Packing List" : TABS[k][0]; }
+function go(k) {
+  tab = k; try { sessionStorage.setItem(TAB_KEY, k); } catch (e) {}
+  for (const key of Object.keys(TABS)) $("#v-" + key).hidden = key !== k;
+  renderTabs(); window.scrollTo(0, 0);
 }
 
 // ---------- PDF ----------
 async function makePdf() {
-  const btn = $("#pdfBtn");
-  if (!window.jspdf) { setStatus("PDF tool did not load. Check the internet and reopen.", "err"); return; }
-  btn.disabled = true;
-  try {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: "mm", format: "a4" });
-    const W = 210, M = 15, maxW = W - 2 * M;
-    let y = 18;
-    const clean = s => String(s).replace(/[^\x20-\x7E -ÿ]/g, "-");
-    const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
-    doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91);
-    doc.text("Raleigh Packing List - NCSU Postdoc", M, y); y += 6;
-    doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110);
-    let d = 0, t = 0; state.sections.forEach(s => s.items.forEach(it => { t++; if (itemDone(it)) d++; }));
-    doc.text(`Pune to Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
-    const box = (x, yy, s, checked) => {
-      doc.setDrawColor(27, 45, 91); doc.setLineWidth(0.35); doc.rect(x, yy - s + 0.6, s, s);
-      if (checked) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(0.6); doc.line(x + 0.7, yy - s / 2 + 0.6, x + s * 0.4, yy + 0.1); doc.line(x + s * 0.4, yy + 0.1, x + s - 0.5, yy - s + 1.2); }
-    };
-    for (const sec of state.sections) {
-      need(18);
-      doc.setFillColor(27, 45, 91); doc.rect(M, y - 5, maxW, 7.5, "F");
-      doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(255);
-      const [cd, ct] = counts(sec.items);
-      doc.text(clean(sec.title), M + 2, y); doc.text(`${cd}/${ct}`, W - M - 2, y, { align: "right" }); y += 7;
-      if (sec.note) { doc.setFont("helvetica", "italic"); doc.setFontSize(8.5); doc.setTextColor(122, 67, 0); const ls = doc.splitTextToSize(clean(sec.note), maxW); need(ls.length * 3.8); doc.text(ls, M, y); y += ls.length * 3.8 + 1.5; }
-      for (const it of sec.items) {
-        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.setTextColor(25);
-        const lines = doc.splitTextToSize(clean(it.text), maxW - 34);
-        need(lines.length * 4.6 + 2);
-        box(M + 1, y, 4, itemDone(it));
-        doc.text(lines, M + 8, y);
-        if (it.bag) { doc.setFontSize(8.5); doc.setTextColor(120); doc.text(clean(it.bag), W - M, y, { align: "right" }); }
-        y += lines.length * 4.6 + 1.6;
-        for (const s of (it.subs || [])) {
-          doc.setFontSize(9.5); doc.setTextColor(60);
-          const sl = doc.splitTextToSize(clean(s.text), maxW - 24);
-          need(sl.length * 4.2 + 1);
-          box(M + 9, y, 3.3, s.done);
-          doc.text(sl, M + 15, y);
-          y += sl.length * 4.2 + 1;
-        }
-        doc.setDrawColor(225); doc.setLineWidth(0.2); doc.line(M, y - 1.2, W - M, y - 1.2); y += 1.2;
-      }
-      y += 3;
+  if (!window.jspdf) { toast("PDF tool did not load. Connect to the internet and try again."); return; }
+  const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: "mm", format: "a4" });
+  const W = 210, M = 15, maxW = W - 2 * M; let y = 18;
+  const clean = s => String(s).replace(/₹/g, "Rs ").replace(/[^\x20-\x7E -ÿ]/g, "-");
+  const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
+  doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91); doc.text("Raleigh Packing List - J-1 Postdoc, NC State", M, y); y += 6;
+  let d = 0, t = 0; for (const [, it] of allItems()) { t++; if (itemDone(it)) d++; }
+  doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110); doc.text(`Pune to Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
+  const box = (x, yy, s, ok) => { doc.setDrawColor(27, 45, 91); doc.setLineWidth(.35); doc.rect(x, yy - s + .6, s, s); if (ok) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(.6); doc.line(x + .7, yy - s / 2 + .6, x + s * .4, yy + .1); doc.line(x + s * .4, yy + .1, x + s - .5, yy - s + 1.2); } };
+  for (const sec of state.sections) {
+    need(18); const [cd, ct] = counts(sec.items);
+    doc.setFillColor(27, 45, 91); doc.rect(M, y - 5, maxW, 7.5, "F"); doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(255);
+    doc.text(clean(sec.title), M + 2, y); doc.text(`${cd}/${ct}`, W - M - 2, y, { align: "right" }); y += 7;
+    if (sec.note) { doc.setFont("helvetica", "italic"); doc.setFontSize(8.5); doc.setTextColor(122, 67, 0); const ls = doc.splitTextToSize(clean(sec.note), maxW); need(ls.length * 3.8); doc.text(ls, M, y); y += ls.length * 3.8 + 1.5; }
+    for (const it of sec.items) {
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.setTextColor(25);
+      const lines = doc.splitTextToSize(clean(it.text), maxW - 34); need(lines.length * 4.6 + 2);
+      box(M + 1, y, 4, itemDone(it)); doc.text(lines, M + 8, y);
+      const tagT = [it.bag, billsFor(it.id).length ? "bill" : ""].filter(Boolean).join(" | ");
+      if (tagT) { doc.setFontSize(8.5); doc.setTextColor(120); doc.text(clean(tagT), W - M, y, { align: "right" }); }
+      y += lines.length * 4.6 + 1.6;
+      for (const s of (it.subs || [])) { doc.setFontSize(9.5); doc.setTextColor(60); const sl = doc.splitTextToSize(clean(s.text), maxW - 24); need(sl.length * 4.2 + 1); box(M + 9, y, 3.3, s.done); doc.text(sl, M + 15, y); y += sl.length * 4.2 + 1; }
+      doc.setDrawColor(225); doc.setLineWidth(.2); doc.line(M, y - 1.2, W - M, y - 1.2); y += 1.2;
     }
-    const pages = doc.getNumberOfPages();
-    for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFontSize(8); doc.setTextColor(140); doc.text(`Page ${p} of ${pages}`, W - M, 290, { align: "right" }); doc.text("Declare all food at US customs. No rice.", M, 290); }
-    doc.save("Raleigh_Packing_List.pdf");
-    setStatus("PDF downloaded. Open it from Downloads to print or share.", "ok");
-  } catch (e) {
-    setStatus("PDF could not be created.", "err");
-  } finally { btn.disabled = false; }
+    y += 3;
+  }
+  if ((state.bills || []).length) {
+    need(20); doc.setFillColor(229, 138, 18); doc.rect(M, y - 5, maxW, 7.5, "F"); doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(255); doc.text("Bills and proofs", M + 2, y); y += 8;
+    for (const b of state.bills) {
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(25);
+      const items = (b.itemIds || []).map(id => findItem(id)?.text).filter(Boolean).join(", ");
+      const line = doc.splitTextToSize(clean(`${b.shop || b.type} - ${money(b)} - bought ${b.date || "?"}${b.returnBy ? " - return by " + b.returnBy : ""}${items ? " - for: " + items : ""}`), maxW);
+      need(line.length * 4.4 + 2); doc.text(line, M, y); y += line.length * 4.4 + 2;
+    }
+  }
+  const pages = doc.getNumberOfPages();
+  for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFontSize(8); doc.setTextColor(140); doc.text(`Page ${p} of ${pages}`, W - M, 290, { align: "right" }); doc.text("Declare all food at US customs. No rice.", M, 290); }
+  doc.save("Raleigh_Packing_List.pdf"); toast("PDF downloaded");
 }
 
 // ---------- boot ----------
@@ -374,29 +711,28 @@ function boot() {
   let data = null;
   try { data = JSON.parse(localStorage.getItem(SAVED_KEY) || "null"); } catch (e) {}
   if (!data || !Array.isArray(data.sections)) data = JSON.parse(JSON.stringify(DEFAULT_DATA));
-  state = data;
-  try {
-    const dr = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
-    if (dr && Array.isArray(dr.sections) && JSON.stringify(dr) !== JSON.stringify(state)) { state = dr; dirty = true; }
-  } catch (e) {}
+  state = migrate(data);
+  try { const dr = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); if (dr && Array.isArray(dr.sections) && JSON.stringify(migrate(dr)) !== JSON.stringify(state)) { state = dr; dirty = true; } } catch (e) {}
   if (!state.nextId) state.nextId = 10000;
   if (state.sections[0]) openSecs.add(state.sections[0].id);
+  $("#sheetClose").innerHTML = ico("x");
   render();
-  setStatus(dirty ? "Unsaved changes" : "All changes saved on this phone", dirty ? "dirty" : "");
-  $("#saveBtn").disabled = !dirty;
+  setStatus(dirty ? "Not saved" : "", dirty ? "dirty" : ""); $("#saveBtn").disabled = !dirty;
+  let t0 = "overview"; try { t0 = sessionStorage.getItem(TAB_KEY) || "overview"; } catch (e) {}
+  go(TABS[t0] ? t0 : "overview");
 }
-
 $("#saveBtn").addEventListener("click", save);
 $("#pdfBtn").addEventListener("click", makePdf);
 $("#filter").addEventListener("change", render);
-$("#expandAll").addEventListener("click", () => {
-  const all = state.sections.every(s => openSecs.has(s.id));
-  state.sections.forEach(s => all ? openSecs.delete(s.id) : openSecs.add(s.id));
-  $("#expandAll").textContent = all ? "Open all" : "Close all"; render();
-});
+$("#fab").addEventListener("click", () => billForm(null));
+$("#sheetClose").addEventListener("click", closeSheet);
+$("#sheet").addEventListener("click", e => { if (e.target === e.currentTarget) closeSheet(); });
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => go(b.dataset.tab)));
+$("#expandAll").addEventListener("click", () => { const all = state.sections.every(s => openSecs.has(s.id)); state.sections.forEach(s => all ? openSecs.delete(s.id) : openSecs.add(s.id)); $("#expandAll").textContent = all ? "Open all" : "Close all"; render(); });
 function addSection() { const i = $("#newSec"); const v = i.value.trim(); if (!v) return; const id = "s" + (state.nextId++); state.sections.push({ id, title: v, note: "", kind: "pack", items: [] }); openSecs.add(id); i.value = ""; markDirty(); }
 $("#addSec").addEventListener("click", addSection);
 $("#newSec").addEventListener("keydown", e => { if (e.key === "Enter") addSection(); });
+window.addEventListener("scroll", () => $("#appbar").classList.toggle("scrolled", scrollY > 4), { passive: true });
 window.addEventListener("beforeunload", () => { if (dirty) try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {} });
 window.addEventListener("beforeprint", () => { printing = true; render(); });
 window.addEventListener("afterprint", () => { printing = false; render(); });
@@ -407,6 +743,5 @@ $("#installBtn").addEventListener("click", async () => { if (!installEvt) return
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 boot();
 </script>
-
 </body>
 </html>
