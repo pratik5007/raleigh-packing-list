@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1B2D5B">
 <meta name="apple-mobile-web-app-title" content="Leena Udaan">
-<meta name="description" content="Packing, bills and setup checklist for a J-1 postdoc move from Pune to NC State University, Raleigh.">
+<meta name="description" content="Packing, bills and setup checklist for a J-1 postdoc move from Dondaicha via Mumbai to NC State University, Raleigh.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -55,7 +55,8 @@ svg.i{width:20px;height:20px;flex:none}
 /* luggage tag */
 .tag{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:18px;padding:18px;position:relative;overflow:hidden}
 .tag::after{content:"";position:absolute;right:18px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
-.route{font-family:var(--display);font-weight:800;font-size:clamp(28px,8vw,38px);line-height:1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.route{font-family:var(--display);font-weight:800;font-size:clamp(24px,7.4vw,36px);line-height:1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.route-sub{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-top:6px}
 .route small{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
 .tag .sub{margin:6px 0 14px;font-size:14px;opacity:.85}
 .ring-row{display:flex;gap:16px;align-items:center}
@@ -385,7 +386,7 @@ function renderOverview() {
   for (const [, it] of allItems()) { t++; if (itemDone(it)) d++; if (it.bag && it.bag !== "Buy in US") { bag[it.bag] = bag[it.bag] || [0, 0]; bag[it.bag][1]++; if (itemDone(it)) bag[it.bag][0]++; } }
   const pct = t ? Math.round(d / t * 100) : 0, C = 2 * Math.PI * 36;
   const tag = el("div", { class: "tag" });
-  tag.innerHTML = `<div class="route">PNQ <span aria-hidden="true">&rarr;</span> RDU <small>Raleigh-Durham</small></div>
+  tag.innerHTML = `<div class="route">DDE <span aria-hidden="true">&rarr;</span> BOM <span aria-hidden="true">&rarr;</span> RDU</div><div class="route-sub">Dondaicha &middot; Mumbai &middot; Raleigh</div>
     <p class="sub">J-1 postdoc move to NC State University</p>
     <div class="ring-row"><svg class="ring" viewBox="0 0 84 84" role="img" aria-label="${pct}% done"><circle class="bgc" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct / 100)}" transform="rotate(-90 42 42)"/><text x="42" y="50" text-anchor="middle">${pct}%</text></svg>
     <div class="ring-meta"><b>${d} of ${t} done</b><span>${t - d} items left</span><div class="bagpills" id="bp"></div></div></div>`;
@@ -674,7 +675,7 @@ async function makePdf() {
   const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
   doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91); doc.text("Leena's Udaan - J-1 Postdoc, NC State", M, y); y += 6;
   let d = 0, t = 0; for (const [, it] of allItems()) { t++; if (itemDone(it)) d++; }
-  doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110); doc.text(`Pune to Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
+  doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110); doc.text(`Dondaicha (DDE) - Mumbai (BOM) - Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
   const box = (x, yy, s, ok) => { doc.setDrawColor(27, 45, 91); doc.setLineWidth(.35); doc.rect(x, yy - s + .6, s, s); if (ok) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(.6); doc.line(x + .7, yy - s / 2 + .6, x + s * .4, yy + .1); doc.line(x + s * .4, yy + .1, x + s - .5, yy - s + 1.2); } };
   for (const sec of state.sections) {
     need(18); const [cd, ct] = counts(sec.items);
