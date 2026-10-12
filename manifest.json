@@ -1,14 +1,24 @@
 {
-  "name": "Raleigh Packing List",
-  "short_name": "Packing List",
-  "description": "Packing and setup checklist for the NCSU postdoc move.",
+  "name": "Leena's Udaan",
+  "short_name": "Leena Udaan",
+  "description": "Leena's packing, bills and setup checklist for her J-1 postdoc move to NC State, Raleigh.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F3F5F9",
   "theme_color": "#1B2D5B",
   "icons": [
-    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
-    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

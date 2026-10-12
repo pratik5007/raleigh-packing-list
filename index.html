@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1B2D5B">
+<meta name="apple-mobile-web-app-title" content="Leena Udaan">
 <meta name="description" content="Packing, bills and setup checklist for a J-1 postdoc move from Pune to NC State University, Raleigh.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Raleigh Packing List</title>
+<title>Leena's Udaan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>
@@ -657,7 +658,7 @@ function renderTabs() {
   $("#title").textContent = k2title(tab);
   const fab = $("#fab"); fab.hidden = tab !== "bills"; fab.innerHTML = ico("cam") + "Scan bill";
 }
-function k2title(k) { return k === "overview" ? "Raleigh Packing List" : TABS[k][0]; }
+function k2title(k) { return k === "overview" ? "Leena's Udaan" : TABS[k][0]; }
 function go(k) {
   tab = k; try { sessionStorage.setItem(TAB_KEY, k); } catch (e) {}
   for (const key of Object.keys(TABS)) $("#v-" + key).hidden = key !== k;
@@ -671,7 +672,7 @@ async function makePdf() {
   const W = 210, M = 15, maxW = W - 2 * M; let y = 18;
   const clean = s => String(s).replace(/₹/g, "Rs ").replace(/[^\x20-\x7E -ÿ]/g, "-");
   const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
-  doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91); doc.text("Raleigh Packing List - J-1 Postdoc, NC State", M, y); y += 6;
+  doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91); doc.text("Leena's Udaan - J-1 Postdoc, NC State", M, y); y += 6;
   let d = 0, t = 0; for (const [, it] of allItems()) { t++; if (itemDone(it)) d++; }
   doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110); doc.text(`Pune to Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
   const box = (x, yy, s, ok) => { doc.setDrawColor(27, 45, 91); doc.setLineWidth(.35); doc.rect(x, yy - s + .6, s, s); if (ok) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(.6); doc.line(x + .7, yy - s / 2 + .6, x + s * .4, yy + .1); doc.line(x + s * .4, yy + .1, x + s - .5, yy - s + 1.2); } };
@@ -703,7 +704,7 @@ async function makePdf() {
   }
   const pages = doc.getNumberOfPages();
   for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFontSize(8); doc.setTextColor(140); doc.text(`Page ${p} of ${pages}`, W - M, 290, { align: "right" }); doc.text("Declare all food at US customs. No rice.", M, 290); }
-  doc.save("Raleigh_Packing_List.pdf"); toast("PDF downloaded");
+  doc.save("Leenas_Udaan_Checklist.pdf"); toast("PDF downloaded");
 }
 
 // ---------- boot ----------
