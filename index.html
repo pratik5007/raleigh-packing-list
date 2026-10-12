@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B2D5B">
+<meta name="description" content="Packing and setup checklist for a postdoc move from Pune to NC State University, Raleigh.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Raleigh Packing List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: a luggage-tag header over stacked section cards; a sticky save bar at the bottom. */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --ink:#16213A; --muted:#5A6580; --line:#DCE1EC;
+  --navy:#1B2D5B; --saffron:#E58A12; --saffron-ink:#7A4300; --ok:#1E7A46; --ok-bg:#E3F3EA;
+  --warn-bg:#FFF2DF; --danger:#B3261E; --chip:#EEF1F7;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1524; --surface:#18213A; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
+  --navy:#22386F; --saffron:#F2A23C; --saffron-ink:#FFD9A6; --ok:#5FD08F; --ok-bg:#163526;
+  --warn-bg:#3A2A12; --danger:#FF8A80; --chip:#222C48; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1524; --surface:#18213A; --ink:#E7ECF7; --muted:#9BA6C2; --line:#2B375A;
+  --navy:#22386F; --saffron:#F2A23C; --saffron-ink:#FFD9A6; --ok:#5FD08F; --ok-bg:#163526;
+  --warn-bg:#3A2A12; --danger:#FF8A80; --chip:#222C48; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:16px 110px;display:flex;flex-direction:column;gap:14px}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+
+/* luggage tag */
+.tag{background:var(--navy);color:#fff;border-radius:14px;padding:16px 18px 18px;position:relative;overflow:hidden}
+.tag::after{content:"";position:absolute;right:18px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--bg);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.route{font-family:var(--display);font-weight:800;font-size:clamp(28px,8vw,40px);letter-spacing:.02em;line-height:1;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.route small{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.tag h1{font-family:var(--display);font-weight:600;font-size:18px;margin:8px 0 12px;text-wrap:balance}
+.bar{height:10px;border-radius:6px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--saffron);width:0;transition:width .3s}
+.stats{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:13px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.bags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.bags span{font-size:12px;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4);padding:3px 8px;border-radius:6px;font-variant-numeric:tabular-nums}
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tools label{font-size:13px;color:var(--muted);font-weight:700}
+.sel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:42px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;min-height:42px;font-weight:700}
+.btn.primary{background:var(--saffron);border-color:var(--saffron);color:#1B1200}
+.btn:disabled{opacity:.5;cursor:default}
+.grow{flex:1}
+
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sec-h{display:flex;align-items:center;gap:10px;padding:14px 14px;width:100%;background:none;border:0;text-align:left}
+.sec-h h2{font-family:var(--display);font-weight:600;font-size:18px;margin:0;flex:1;min-width:0}
+.count{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;padding:3px 9px;border-radius:20px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.count.full{background:var(--ok-bg);color:var(--ok)}
+.chev{width:18px;height:18px;transition:transform .2s;flex:none;color:var(--muted)}
+.open>.sec-h .chev,.item.open .chev{transform:rotate(180deg)}
+.note{margin:0 14px 10px;padding:9px 11px;border-radius:9px;background:var(--warn-bg);color:var(--saffron-ink);font-size:14px}
+.body{border-top:1px solid var(--line)}
+.item{border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:10px;padding:9px 12px 9px 14px;min-height:52px}
+.txt{flex:1;min-width:0;overflow-wrap:anywhere}
+.done>.row .txt,.sub.done .txt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
+.cb{appearance:none;-webkit-appearance:none;width:26px;height:26px;border:2px solid var(--muted);border-radius:7px;flex:none;display:grid;place-items:center;background:var(--surface);margin:0}
+.cb:checked{background:var(--ok);border-color:var(--ok)}
+.cb:checked::after{content:"";width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
+.cb.part{border-color:var(--saffron)}
+.cb.part::after{content:"";width:12px;height:3px;background:var(--saffron);border-radius:2px}
+.bagsel{font-size:12px;padding:4px 6px;border-radius:8px;border:1px solid var(--line);background:var(--chip);max-width:96px;min-height:32px}
+.mini{border:0;background:none;padding:6px;border-radius:8px;color:var(--muted);display:grid;place-items:center;min-width:36px;min-height:36px}
+.mini svg{width:18px;height:18px}
+.subs-toggle{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--muted);background:var(--chip);border:0;border-radius:20px;padding:5px 9px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rm-confirm{background:var(--danger);color:#fff;border:0;border-radius:8px;font-size:12px;font-weight:700;padding:7px 9px}
+.subs{background:var(--bg);padding:4px 0 8px}
+.sub{display:flex;align-items:center;gap:10px;padding:6px 12px 6px 48px;min-height:44px}
+.sub .cb{width:22px;height:22px;border-radius:6px}
+.sub .cb:checked::after{width:6px;height:11px}
+.add{display:flex;gap:8px;padding:8px 12px 10px 14px;flex-wrap:wrap}
+.subs .add{padding-left:48px}
+.add input{flex:1;min-width:140px;border:1px dashed var(--line);background:var(--surface);border-radius:9px;padding:8px 10px;min-height:40px}
+.add button{border:0;background:var(--navy);color:#fff;border-radius:9px;padding:8px 12px;font-weight:700;min-height:40px}
+.empty{padding:12px 14px;color:var(--muted);font-size:14px}
+
+.savebar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.savebar .in{max-width:760px;margin:0 auto;display:flex;gap:10px;align-items:center}
+#status{flex:1;min-width:0;font-size:14px;color:var(--muted)}
+#status.dirty{color:var(--saffron-ink);font-weight:700}
+#status.ok{color:var(--ok);font-weight:700}
+#status.err{color:var(--danger);font-weight:700}
+.foot{font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{-webkit-text-size-adjust:100%}body{margin:0;padding-top:env(safe-area-inset-top,0px)}[hidden]{display:none!important}
+
+@media print{
+  body{background:#fff;color:#000}
+  .tools,.savebar,.add,.mini,.rm-confirm,.foot,#installBox{display:none!important}
+  .wrap{padding:0;max-width:none}
+  .tag{background:#fff;color:#000;border:2px solid #000}
+  .tag::after{display:none}
+  .sec{break-inside:auto;border-color:#999}
+  .item{break-inside:avoid}
+  .bagsel{border:0;background:none;appearance:none;-webkit-appearance:none}
+  .cb{border-color:#000!important}
+  .subs{background:#fff}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="tag" aria-label="Trip summary">
+    <div class="route">PNQ <span aria-hidden="true">&rarr;</span> RDU <small>Raleigh-Durham</small></div>
+    <h1>Postdoc move to NC State University</h1>
+    <div class="bar" aria-hidden="true"><i id="pbar"></i></div>
+    <div class="stats"><span id="ptext">0 of 0 done</span><span id="pct">0%</span></div>
+    <div class="bags" id="bagSummary"></div>
+  </header>
+
+  <div class="tools">
+    <label for="filter">Show</label>
+    <select id="filter" class="sel grow">
+      <option value="all">Everything</option>
+      <option value="todo">Still to pack / do</option>
+      <option value="Cabin">Cabin bag only</option>
+      <option value="Bag 1">Bag 1 only</option>
+      <option value="Bag 2">Bag 2 only</option>
+      <option value="Wear">Wear on flight</option>
+      <option value="Buy in US">Buy in US</option>
+    </select>
+    <button class="btn" id="expandAll" type="button">Open all</button>
+    <button class="btn" id="pdfBtn" type="button">Download PDF</button>
+    <button class="btn" id="printBtn" type="button">Print</button>
+    <button class="btn" id="installBtn" type="button" hidden>Install app</button>
+  </div>
+
+  <main id="sections"></main>
+
+  <div class="sec" style="padding:12px 0 2px">
+    <div class="add" style="padding-top:0">
+      <input id="newSec" placeholder="Add a new list, e.g. Gifts for family" aria-label="New list name">
+      <button type="button" id="addSec">Add list</button>
+    </div>
+  </div>
+
+  <p class="foot">Tap a box to tick. Tap the count chip to open sub-items. Use the bag menu to choose where each item is packed. Press Save so changes stay on this phone for next time.</p>
+</div>
+
+<div class="savebar"><div class="in">
+  <div id="status" role="status">Loading list...</div>
+  <button class="btn primary" id="saveBtn" type="button" disabled>Save</button>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const DEFAULT_DATA = {"version":1,"updatedAt":"2026-10-12T16:20:00+05:30","nextId":233,"sections":[{"id":"before","title":"Before the flight","note":"Tasks to finish in the weeks before leaving.","kind":"task","items":[{"id":"i1","text":"Visa stamped on passport","done":false,"bag":""},{"id":"i2","text":"Flight booked (2 checked bags of 23 kg each)","done":false,"bag":""},{"id":"i3","text":"Temporary stay fixed for first 2-4 weeks in Raleigh","done":false,"bag":""},{"id":"i4","text":"Medical, dental and eye check-up done","done":false,"bag":""},{"id":"i5","text":"Forex card loaded and some US dollars in cash","done":false,"bag":""},{"id":"i6","text":"Indian bank informed; international card use switched on","done":false,"bag":""},{"id":"i7","text":"Photocopies and scans of all documents made","done":false,"bag":""},{"id":"i8","text":"Bags weighed (keep each at about 22 kg)","done":false,"bag":""},{"id":"i9","text":"Web check-in done","done":false,"bag":""},{"id":"i10","text":"Offline Google Map of Raleigh downloaded","done":false,"bag":""}]},{"id":"docs","title":"Documents (in hand)","note":"Originals in one waterproof folder in the cabin bag. Never in checked luggage.","kind":"pack","items":[{"id":"i11","text":"Passport with US visa stamp","done":false,"bag":"Cabin"},{"id":"i12","text":"DS-2019 (J-1) or I-797 (H-1B)","done":false,"bag":"Cabin"},{"id":"i13","text":"SEVIS fee receipt (J-1 only)","done":false,"bag":"Cabin"},{"id":"i14","text":"NCSU offer / appointment letter","done":false,"bag":"Cabin"},{"id":"i15","text":"Funding / salary letter","done":false,"bag":"Cabin"},{"id":"i16","text":"Address of first stay + NCSU contact number","done":false,"bag":"Cabin"},{"id":"i17","text":"Education certificates","done":false,"bag":"Cabin","subs":[{"id":"i18","text":"PhD degree / provisional certificate","done":false},{"id":"i19","text":"PhD transcripts","done":false},{"id":"i20","text":"Master's marksheets and degree","done":false},{"id":"i21","text":"Bachelor's marksheets and degree","done":false},{"id":"i22","text":"12th marksheet","done":false},{"id":"i23","text":"10th marksheet","done":false}]},{"id":"i24","text":"Vaccination record and medical reports (English)","done":false,"bag":"Cabin"},{"id":"i25","text":"Health insurance proof","done":false,"bag":"Cabin"},{"id":"i26","text":"Indian ID documents","done":false,"bag":"Cabin","subs":[{"id":"i27","text":"Aadhaar card","done":false},{"id":"i28","text":"PAN card","done":false},{"id":"i29","text":"Indian driving licence","done":false},{"id":"i30","text":"Birth certificate","done":false},{"id":"i31","text":"Bank passbook / cheque book","done":false}]},{"id":"i32","text":"Photocopies set 1","done":false,"bag":"Cabin"},{"id":"i33","text":"Photocopies set 2","done":false,"bag":"Bag 1"},{"id":"i34","text":"Passport photos (US 2x2 inch + Indian size)","done":false,"bag":"Cabin"},{"id":"i35","text":"Diary with emergency numbers handwritten","done":false,"bag":"Cabin"}]},{"id":"food","title":"Food, masala and groceries","note":"Declare ALL food at US customs (answer YES). No rice of any kind, no meat or egg, no fresh vegetables, fruits or curry leaves. Keep home food to 3-4 kg total.","kind":"pack","items":[{"id":"i36","text":"Masalas (sealed / labelled)","done":false,"bag":"Bag 2","subs":[{"id":"i37","text":"Haldi (turmeric)","done":false},{"id":"i38","text":"Lal mirchi powder","done":false},{"id":"i39","text":"Dhaniya powder","done":false},{"id":"i40","text":"Jeera powder","done":false},{"id":"i41","text":"Garam masala","done":false},{"id":"i42","text":"Goda masala","done":false},{"id":"i43","text":"Kanda-lasun masala","done":false},{"id":"i44","text":"Kala masala","done":false},{"id":"i45","text":"Sambar masala","done":false},{"id":"i46","text":"Pav bhaji masala","done":false},{"id":"i47","text":"Chaat masala","done":false},{"id":"i48","text":"Kitchen king masala","done":false},{"id":"i49","text":"Hing","done":false},{"id":"i50","text":"Whole jeera","done":false},{"id":"i51","text":"Mohri (mustard seeds)","done":false},{"id":"i52","text":"Methi seeds","done":false},{"id":"i53","text":"Whole spices (lavang, elaichi, dalchini)","done":false}]},{"id":"i54","text":"Pickles (lonche) - sealed jars, double zip-bagged","done":false,"bag":"Bag 2","subs":[{"id":"i55","text":"Mango (kairi)","done":false},{"id":"i56","text":"Lime (limbu)","done":false},{"id":"i57","text":"Mixed","done":false},{"id":"i58","text":"Green chilli","done":false},{"id":"i59","text":"Garlic","done":false},{"id":"i60","text":"Thecha / chutney powder","done":false}]},{"id":"i61","text":"Ghee - sealed tin, double zip-bagged","done":false,"bag":"Bag 2"},{"id":"i62","text":"Dal and flours (1-2 kg each max)","done":false,"bag":"Bag 2","subs":[{"id":"i63","text":"Toor dal","done":false},{"id":"i64","text":"Moong dal","done":false},{"id":"i65","text":"Masoor dal","done":false},{"id":"i66","text":"Chana dal","done":false},{"id":"i67","text":"Besan","done":false},{"id":"i68","text":"Jowar / bajra atta","done":false},{"id":"i69","text":"Poha","done":false},{"id":"i70","text":"Rava","done":false},{"id":"i71","text":"Sabudana","done":false}]},{"id":"i72","text":"Snacks and sweets","done":false,"bag":"Bag 2","subs":[{"id":"i73","text":"Chivda","done":false},{"id":"i74","text":"Chakli","done":false},{"id":"i75","text":"Shev","done":false},{"id":"i76","text":"Besan laddoo","done":false},{"id":"i77","text":"Shankarpali","done":false},{"id":"i78","text":"Karanji","done":false},{"id":"i79","text":"Biscuits","done":false},{"id":"i80","text":"Thepla / khakhra for the flight","done":false}]},{"id":"i81","text":"Ready mixes","done":false,"bag":"Bag 2","subs":[{"id":"i82","text":"Instant upma","done":false},{"id":"i83","text":"Instant poha","done":false},{"id":"i84","text":"Dosa / idli mix","done":false},{"id":"i85","text":"Dhokla mix","done":false},{"id":"i86","text":"Gulab jamun mix","done":false}]},{"id":"i87","text":"Tea and coffee powder","done":false,"bag":"Bag 2"},{"id":"i88","text":"Roasted packaged dry fruits","done":false,"bag":"Bag 2"},{"id":"i89","text":"Checked: NO rice or akshata in any bag","done":false,"bag":""}]},{"id":"clothes","title":"Clothing","note":"Raleigh winters reach about 0 C at night. Buy the heavy jacket there.","kind":"pack","items":[{"id":"i90","text":"Daily and lab wear","done":false,"bag":"Bag 1","subs":[{"id":"i91","text":"6-7 tops / kurtis / shirts","done":false},{"id":"i92","text":"4-5 bottoms","done":false},{"id":"i93","text":"2 formal outfits","done":false},{"id":"i94","text":"1 full-sleeve lab outfit","done":false},{"id":"i95","text":"2-3 nightwear sets","done":false}]},{"id":"i96","text":"Innerwear and socks","done":false,"bag":"Bag 1","subs":[{"id":"i97","text":"7-10 innerwear sets","done":false},{"id":"i98","text":"6 cotton socks","done":false},{"id":"i99","text":"4 thick woollen socks","done":false}]},{"id":"i100","text":"Winter starter set","done":false,"bag":"Bag 1","subs":[{"id":"i101","text":"2 thermal sets","done":false},{"id":"i102","text":"2 sweaters / cardigans","done":false},{"id":"i103","text":"1 fleece or hoodie","done":false},{"id":"i104","text":"Woollen cap","done":false},{"id":"i105","text":"Muffler / scarf","done":false},{"id":"i106","text":"Gloves","done":false}]},{"id":"i107","text":"Light jacket for the flight","done":false,"bag":"Wear"},{"id":"i108","text":"Traditional and festival wear","done":false,"bag":"Bag 1","subs":[{"id":"i109","text":"2-3 sarees or salwar suits","done":false},{"id":"i110","text":"Blouses and petticoat","done":false},{"id":"i111","text":"Dupattas","done":false},{"id":"i112","text":"Shawl","done":false},{"id":"i113","text":"Bangles and safety pins","done":false}]},{"id":"i114","text":"Footwear (max 4 pairs)","done":false,"bag":"Bag 1","subs":[{"id":"i115","text":"Walking shoes","done":false},{"id":"i116","text":"Formal shoes / bellies","done":false},{"id":"i117","text":"Home chappals","done":false},{"id":"i118","text":"Waterproof boots","done":false}]},{"id":"i119","text":"Umbrella and raincoat","done":false,"bag":"Bag 1"},{"id":"i120","text":"Sunglasses and summer cap","done":false,"bag":"Bag 1"},{"id":"i121","text":"Small sewing kit","done":false,"bag":"Bag 1"},{"id":"i122","text":"Heavy winter jacket","done":false,"bag":"Buy in US"}]},{"id":"kitchen","title":"Kitchen and utensils","note":"US stoves are electric, not gas: carry flat-bottom vessels. Indian 230 V appliances will not work.","kind":"pack","items":[{"id":"i123","text":"Cooking vessels (flat bottom)","done":false,"bag":"Bag 2","subs":[{"id":"i124","text":"Pressure cooker 3 or 5 L","done":false},{"id":"i125","text":"Spare gasket and whistle","done":false},{"id":"i126","text":"Flat tawa","done":false},{"id":"i127","text":"Small kadhai","done":false},{"id":"i128","text":"Patila (tope)","done":false}]},{"id":"i129","text":"Tools","done":false,"bag":"Bag 2","subs":[{"id":"i130","text":"Polpat-latna","done":false},{"id":"i131","text":"Masala dabba","done":false},{"id":"i132","text":"Tea strainer","done":false},{"id":"i133","text":"Chimta","done":false},{"id":"i134","text":"Jhara","done":false},{"id":"i135","text":"Ladles","done":false},{"id":"i136","text":"Grater","done":false},{"id":"i137","text":"Peeler","done":false},{"id":"i138","text":"Knife (checked bag only)","done":false}]},{"id":"i139","text":"Plates and tiffin","done":false,"bag":"Bag 2","subs":[{"id":"i140","text":"2 steel thalis","done":false},{"id":"i141","text":"2 bowls","done":false},{"id":"i142","text":"2 glasses","done":false},{"id":"i143","text":"Tiffin box for lab","done":false}]},{"id":"i144","text":"Bedding for first nights","done":false,"bag":"Bag 1","subs":[{"id":"i145","text":"1 bedsheet","done":false},{"id":"i146","text":"1 pillow cover","done":false},{"id":"i147","text":"Light blanket / dohar","done":false},{"id":"i148","text":"2 bath towels","done":false},{"id":"i149","text":"2 hand towels","done":false}]},{"id":"i150","text":"Mixer-grinder (110 V)","done":false,"bag":"Buy in US"},{"id":"i151","text":"Rice cooker, kettle, non-stick pans","done":false,"bag":"Buy in US"},{"id":"i152","text":"Pillow and comforter","done":false,"bag":"Buy in US"}]},{"id":"meds","title":"Medicines and health","note":"Original strips + doctor's prescription in English. Keep in the cabin bag.","kind":"pack","items":[{"id":"i153","text":"Regular prescribed medicines (3-6 months)","done":false,"bag":"Cabin"},{"id":"i154","text":"Prescription letter with generic names","done":false,"bag":"Cabin"},{"id":"i155","text":"Common tablets","done":false,"bag":"Cabin","subs":[{"id":"i156","text":"Fever / pain (paracetamol)","done":false},{"id":"i157","text":"Cold and allergy","done":false},{"id":"i158","text":"Acidity","done":false},{"id":"i159","text":"Loose-motion (doctor prescribed)","done":false},{"id":"i160","text":"ORS packets","done":false},{"id":"i161","text":"Eno sachets","done":false}]},{"id":"i162","text":"Small cough syrup","done":false,"bag":"Bag 1"},{"id":"i163","text":"First-aid kit","done":false,"bag":"Bag 1","subs":[{"id":"i164","text":"Band-aids","done":false},{"id":"i165","text":"Cotton","done":false},{"id":"i166","text":"Antiseptic cream","done":false},{"id":"i167","text":"Pain-relief spray / balm","done":false},{"id":"i168","text":"Crepe bandage","done":false},{"id":"i169","text":"Thermometer","done":false}]},{"id":"i170","text":"Vicks / balm","done":false,"bag":"Cabin"},{"id":"i171","text":"Branded ayurvedic items","done":false,"bag":"Bag 1","subs":[{"id":"i172","text":"Chyawanprash","done":false},{"id":"i173","text":"Hajmola","done":false},{"id":"i174","text":"Triphala","done":false}]},{"id":"i175","text":"Sanitary pads (1 month)","done":false,"bag":"Bag 1"},{"id":"i176","text":"Spare spectacles / lenses + solution","done":false,"bag":"Cabin"}]},{"id":"tech","title":"Electronics, money and phone","note":"US sockets are 110-120 V, flat two-pin. Phone and laptop chargers work with a plug adapter.","kind":"pack","items":[{"id":"i177","text":"Laptop + charger","done":false,"bag":"Cabin"},{"id":"i178","text":"Phone + charger + spare cable","done":false,"bag":"Cabin"},{"id":"i179","text":"Travel adapters (India to US) x2-3","done":false,"bag":"Cabin"},{"id":"i180","text":"Power bank under 20,000 mAh","done":false,"bag":"Cabin"},{"id":"i181","text":"Small Indian extension board","done":false,"bag":"Bag 1"},{"id":"i182","text":"Earphones","done":false,"bag":"Cabin"},{"id":"i183","text":"Research data backed up","done":false,"bag":"Cabin"},{"id":"i184","text":"US dollars cash in small notes","done":false,"bag":"Cabin"},{"id":"i185","text":"Forex card","done":false,"bag":"Cabin"},{"id":"i186","text":"Indian debit / credit card","done":false,"bag":"Cabin"},{"id":"i187","text":"Indian SIM kept active for OTPs","done":false,"bag":"Cabin"},{"id":"i188","text":"WhatsApp, Uber / Lyft, Google Maps ready","done":false,"bag":"Cabin"}]},{"id":"pooja","title":"Pooja and personal care","note":"Keep pooja items small and sealed. Use electric diyas; no rice.","kind":"pack","items":[{"id":"i189","text":"Pooja items","done":false,"bag":"Bag 2","subs":[{"id":"i190","text":"Small idol / deity photo","done":false},{"id":"i191","text":"Pooja thali","done":false},{"id":"i192","text":"Kalash","done":false},{"id":"i193","text":"Bell","done":false},{"id":"i194","text":"Kumkum","done":false},{"id":"i195","text":"Haldi","done":false},{"id":"i196","text":"Ashtagandh","done":false},{"id":"i197","text":"Agarbatti","done":false},{"id":"i198","text":"Dhoop","done":false},{"id":"i199","text":"LED diyas","done":false}]},{"id":"i200","text":"Family photos and Marathi book / pothi","done":false,"bag":"Bag 1"},{"id":"i201","text":"Gifts for professor and lab-mates","done":false,"bag":"Bag 2"},{"id":"i202","text":"Personal care (1 month)","done":false,"bag":"Bag 1","subs":[{"id":"i203","text":"Hair oil (sealed)","done":false},{"id":"i204","text":"Shampoo","done":false},{"id":"i205","text":"Soap","done":false},{"id":"i206","text":"Toothpaste","done":false},{"id":"i207","text":"Toothbrush","done":false},{"id":"i208","text":"Comb","done":false},{"id":"i209","text":"Hair bands and clips","done":false},{"id":"i210","text":"Nail cutter","done":false},{"id":"i211","text":"Moisturiser","done":false},{"id":"i212","text":"Lip balm","done":false},{"id":"i213","text":"Kajal","done":false},{"id":"i214","text":"Bindi","done":false}]}]},{"id":"cabin","title":"Cabin bag check","note":"Enough to get through 2-3 days if checked bags are delayed.","kind":"pack","items":[{"id":"i215","text":"2 sets of clothes, innerwear, socks","done":false,"bag":"Cabin"},{"id":"i216","text":"Toiletries under 100 ml in a clear bag","done":false,"bag":"Cabin"},{"id":"i217","text":"Empty water bottle","done":false,"bag":"Cabin"},{"id":"i218","text":"Pen for customs forms","done":false,"bag":"Cabin"},{"id":"i219","text":"Neck pillow and eye mask","done":false,"bag":"Cabin"}]},{"id":"arrive","title":"After arriving in Raleigh","note":"First weeks setup.","kind":"task","items":[{"id":"i220","text":"Message family on arrival","done":false,"bag":""},{"id":"i221","text":"Buy US SIM / eSIM","done":false,"bag":""},{"id":"i222","text":"Download I-94 record from CBP website","done":false,"bag":""},{"id":"i223","text":"Check in with NCSU Office of International Services","done":false,"bag":""},{"id":"i224","text":"Get WolfCard ID and university email","done":false,"bag":""},{"id":"i225","text":"Enrol in health insurance","done":false,"bag":""},{"id":"i226","text":"Open US bank account","done":false,"bag":""},{"id":"i227","text":"Apply for Social Security Number (SSN)","done":false,"bag":""},{"id":"i228","text":"Sign long-term apartment lease","done":false,"bag":""},{"id":"i229","text":"Learn Wolfline and GoRaleigh buses","done":false,"bag":""},{"id":"i230","text":"Get a secured credit card","done":false,"bag":""},{"id":"i231","text":"NC driving licence or state ID","done":false,"bag":""},{"id":"i232","text":"Join Indian association / Marathi Mandal","done":false,"bag":""}]}]};
+const BAGS = ["", "Cabin", "Bag 1", "Bag 2", "Wear", "Buy in US"];
+const DRAFT_KEY = "raleigh-pack-draft-v1", SAVED_KEY = "raleigh-pack-saved-v1";
+let printing = false;
+let state = null, baseStamp = "", dirty = false, readOnly = false;
+const openSecs = new Set(), openItems = new Set();
+let pendingRemove = null, removeTimer = null;
+const $ = s => document.querySelector(s);
+const ICON = {
+  chev:'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+};
+
+function el(tag, attrs = {}, kids = []) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "text") e.textContent = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const k of kids) if (k) e.append(k);
+  return e;
+}
+function newId() { return "i" + (state.nextId++); }
+function itemDone(it) { return it.subs && it.subs.length ? it.subs.every(s => s.done) : it.done; }
+function counts(items) { let d = 0; for (const it of items) if (itemDone(it)) d++; return [d, items.length]; }
+
+function markDirty() {
+  dirty = true;
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {}
+  setStatus("Unsaved changes", "dirty");
+  $("#saveBtn").disabled = false;
+  render();
+}
+function setStatus(msg, cls = "") { const s = $("#status"); s.textContent = msg; s.className = cls; }
+
+function visible(sec, it) {
+  const f = $("#filter").value;
+  if (f === "all") return true;
+  if (f === "todo") return !itemDone(it);
+  return sec.kind !== "task" && it.bag === f;
+}
+
+function render() {
+  // progress
+  let d = 0, t = 0; const bagTotals = {};
+  for (const s of state.sections) for (const it of s.items) {
+    t++; if (itemDone(it)) d++;
+    if (it.bag && it.bag !== "Buy in US") { bagTotals[it.bag] = bagTotals[it.bag] || [0, 0]; bagTotals[it.bag][1]++; if (itemDone(it)) bagTotals[it.bag][0]++; }
+  }
+  const pct = t ? Math.round(d / t * 100) : 0;
+  $("#pbar").style.width = pct + "%";
+  $("#ptext").textContent = `${d} of ${t} done`;
+  $("#pct").textContent = pct + "%";
+  const bs = $("#bagSummary"); bs.replaceChildren();
+  for (const b of ["Cabin", "Bag 1", "Bag 2"]) if (bagTotals[b]) bs.append(el("span", { text: `${b === "Cabin" ? "Cabin 7 kg" : b + " 23 kg"}: ${bagTotals[b][0]}/${bagTotals[b][1]}` }));
+
+  const root = $("#sections"); root.replaceChildren();
+  const filtering = $("#filter").value !== "all";
+  for (const sec of state.sections) {
+    const shown = sec.items.filter(it => visible(sec, it));
+    if (filtering && !shown.length) continue;
+    const [cd, ct] = counts(sec.items);
+    const isOpen = openSecs.has(sec.id) || filtering || printing;
+    const card = el("section", { class: "sec" + (isOpen ? " open" : "") });
+    const head = el("button", { class: "sec-h", type: "button", "aria-expanded": String(isOpen), onclick: () => { openSecs.has(sec.id) ? openSecs.delete(sec.id) : openSecs.add(sec.id); render(); } },
+      [el("h2", { text: sec.title }), el("span", { class: "count" + (ct && cd === ct ? " full" : ""), text: `${cd}/${ct}` })]);
+    head.insertAdjacentHTML("beforeend", ICON.chev);
+    card.append(head);
+    if (isOpen) {
+      if (sec.note) card.append(el("p", { class: "note", text: sec.note }));
+      const body = el("div", { class: "body" });
+      for (const it of shown) body.append(renderItem(sec, it));
+      if (!shown.length) body.append(el("p", { class: "empty", text: "Nothing here yet. Add the first item below." }));
+      const inp = el("input", { placeholder: "Add an item", "aria-label": "Add item to " + sec.title, id: "add-" + sec.id });
+      const add = () => { const v = inp.value.trim(); if (!v) return; sec.items.push({ id: newId(), text: v, done: false, bag: sec.kind === "task" ? "" : ($("#filter").value.match(/^(Cabin|Bag 1|Bag 2|Wear|Buy in US)$/) ? $("#filter").value : "") }); markDirty(); setTimeout(() => { const n = document.getElementById("add-" + sec.id); n && n.focus(); }); };
+      inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
+      const row = el("div", { class: "add" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]);
+      const rmSec = removeBtn("sec:" + sec.id, () => { state.sections = state.sections.filter(s => s !== sec); }, "Remove list");
+      row.append(rmSec);
+      body.append(row);
+      card.append(body);
+    }
+    root.append(card);
+  }
+}
+
+function removeBtn(key, doRemove, label) {
+  if (pendingRemove === key) {
+    return el("button", { class: "rm-confirm", type: "button", text: "Remove?", onclick: () => { clearTimeout(removeTimer); pendingRemove = null; doRemove(); markDirty(); } });
+  }
+  return el("button", { class: "mini", type: "button", "aria-label": label, html: ICON.x, onclick: () => { pendingRemove = key; clearTimeout(removeTimer); removeTimer = setTimeout(() => { pendingRemove = null; render(); }, 3000); render(); } });
+}
+
+function renderItem(sec, it) {
+  const hasSubs = Array.isArray(it.subs);
+  const done = itemDone(it);
+  const open = openItems.has(it.id) || (printing && Array.isArray(it.subs) && it.subs.length > 0);
+  const box = el("input", { type: "checkbox", class: "cb", "aria-label": it.text });
+  box.checked = done;
+  if (hasSubs && it.subs.length && !done && it.subs.some(s => s.done)) box.classList.add("part");
+  box.addEventListener("change", () => {
+    if (hasSubs && it.subs.length) it.subs.forEach(s => s.done = box.checked); else it.done = box.checked;
+    markDirty();
+  });
+  const wrap = el("div", { class: "item" + (done ? " done" : "") + (open ? " open" : "") });
+  const row = el("div", { class: "row" }, [box, el("span", { class: "txt", text: it.text })]);
+  if (sec.kind !== "task") {
+    const s = el("select", { class: "bagsel", "aria-label": "Where to pack " + it.text });
+    for (const b of BAGS) { const o = el("option", { value: b, text: b || "Bag?" }); if (b === (it.bag || "")) o.selected = true; s.append(o); }
+    s.addEventListener("change", () => { it.bag = s.value; markDirty(); });
+    row.append(s);
+  }
+  const toggle = el("button", { class: "subs-toggle", type: "button", "aria-expanded": String(open), onclick: () => { open ? openItems.delete(it.id) : openItems.add(it.id); render(); } });
+  if (hasSubs) { toggle.textContent = `${it.subs.filter(s => s.done).length}/${it.subs.length}`; toggle.insertAdjacentHTML("beforeend", ICON.chev); }
+  else { toggle.textContent = "+ list"; toggle.setAttribute("aria-label", "Add sub-items to " + it.text); }
+  row.append(toggle);
+  row.append(removeBtn("it:" + it.id, () => { sec.items = sec.items.filter(x => x !== it); }, "Remove " + it.text));
+  wrap.append(row);
+  if (open) {
+    const subs = el("div", { class: "subs" });
+    for (const s of (it.subs || [])) {
+      const sb = el("input", { type: "checkbox", class: "cb", "aria-label": s.text }); sb.checked = s.done;
+      sb.addEventListener("change", () => { s.done = sb.checked; markDirty(); });
+      subs.append(el("div", { class: "sub" + (s.done ? " done" : "") }, [sb, el("span", { class: "txt", text: s.text }),
+        removeBtn("sub:" + s.id, () => { it.subs = it.subs.filter(x => x !== s); }, "Remove " + s.text)]));
+    }
+    const inp = el("input", { placeholder: "Add type, e.g. " + (it.text.toLowerCase().includes("masala") ? "Misal masala" : "another one"), "aria-label": "Add sub-item to " + it.text, id: "addsub-" + it.id });
+    const add = () => { const v = inp.value.trim(); if (!v) return; if (!it.subs) { it.subs = []; } if (!it.subs.length && it.done) it.done = false; it.subs.push({ id: newId(), text: v, done: false }); markDirty(); setTimeout(() => { const n = document.getElementById("addsub-" + it.id); n && n.focus(); }); };
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
+    subs.append(el("div", { class: "add" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]));
+    wrap.append(subs);
+  }
+  return wrap;
+}
+
+// ---------- save ----------
+function save() {
+  if (!dirty) return;
+  state.updatedAt = new Date().toISOString();
+  try {
+    localStorage.setItem(SAVED_KEY, JSON.stringify(state));
+    localStorage.removeItem(DRAFT_KEY);
+    dirty = false; $("#saveBtn").disabled = true;
+    setStatus("Saved on this phone", "ok");
+  } catch (err) {
+    setStatus("Could not save. Phone storage may be full or blocked in private mode.", "err");
+  }
+}
+
+// ---------- PDF ----------
+async function makePdf() {
+  const btn = $("#pdfBtn");
+  if (!window.jspdf) { setStatus("PDF tool did not load. Check the internet and reopen.", "err"); return; }
+  btn.disabled = true;
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
+    const W = 210, M = 15, maxW = W - 2 * M;
+    let y = 18;
+    const clean = s => String(s).replace(/[^\x20-\x7E -ÿ]/g, "-");
+    const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
+    doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91);
+    doc.text("Raleigh Packing List - NCSU Postdoc", M, y); y += 6;
+    doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110);
+    let d = 0, t = 0; state.sections.forEach(s => s.items.forEach(it => { t++; if (itemDone(it)) d++; }));
+    doc.text(`Pune to Raleigh-Durham (RDU)  |  ${d} of ${t} done  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 8;
+    const box = (x, yy, s, checked) => {
+      doc.setDrawColor(27, 45, 91); doc.setLineWidth(0.35); doc.rect(x, yy - s + 0.6, s, s);
+      if (checked) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(0.6); doc.line(x + 0.7, yy - s / 2 + 0.6, x + s * 0.4, yy + 0.1); doc.line(x + s * 0.4, yy + 0.1, x + s - 0.5, yy - s + 1.2); }
+    };
+    for (const sec of state.sections) {
+      need(18);
+      doc.setFillColor(27, 45, 91); doc.rect(M, y - 5, maxW, 7.5, "F");
+      doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(255);
+      const [cd, ct] = counts(sec.items);
+      doc.text(clean(sec.title), M + 2, y); doc.text(`${cd}/${ct}`, W - M - 2, y, { align: "right" }); y += 7;
+      if (sec.note) { doc.setFont("helvetica", "italic"); doc.setFontSize(8.5); doc.setTextColor(122, 67, 0); const ls = doc.splitTextToSize(clean(sec.note), maxW); need(ls.length * 3.8); doc.text(ls, M, y); y += ls.length * 3.8 + 1.5; }
+      for (const it of sec.items) {
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.setTextColor(25);
+        const lines = doc.splitTextToSize(clean(it.text), maxW - 34);
+        need(lines.length * 4.6 + 2);
+        box(M + 1, y, 4, itemDone(it));
+        doc.text(lines, M + 8, y);
+        if (it.bag) { doc.setFontSize(8.5); doc.setTextColor(120); doc.text(clean(it.bag), W - M, y, { align: "right" }); }
+        y += lines.length * 4.6 + 1.6;
+        for (const s of (it.subs || [])) {
+          doc.setFontSize(9.5); doc.setTextColor(60);
+          const sl = doc.splitTextToSize(clean(s.text), maxW - 24);
+          need(sl.length * 4.2 + 1);
+          box(M + 9, y, 3.3, s.done);
+          doc.text(sl, M + 15, y);
+          y += sl.length * 4.2 + 1;
+        }
+        doc.setDrawColor(225); doc.setLineWidth(0.2); doc.line(M, y - 1.2, W - M, y - 1.2); y += 1.2;
+      }
+      y += 3;
+    }
+    const pages = doc.getNumberOfPages();
+    for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFontSize(8); doc.setTextColor(140); doc.text(`Page ${p} of ${pages}`, W - M, 290, { align: "right" }); doc.text("Declare all food at US customs. No rice.", M, 290); }
+    doc.save("Raleigh_Packing_List.pdf");
+    setStatus("PDF downloaded. Open it from Downloads to print or share.", "ok");
+  } catch (e) {
+    setStatus("PDF could not be created.", "err");
+  } finally { btn.disabled = false; }
+}
+
+// ---------- boot ----------
+function boot() {
+  let data = null;
+  try { data = JSON.parse(localStorage.getItem(SAVED_KEY) || "null"); } catch (e) {}
+  if (!data || !Array.isArray(data.sections)) data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  state = data;
+  try {
+    const dr = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+    if (dr && Array.isArray(dr.sections) && JSON.stringify(dr) !== JSON.stringify(state)) { state = dr; dirty = true; }
+  } catch (e) {}
+  if (!state.nextId) state.nextId = 10000;
+  if (state.sections[0]) openSecs.add(state.sections[0].id);
+  render();
+  setStatus(dirty ? "Unsaved changes" : "All changes saved on this phone", dirty ? "dirty" : "");
+  $("#saveBtn").disabled = !dirty;
+}
+
+$("#saveBtn").addEventListener("click", save);
+$("#pdfBtn").addEventListener("click", makePdf);
+$("#filter").addEventListener("change", render);
+$("#expandAll").addEventListener("click", () => {
+  const all = state.sections.every(s => openSecs.has(s.id));
+  state.sections.forEach(s => all ? openSecs.delete(s.id) : openSecs.add(s.id));
+  $("#expandAll").textContent = all ? "Open all" : "Close all"; render();
+});
+function addSection() { const i = $("#newSec"); const v = i.value.trim(); if (!v) return; const id = "s" + (state.nextId++); state.sections.push({ id, title: v, note: "", kind: "pack", items: [] }); openSecs.add(id); i.value = ""; markDirty(); }
+$("#addSec").addEventListener("click", addSection);
+$("#newSec").addEventListener("keydown", e => { if (e.key === "Enter") addSection(); });
+window.addEventListener("beforeunload", () => { if (dirty) try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {} });
+window.addEventListener("beforeprint", () => { printing = true; render(); });
+window.addEventListener("afterprint", () => { printing = false; render(); });
+$("#printBtn").addEventListener("click", () => { printing = true; render(); setTimeout(() => window.print(), 50); });
+let installEvt = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; $("#installBtn").hidden = false; });
+$("#installBtn").addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch (e) {} installEvt = null; $("#installBtn").hidden = true; });
+if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+boot();
+</script>
+
+</body>
+</html>
