@@ -189,6 +189,30 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
 .toast{position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:50;max-width:90vw}
 .foot{font-size:13px;color:var(--muted);text-align:center}
 
+/* simple view */
+.go-btn{border:0;border-radius:16px;background:var(--saffron);color:var(--on-saffron);padding:16px 18px;text-align:left;display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px;width:100%}
+.go-btn small{display:block;font-weight:700;font-size:13px;opacity:.8}
+.go-btn svg{width:26px;height:26px;margin-left:auto;transform:rotate(-90deg)}
+.ez-hint{margin:0;font-size:16px;color:var(--muted)}
+.ez-top{display:flex;align-items:center;gap:10px}
+.ez-top h2{font-family:var(--display);font-size:22px;margin:0;flex:1;min-width:0}
+.ez-back{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;font-weight:700;min-height:46px;display:inline-flex;align-items:center;gap:4px}
+.ez-back svg{width:18px;height:18px;transform:rotate(90deg)}
+.ez{border-bottom:1px solid var(--line)}
+.ez:last-child{border-bottom:0}
+.ez-row{display:flex;gap:14px;align-items:flex-start;padding:15px 16px;cursor:pointer;font-size:17px}
+.ez-row .cb{width:30px;height:30px}
+.ez-t{flex:1;min-width:0;padding-top:3px;overflow-wrap:anywhere}
+.ez-t small{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+.ez.done>.ez-row .ez-t>span{color:var(--muted);text-decoration:line-through}
+.ez-subs{padding:0 0 10px 60px;display:flex;flex-direction:column}
+.ez-sub{display:flex;gap:12px;align-items:center;padding:8px 16px 8px 0;font-size:16px;cursor:pointer;min-height:44px}
+.ez-sub.done span{color:var(--muted);text-decoration:line-through}
+.ez-next{border:0;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;font-size:17px;padding:15px;width:100%}
+.mode{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.mode p{margin:0;flex:1;font-size:14px;color:var(--muted)}
+.mode b{display:block;color:var(--ink);font-size:15px}
+
 @media print{
   body{background:#fff;color:#000}
   .appbar,.tabs,.tools,.add,.mini,.rm-confirm,.foot,.fab,.pill.att{display:none!important}
@@ -204,13 +228,13 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
 <header class="appbar" id="appbar">
   <h1 id="title">Overview</h1>
   <div id="status" role="status"></div>
-  <button class="savebtn" id="saveBtn" type="button" disabled>Save</button>
+  <button class="savebtn" id="saveBtn" type="button" disabled hidden>Save</button>
 </header>
 
 <main>
   <section class="view" id="v-overview"></section>
   <section class="view" id="v-list" hidden>
-    <div class="tools">
+    <div class="tools full-only">
       <select id="filter" class="sel grow" aria-label="Show">
         <option value="all">Show: everything</option>
         <option value="todo">Show: still to do</option>
@@ -223,7 +247,7 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
       <button class="btn" id="expandAll" type="button">Open all</button>
     </div>
     <div id="sections" style="display:flex;flex-direction:column;gap:14px"></div>
-    <div class="card"><div class="add">
+    <div class="card full-only"><div class="add">
       <input id="newSec" placeholder="Add a new list, e.g. Gifts for family" aria-label="New list name">
       <button type="button" id="addSec">Add list</button>
     </div></div>
@@ -232,7 +256,8 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
       <button class="btn" id="printBtn" type="button">Print</button>
       <button class="btn" id="installBtn" type="button" hidden>Install app</button>
     </div>
-    <p class="foot">Tap a box to tick. Tap the count chip for sub-items, the bag chip to choose a bag, and the clip to attach a bill. Press Save to keep changes on this phone.</p>
+    <p class="foot full-only">Tap a box to tick. Tap the count chip for sub-items, the bag chip to choose a bag, and the clip to attach a bill. Changes save by themselves.</p>
+    <div class="card" id="listMode"></div>
   </section>
   <section class="view" id="v-bills" hidden></section>
 </main>
@@ -259,6 +284,9 @@ const DRAFT_KEY = "raleigh-pack-draft-v1", SAVED_KEY = "raleigh-pack-saved-v1", 
 let state = null, dirty = false, printing = false, tab = "overview";
 const openSecs = new Set(), openItems = new Set();
 let pendingRemove = null, removeTimer = null;
+const EASY_KEY = "raleigh-pack-easy";
+let easy = true, easySec = null;
+try { easy = localStorage.getItem(EASY_KEY) !== "0"; } catch (e) {}
 const $ = s => document.querySelector(s);
 
 // ---------- icons ----------
@@ -342,10 +370,10 @@ async function processImage(file, docMode) {
 
 // ---------- state ----------
 function markDirty() {
-  dirty = true;
-  try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {}
-  setStatus("Not saved", "dirty"); $("#saveBtn").disabled = false;
   render();
+  state.updatedAt = new Date().toISOString();
+  try { localStorage.setItem(SAVED_KEY, JSON.stringify(state)); localStorage.removeItem(DRAFT_KEY); dirty = false; setStatus("Saved", "ok"); clearTimeout(markDirty.t); markDirty.t = setTimeout(() => setStatus(""), 1500); }
+  catch (e) { dirty = true; setStatus("Not saved", "err"); toast("Could not save. Phone storage may be full."); }
 }
 function setStatus(msg, cls = "") { const s = $("#status"); s.textContent = msg; s.className = cls; }
 function save() {
@@ -388,7 +416,65 @@ function migrate(s) {
 
 // ---------- render ----------
 function render() {
+  document.querySelectorAll(".full-only").forEach(e => e.hidden = easy);
   renderOverview(); renderList(); renderBills(); renderTabs();
+  const lm = $("#listMode"); lm.replaceChildren(modeCard());
+}
+function setEasy(v) { easy = v; try { localStorage.setItem(EASY_KEY, v ? "1" : "0"); } catch (e) {} easySec = null; render(); window.scrollTo(0, 0); toast(v ? "Simple view on" : "All options on"); }
+function modeCard() {
+  const w = el("div", { class: "mode" });
+  w.append(el("p", {}, [el("b", { text: easy ? "Simple view" : "All options" }), document.createTextNode(easy ? "Just tick things off. Want bags, bills on items and editing?" : "Bags, bills on items, editing and filters.")]),
+    el("button", { class: "btn", type: "button", text: easy ? "Show all options" : "Back to simple", onclick: () => setEasy(!easy) }));
+  return w;
+}
+function openSection(id) { openSecs.add(id); easySec = id; go("list"); if (!easy) setTimeout(() => document.getElementById("sec-" + id)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); else render(); }
+function nextSection() { return state.sections.find(s => { const [d, t] = counts(s.items); return d < t; }); }
+function renderEasyList() {
+  const root = $("#sections"); root.replaceChildren();
+  const sec = state.sections.find(s => s.id === easySec);
+  if (!sec) {
+    root.append(el("p", { class: "ez-hint", text: "Pick a list. Tick things as you pack. Everything saves by itself." }));
+    const card = el("div", { class: "card", style: "overflow:hidden" });
+    for (const s of state.sections) { const [d, t] = counts(s.items); card.append(progressRow(s.id, s.title, d, t, () => { easySec = s.id; render(); window.scrollTo(0, 0); })); }
+    card.firstChild && (card.firstChild.style.borderTop = "0");
+    root.append(card);
+    return;
+  }
+  const [cd, ct] = counts(sec.items), lv = level(cd, ct);
+  const back = el("button", { class: "ez-back", type: "button", html: ico("chev") + "Lists", onclick: () => { easySec = null; render(); window.scrollTo(0, 0); } });
+  root.append(el("div", { class: "ez-top" }, [back, el("h2", { text: sec.title }), el("span", { class: "left lv-" + lv, text: ct - cd ? `${ct - cd} left` : "Done" })]));
+  if (sec.note) root.append(el("p", { class: "note", style: "margin:0", text: sec.note }));
+  const card = el("div", { class: "card", style: "overflow:hidden" });
+  for (const it of sec.items) card.append(ezItem(sec, it));
+  const inp = el("input", { placeholder: "Add something to this list", "aria-label": "Add to " + sec.title, id: "ezadd" });
+  const add = () => { const v = inp.value.trim(); if (!v) return; sec.items.push({ id: newId(), text: v, done: false, bag: "" }); markDirty(); setTimeout(() => $("#ezadd")?.focus()); };
+  inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
+  card.append(el("div", { class: "add", style: "border-top:1px solid var(--line)" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]));
+  root.append(card);
+  const i = state.sections.indexOf(sec), nx = state.sections[i + 1];
+  if (nx) root.append(el("button", { class: "ez-next", type: "button", text: `Next list: ${nx.title}`, onclick: () => { easySec = nx.id; render(); window.scrollTo(0, 0); } }));
+  else root.append(el("button", { class: "ez-next", type: "button", text: "Back to all lists", onclick: () => { easySec = null; render(); window.scrollTo(0, 0); } }));
+}
+const BAG_NAMES = { "Cabin": "Cabin bag", "Bag 1": "Check-in bag 1", "Bag 2": "Check-in bag 2", "Wear": "Wear on the flight", "Buy in US": "Buy in the US" };
+function ezItem(sec, it) {
+  const subs = it.subs || [], done = itemDone(it);
+  const w = el("div", { class: "ez" + (done ? " done" : "") });
+  const box = el("input", { type: "checkbox", class: "cb" }); box.checked = done;
+  if (subs.length && !done && subs.some(s => s.done)) box.classList.add("part");
+  box.addEventListener("change", () => { if (subs.length) subs.forEach(s => s.done = box.checked); else it.done = box.checked; markDirty(); });
+  const where = sec.kind !== "task" && it.bag ? BAG_NAMES[it.bag] || it.bag : "";
+  const extra = [where, subs.length ? `${subs.filter(s => s.done).length} of ${subs.length} ticked` : ""].filter(Boolean).join(" · ");
+  w.append(el("label", { class: "ez-row" }, [box, el("span", { class: "ez-t" }, [el("span", { text: it.text }), extra ? el("small", { text: extra }) : null])]));
+  if (subs.length) {
+    const box2 = el("div", { class: "ez-subs" });
+    for (const s of subs) {
+      const sb = el("input", { type: "checkbox", class: "cb" }); sb.checked = s.done;
+      sb.addEventListener("change", () => { s.done = sb.checked; markDirty(); });
+      box2.append(el("label", { class: "ez-sub" + (s.done ? " done" : "") }, [sb, el("span", { text: s.text })]));
+    }
+    w.append(box2);
+  }
+  return w;
 }
 function progressRow(icon, name, d, t, onClick) {
   const lv = level(d, t), left = t - d;
@@ -411,17 +497,21 @@ function renderOverview() {
   const bp = tag.querySelector("#bp");
   for (const b of ["Cabin", "Bag 1", "Bag 2"]) if (bag[b]) bp.append(el("span", { text: `${b}: ${bag[b][0]}/${bag[b][1]}` }));
   v.append(tag);
-  v.append(tripCard());
+  const nx = nextSection();
+  if (nx) { const [nd, nt] = counts(nx.items); const g = el("button", { class: "go-btn", type: "button", onclick: () => openSection(nx.id) }); g.append(el("span", {}, [document.createTextNode(d ? "Continue packing" : "Start packing"), el("small", { text: `${nx.title} · ${nt - nd} left` })])); g.insertAdjacentHTML("beforeend", ico("chev")); v.append(g); }
+  else v.append(el("div", { class: "note", style: "margin:0;background:var(--ok-bg);color:var(--ok);font-weight:700", text: "Everything is ticked. Have a safe flight, Leena!" }));
   const card = el("div", { class: "card" });
-  card.append(el("div", { class: "card-h" }, [el("h2", { text: "Progress by section" })]));
-  card.append(el("div", { class: "legend", html: `<span><i class="fill-low"></i>Under a third</span><span><i class="fill-mid"></i>Halfway</span><span><i class="fill-hi"></i>Nearly there</span><span><i class="fill-done"></i>Done</span>` }));
-  for (const s of state.sections) { const [cd, ct] = counts(s.items); card.append(progressRow(s.id, s.title, cd, ct, () => { openSecs.add(s.id); go("list"); setTimeout(() => document.getElementById("sec-" + s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50); })); }
+  card.append(el("div", { class: "card-h" }, [el("h2", { text: "Your lists" })]));
+  if (!easy) card.append(el("div", { class: "legend", html: `<span><i class="fill-low"></i>Under a third</span><span><i class="fill-mid"></i>Halfway</span><span><i class="fill-hi"></i>Nearly there</span><span><i class="fill-done"></i>Done</span>` }));
+  for (const s of state.sections) { const [cd, ct] = counts(s.items); card.append(progressRow(s.id, s.title, cd, ct, () => openSection(s.id))); }
   v.append(card);
+  v.append(tripCard());
   const bills = state.bills || [], dueSoon = bills.filter(b => dueLevel(b) === "soon" || dueLevel(b) === "late").length;
   const bc = el("div", { class: "card" });
   bc.append(el("div", { class: "card-h" }, [el("h2", { text: "Bills and proofs" }), el("button", { class: "btn", type: "button", text: "Open", onclick: () => go("bills") })]));
   bc.append(el("p", { class: "empty", style: "padding-top:4px", text: bills.length ? `${bills.length} saved. ${dueSoon ? dueSoon + " with a return or exchange date coming up." : "No return dates due soon."}` : "No bills yet. Scan shop bills so exchanges and refunds are easy." }));
   v.append(bc);
+  v.append(el("div", { class: "card" }, [modeCard()]));
 }
 
 const INFO_FIELDS = [
@@ -470,6 +560,7 @@ function removeBtn(key, doRemove, label) {
   return el("button", { class: "mini", type: "button", "aria-label": label, html: ico("x"), onclick: () => { pendingRemove = key; clearTimeout(removeTimer); removeTimer = setTimeout(() => { pendingRemove = null; render(); }, 3000); render(); } });
 }
 function renderList() {
+  if (easy && !printing) return renderEasyList();
   const root = $("#sections"); root.replaceChildren();
   const filtering = $("#filter").value !== "all";
   for (const sec of state.sections) {
@@ -781,7 +872,7 @@ function boot() {
   if (state.sections[0]) openSecs.add(state.sections[0].id);
   $("#sheetClose").innerHTML = ico("x");
   render();
-  setStatus(dirty ? "Not saved" : "", dirty ? "dirty" : ""); $("#saveBtn").disabled = !dirty;
+  if (dirty) save(); setStatus("");
   let t0 = "overview"; try { t0 = sessionStorage.getItem(TAB_KEY) || "overview"; } catch (e) {}
   go(TABS[t0] ? t0 : "overview");
 }
