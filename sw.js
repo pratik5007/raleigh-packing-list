@@ -1,4 +1,4 @@
-const CACHE = "raleigh-pack-v4";
+const CACHE = "raleigh-pack-v5";
 const CORE = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png",
   "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"];
 self.addEventListener("install", e => {
