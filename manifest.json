@@ -1,6 +1,6 @@
 {
-  "name": "Leena's Udaan",
-  "short_name": "Leena Udaan",
+  "name": "Udaan",
+  "short_name": "Udaan",
   "description": "Leena's packing, bills and setup checklist for her J-1 postdoc move to NC State, Raleigh.",
   "start_url": "./",
   "scope": "./",
