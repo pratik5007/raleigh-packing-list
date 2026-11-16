@@ -148,7 +148,7 @@ select.pill{appearance:none;-webkit-appearance:none;padding-right:10px;max-width
 .fab{position:fixed;right:max(16px,calc(50% - 364px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:15;border:0;border-radius:18px;background:var(--saffron);color:var(--on-saffron);font-weight:800;padding:14px 18px;display:flex;gap:8px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.2)}
 
 /* bottom nav */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(3,1fr)}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .tabs button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:700;color:var(--muted);padding:6px 0;border-radius:12px;min-height:52px}
 .tabs button[aria-current="page"]{color:var(--navy);background:var(--chip)}
 :root[data-theme="dark"] .tabs button[aria-current="page"]{color:var(--saffron)}
@@ -238,6 +238,51 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
 :root[data-theme="dark"] .tile{background:hsl(var(--h) 35% 18%);color:hsl(var(--h) 80% 88%)}
 :root[data-theme="dark"] .tile .tbar{background:hsl(var(--h) 30% 28%)}
 :root[data-theme="dark"] .tile .tbar i{background:hsl(var(--h) 70% 62%)}
+.qb{--h:210;border:0;border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center;text-align:left;background:hsl(var(--h) 85% 95%);color:hsl(var(--h) 60% 22%);min-height:72px}
+.qb .tic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:hsl(var(--h) 65% 48%);color:#fff;flex:none}
+.qb b{display:block;font-size:15px}.qb small{font-size:12px;font-weight:700;opacity:.8}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hrow{display:flex;justify-content:space-between;gap:8px;position:relative;z-index:1}
+.hero .hb-edit.on{background:#fff;color:hsl(var(--h) 60% 30%);padding-left:14px}
+.hero .hb-edit svg{transform:none}
+.ez-line{display:flex;align-items:center}
+.ez-line>label{flex:1;min-width:0}
+.trash{border:0;background:var(--low-bg);color:var(--low);border-radius:12px;width:46px;height:46px;display:grid;place-items:center;margin-right:12px;flex:none}
+.mvw{padding-right:12px;flex:none}
+select.pill.move{background:var(--chip);color:var(--ink);min-height:36px;padding:6px 12px;max-width:84px}
+.clamp{display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.toast{display:flex;align-items:center;gap:14px}
+.toast button{border:0;background:none;color:var(--saffron);font-weight:800;font-size:15px;padding:4px 6px}
+.wchip{font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;align-self:flex-start;background:rgba(255,255,255,.55);font-variant-numeric:tabular-nums}
+.wchip.ok{background:var(--ok-bg);color:var(--ok)}.wchip.near{background:var(--warn-bg);color:var(--warn)}.wchip.over{background:var(--low);color:#fff}
+.weigh{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.wbar{height:12px;border-radius:7px;background:var(--chip);overflow:hidden}
+.wbar i{display:block;height:100%;border-radius:7px;background:var(--ok);transition:width .4s}
+.wbar i.near{background:var(--warn)}.wbar i.over{background:var(--low)}
+.wmsg{margin:0;font-weight:700;font-size:15px;color:var(--muted)}.wmsg.ok{color:var(--ok)}.wmsg.near{color:var(--warn)}.wmsg.over{color:var(--low)}
+.rules{margin:0;padding:4px 18px 14px 34px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.fchips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:0 16px 2px;scrollbar-width:none}
+.fchip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;min-height:40px}
+.fchip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.docs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.doc{--h:210;border:1px solid var(--line);background:var(--surface);border-radius:16px;overflow:hidden;padding:0;text-align:left;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.dth{aspect-ratio:4/3;display:grid;place-items:center;background:hsl(var(--h) 85% 94%);color:hsl(var(--h) 60% 38%);font-family:var(--display);font-weight:800;font-size:22px;overflow:hidden}
+.dth.pdf{background:#FDE7E5;color:#C9372C}
+.dth img{width:100%;height:100%;object-fit:cover}
+.dtx{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.dtx b{font-size:14px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dtx small{font-size:12px;color:var(--muted)}
+.plist{display:flex;flex-direction:column;gap:8px}
+.pf{display:flex;gap:8px;align-items:center}
+.pf input{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:8px 10px;min-height:42px}
+.pf-k{flex:none;width:44px;height:42px;border-radius:10px;display:grid;place-items:center;font-size:11px;font-weight:800;background:var(--mid-bg);color:var(--mid)}
+.pf-k.pdf{background:#FDE7E5;color:#C9372C}
+.bigdoc{--h:210;border-radius:16px;height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:hsl(var(--h) 85% 94%);color:hsl(var(--h) 60% 38%)}
+.bigdoc span{font-family:var(--display);font-weight:800;font-size:40px}
+.bigdoc.pdf{background:#FDE7E5;color:#C9372C}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qb,:root:not([data-theme="light"]) .dth,:root:not([data-theme="light"]) .bigdoc{background:hsl(var(--h) 35% 18%);color:hsl(var(--h) 80% 85%)}:root:not([data-theme="light"]) .dth.pdf,:root:not([data-theme="light"]) .bigdoc.pdf,:root:not([data-theme="light"]) .pf-k.pdf{background:#3D1C1A;color:#FF8A80}}
+:root[data-theme="dark"] .qb,:root[data-theme="dark"] .dth,:root[data-theme="dark"] .bigdoc{background:hsl(var(--h) 35% 18%);color:hsl(var(--h) 80% 85%)}
+.tabs button{font-size:11.5px}
 .mode{display:flex;align-items:center;gap:12px;padding:14px 16px}
 .mode p{margin:0;flex:1;font-size:14px;color:var(--muted)}
 .mode b{display:block;color:var(--ink);font-size:15px}
@@ -288,6 +333,8 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
     <p class="foot full-only">Tap a box to tick. Tap the count chip for sub-items, the bag chip to choose a bag, and the clip to attach a bill. Changes save by themselves.</p>
     <div class="card" id="listMode"></div>
   </section>
+  <section class="view" id="v-pack" hidden></section>
+  <section class="view" id="v-files" hidden></section>
   <section class="view" id="v-bills" hidden></section>
 </main>
 
@@ -296,6 +343,8 @@ dialog.sheet::backdrop{background:rgba(10,15,30,.5)}
 <nav class="tabs" aria-label="Sections">
   <button type="button" data-tab="overview" aria-current="page"></button>
   <button type="button" data-tab="list"></button>
+  <button type="button" data-tab="pack"></button>
+  <button type="button" data-tab="files"></button>
   <button type="button" data-tab="bills"></button>
 </nav>
 
@@ -315,6 +364,7 @@ const openSecs = new Set(), openItems = new Set();
 let pendingRemove = null, removeTimer = null;
 const EASY_KEY = "raleigh-pack-easy";
 let easy = true, easySec = null;
+let listEdit = false;
 try { easy = localStorage.getItem(EASY_KEY) !== "0"; } catch (e) {}
 const $ = s => document.querySelector(s);
 
@@ -341,6 +391,14 @@ const P = {
   arrive:'<path d="M2 16h20M5 16l-2-5h3l2 2h4l-2-7h3l4 7h4a2 2 0 010 4"/>',
   bags:'<rect x="5" y="7" width="14" height="13" rx="2"/><path d="M9 7V4h6v3M9 20v1M15 20v1M5 12h14"/>',
   info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>',
+  laptop:'<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/>',
+  folder:'<path d="M3 7a1 1 0 011-1h5l2 2h9a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1z"/>',
+  file:'<path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8z"/><path d="M14 3v5h5"/>',
+  down:'<path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/>',
+  scale:'<path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5" r="2"/>',
+  open:'<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
   other:'<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>'
 };
 const ico = (n, cls = "i") => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${P[n] || P.other}</svg>`;
@@ -356,7 +414,33 @@ function el(tag, attrs = {}, kids = []) {
   for (const k of kids) if (k) e.append(k);
   return e;
 }
-function toast(msg) { const t = el("div", { class: "toast", role: "status", text: msg }); document.body.append(t); setTimeout(() => t.remove(), 2600); }
+function toast(msg) { document.querySelectorAll(".toast").forEach(t => t.remove()); const t = el("div", { class: "toast", role: "status", text: msg }); document.body.append(t); setTimeout(() => t.remove(), 2600); }
+function undoToast(msg, undo) {
+  document.querySelectorAll(".toast").forEach(t => t.remove());
+  const t = el("div", { class: "toast", role: "status" }, [el("span", { text: msg }), el("button", { type: "button", text: "Undo", onclick: () => { t.remove(); undo(); } })]);
+  document.body.append(t); setTimeout(() => t.remove(), 6000);
+}
+function short(x) { x = String(x); return x.length > 34 ? x.slice(0, 32) + "…" : x; }
+function removeWithUndo(arr, obj, label, after) {
+  const at = arr.indexOf(obj); if (at < 0) return;
+  arr.splice(at, 1); after && after(false); markDirty();
+  undoToast(`Removed "${short(label)}"`, () => { arr.splice(Math.min(at, arr.length), 0, obj); after && after(true); markDirty(); });
+}
+function trashBtn(label, fn) { return el("button", { class: "trash", type: "button", "aria-label": label, html: ico("trash"), onclick: fn }); }
+function armedBtn(text, fn) {
+  let armed = false;
+  const b = el("button", { class: "btn danger", type: "button", text, style: "justify-content:center", onclick: () => {
+    if (!armed) { armed = true; b.textContent = "Tap again to confirm"; setTimeout(() => { armed = false; b.textContent = text; }, 3000); return; }
+    fn();
+  } });
+  return b;
+}
+function heroTop(onBack, backText, editing, onEdit) {
+  return el("div", { class: "hrow" }, [
+    el("button", { class: "hb", type: "button", html: ico("chev") + backText, onclick: onBack }),
+    onEdit ? el("button", { class: "hb hb-edit" + (editing ? " on" : ""), type: "button", html: editing ? "Done" : ico("edit") + "Edit / remove", onclick: onEdit }) : null]);
+}
+function editHint() { return el("p", { class: "note", style: "margin:0;background:var(--low-bg);color:var(--low)", text: "Tap the red bin to remove a thing. Changed your mind? Tap Undo at the bottom." }); }
 function newId(p = "i") { return p + (state.nextId++); }
 function itemDone(it) { return it.subs && it.subs.length ? it.subs.every(s => s.done) : it.done; }
 function counts(items) { let d = 0; for (const it of items) if (itemDone(it)) d++; return [d, items.length]; }
@@ -398,11 +482,15 @@ async function processImage(file, docMode) {
 }
 
 // ---------- state ----------
+function persist() {
+  state.updatedAt = new Date().toISOString();
+  try { localStorage.setItem(SAVED_KEY, JSON.stringify(state)); localStorage.removeItem(DRAFT_KEY); dirty = false; return true; }
+  catch (e) { dirty = true; return false; }
+}
 function markDirty() {
   render();
-  state.updatedAt = new Date().toISOString();
-  try { localStorage.setItem(SAVED_KEY, JSON.stringify(state)); localStorage.removeItem(DRAFT_KEY); dirty = false; setStatus("Saved", "ok"); clearTimeout(markDirty.t); markDirty.t = setTimeout(() => setStatus(""), 1500); }
-  catch (e) { dirty = true; setStatus("Not saved", "err"); toast("Could not save. Phone storage may be full."); }
+  if (persist()) { setStatus("Saved", "ok"); clearTimeout(markDirty.t); markDirty.t = setTimeout(() => setStatus(""), 1500); }
+  else { setStatus("Not saved", "err"); toast("Could not save. Phone storage may be full."); }
 }
 function setStatus(msg, cls = "") { const s = $("#status"); s.textContent = msg; s.className = cls; }
 function save() {
@@ -440,13 +528,15 @@ function migrate(s) {
     s.version = 3; s.nextId = Math.max(s.nextId || 0, fresh.nextId);
   }
   if (!s.info) s.info = JSON.parse(JSON.stringify(DEFAULT_DATA.info));
+  if (!s.docs) s.docs = [];
   return s;
 }
 
 // ---------- render ----------
 function render() {
   document.querySelectorAll(".full-only").forEach(e => e.hidden = easy);
-  renderOverview(); renderList(); renderBills(); renderTabs();
+  if (syncPack()) persist();
+  renderOverview(); renderList(); renderPack(); renderFiles(); renderBills(); renderTabs();
   const lm = $("#listMode"); lm.replaceChildren(modeCard());
 }
 function setEasy(v) { easy = v; try { localStorage.setItem(EASY_KEY, v ? "1" : "0"); } catch (e) {} easySec = null; render(); window.scrollTo(0, 0); toast(v ? "Simple view on" : "All options on"); }
@@ -468,13 +558,14 @@ function renderEasyList() {
   }
   const [cd, ct] = counts(sec.items), pct = ct ? Math.round(cd / ct * 100) : 100;
   const hero = el("div", { class: "hero", style: "--h:" + hueOf(sec.id) });
-  hero.append(el("button", { class: "hb", type: "button", html: ico("chev") + "All lists", onclick: () => { easySec = null; render(); window.scrollTo(0, 0); } }),
+  hero.append(heroTop(() => { easySec = null; listEdit = false; render(); window.scrollTo(0, 0); }, "All lists", listEdit, () => { listEdit = !listEdit; render(); }),
     el("h2", { text: sec.title }),
     el("div", { class: "hbar", html: `<i style="width:${pct}%"></i>` }),
     el("p", { text: cheer(cd, ct) }),
     el("div", { class: "big", html: ico(sec.id) }));
   root.append(hero);
-  if (sec.note) root.append(el("p", { class: "note", style: "margin:0", text: sec.note }));
+  if (listEdit) root.append(editHint());
+  else if (sec.note) root.append(el("p", { class: "note", style: "margin:0", text: sec.note }));
   const card = el("div", { class: "card", style: "overflow:hidden" });
   for (const it of sec.items) card.append(ezItem(sec, it));
   const inp = el("input", { placeholder: "Add something to this list", "aria-label": "Add to " + sec.title, id: "ezadd" });
@@ -482,6 +573,11 @@ function renderEasyList() {
   inp.addEventListener("keydown", e => { if (e.key === "Enter") add(); });
   card.append(el("div", { class: "add", style: "border-top:1px solid var(--line)" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]));
   root.append(card);
+  if (listEdit) {
+    root.append(armedBtn("Remove this whole list", () => { const at = state.sections.indexOf(sec); state.sections.splice(at, 1); easySec = null; listEdit = false; markDirty(); undoToast(`Removed list "${short(sec.title)}"`, () => { state.sections.splice(Math.min(at, state.sections.length), 0, sec); markDirty(); }); }));
+    root.append(el("button", { class: "ez-next", type: "button", text: "Done editing", onclick: () => { listEdit = false; render(); } }));
+    return;
+  }
   const i = state.sections.indexOf(sec), nx = state.sections[i + 1];
   if (nx) root.append(el("button", { class: "ez-next", type: "button", text: `Next list: ${nx.title}`, onclick: () => { easySec = nx.id; render(); window.scrollTo(0, 0); } }));
   else root.append(el("button", { class: "ez-next", type: "button", text: "Back to all lists", onclick: () => { easySec = null; render(); window.scrollTo(0, 0); } }));
@@ -539,13 +635,15 @@ function ezItem(sec, it) {
   box.addEventListener("change", () => { const [d0, t0] = counts(sec.items), was = d0 === t0; if (subs.length) subs.forEach(s => s.done = box.checked); else it.done = box.checked; afterTick(sec, it, was); });
   const where = sec.kind !== "task" && it.bag ? BAG_NAMES[it.bag] || it.bag : "";
   const extra = [where, subs.length ? `${subs.filter(s => s.done).length} of ${subs.length} ticked` : ""].filter(Boolean).join(" · ");
-  w.append(el("label", { class: "ez-row" }, [box, el("span", { class: "ez-t" }, [el("span", { text: it.text }), extra ? el("small", { text: extra }) : null])]));
+  w.append(el("div", { class: "ez-line" }, [el("label", { class: "ez-row" }, [box, el("span", { class: "ez-t" }, [el("span", { text: it.text }), extra ? el("small", { text: extra }) : null])]),
+    listEdit ? trashBtn("Remove " + it.text, () => removeWithUndo(sec.items, it, it.text)) : null]));
   if (subs.length) {
     const box2 = el("div", { class: "ez-subs" });
     for (const s of subs) {
       const sb = el("input", { type: "checkbox", class: "cb" + (lastTick === s.id ? " pop" : "") }); sb.checked = s.done;
       sb.addEventListener("change", () => { const [d0, t0] = counts(sec.items); s.done = sb.checked; afterTick(sec, s, d0 === t0); });
-      box2.append(el("label", { class: "ez-sub" + (s.done ? " done" : "") }, [sb, el("span", { text: s.text })]));
+      box2.append(el("div", { class: "ez-line" }, [el("label", { class: "ez-sub" + (s.done ? " done" : "") }, [sb, el("span", { text: s.text })]),
+        listEdit ? trashBtn("Remove " + s.text, () => removeWithUndo(subs, s, s.text)) : null]));
     }
     w.append(box2);
   }
@@ -575,6 +673,11 @@ function renderOverview() {
   const nx = nextSection();
   if (nx) { const [nd, nt] = counts(nx.items); const g = el("button", { class: "go-btn", type: "button", onclick: () => openSection(nx.id) }); g.append(el("span", {}, [document.createTextNode(d ? "Continue packing" : "Start packing"), el("small", { text: `${nx.title} · ${nt - nd} left` })])); g.insertAdjacentHTML("beforeend", ico("chev")); v.append(g); }
   else v.append(el("div", { class: "note", style: "margin:0;background:var(--ok-bg);color:var(--ok);font-weight:700", text: "Everything is ticked. Have a safe flight, Leena!" }));
+  { const E = (state.pack?.entries || []).filter(e => e.bag), pd = E.filter(e => e.packed).length;
+    const q = (h, icon, title, sub, fn) => { const b = el("button", { class: "qb", type: "button", style: "--h:" + h, onclick: fn }); b.innerHTML = `<span class="tic">${ico(icon)}</span>`; b.append(el("span", {}, [el("b", { text: title }), el("small", { text: sub })])); return b; };
+    v.append(el("div", { class: "quick" }, [
+      q(265, "bags", "Pack the bags", `${pd} of ${E.length} in bags`, () => { packBag = null; go("pack"); }),
+      q(188, "folder", "My files", `${(state.docs || []).length} saved`, () => go("files"))])); }
   if (easy) { v.append(el("h2", { class: "ez-hint", style: "font-family:var(--display);font-size:19px;color:var(--ink);margin:4px 2px -4px", text: "Your lists" }), tilesGrid(openSection)); }
   const card = el("div", { class: "card", hidden: easy });
   card.append(el("div", { class: "card-h" }, [el("h2", { text: "Your lists" })]));
@@ -869,8 +972,282 @@ function billView(bill) {
   });
 }
 
+// ---------- final bag packing ----------
+const PACK_BAGS = [
+  { id: "b1", name: "Check-in bag 1", limit: 23, hue: 18, icon: "bags", tip: "Clothes, bedding, shoes, personal care. No power banks, lighters or loose batteries in check-in bags. Aim for about 22.5 kg so the airport scale holds no surprise." },
+  { id: "b2", name: "Check-in bag 2", limit: 23, hue: 330, icon: "bags", tip: "Food, masala, pickles and kitchen things. Seal and double-bag anything with smell or oil. Aim for about 22.5 kg." },
+  { id: "cabin", name: "Cabin bag", limit: 7, hue: 205, icon: "cabin", tip: "Usually 7 kg (check the limit on your ticket and change it below). Liquids under 100 ml in one clear bag. The power bank goes here. Keep 2-3 days of clothes in case the check-in bags arrive late." },
+  { id: "laptop", name: "Laptop bag", limit: null, hue: 265, icon: "laptop", tip: "Your personal item. It never leaves your side: passport, DS-2019, all original documents, money, laptop and phone." },
+  { id: "wear", name: "Wear on the flight", limit: null, hue: 150, icon: "clothes", tip: "Wear the heaviest shoes and the jacket on the plane. It saves weight in the bags." }
+];
+const LAPTOP_SRC = new Set(["i177", "i178", "i183", "i263", "i184", "i185", "i186", "i187"]);
+const PACK_SKIP = new Set(["i188", "i89", "i260"]);
+function packBagOf(sec, it) {
+  if (LAPTOP_SRC.has(it.id) || (sec.id === "docs" && it.bag === "Cabin")) return "laptop";
+  return { "Bag 1": "b1", "Bag 2": "b2", "Cabin": "cabin", "Wear": "wear" }[it.bag] || (sec.id === "cabin" ? "cabin" : "");
+}
+function syncPack() {
+  let ch = false;
+  if (!state.pack) { state.pack = { weights: {}, limits: {}, entries: [], skip: [] }; ch = true; }
+  const p = state.pack, have = new Set(p.entries.map(e => e.src).filter(Boolean)), skip = new Set(p.skip), live = new Set();
+  for (const sec of state.sections) {
+    if (sec.kind === "task") continue;
+    for (const it of sec.items) {
+      live.add(it.id);
+      if (have.has(it.id) || skip.has(it.id) || PACK_SKIP.has(it.id) || it.bag === "Buy in US") continue;
+      p.entries.push({ id: newId("p"), src: it.id, bag: packBagOf(sec, it), packed: false }); ch = true;
+    }
+  }
+  const n = p.entries.length; p.entries = p.entries.filter(e => !e.src || live.has(e.src)); if (p.entries.length !== n) ch = true;
+  return ch;
+}
+function entryText(e) { return e.src ? (findItem(e.src)?.text || "") : e.text; }
+function entryDetail(e) { const it = e.src && findItem(e.src); return it && it.subs && it.subs.length ? it.subs.map(s => s.text).join(", ") : ""; }
+function bagLimit(b) { const v = state.pack.limits[b.id]; return v === undefined ? b.limit : (v === "" || v == null ? null : Number(v)); }
+function weighInfo(b) {
+  const w = parseFloat(state.pack.weights[b.id]), lim = bagLimit(b);
+  if (isNaN(w)) return { w: null, lim, lv: "none", text: "Weigh the bag and type the number here." };
+  if (!lim) return { w, lim, lv: "ok", text: `Weighed ${w} kg.` };
+  if (w > lim) return { w, lim, lv: "over", text: `${(w - lim).toFixed(1)} kg over the limit! Move something to another bag.` };
+  if (w > lim - .5) return { w, lim, lv: "near", text: `Very close: only ${(lim - w).toFixed(1)} kg left. Airport scales can differ a little, so keep some margin.` };
+  return { w, lim, lv: "ok", text: `${(lim - w).toFixed(1)} kg of room left.` };
+}
+let packBag = null, packEdit = false;
+function renderPack() {
+  const v = $("#v-pack"); v.replaceChildren();
+  if (!state.pack) return;
+  if (packBag) return renderPackBag(v);
+  const E = state.pack.entries, inBags = E.filter(e => e.bag), d = inBags.filter(e => e.packed).length, t = inBags.length;
+  const hero = el("div", { class: "hero", style: "--h:232" });
+  hero.append(el("h2", { text: "Final bag packing" }), el("p", { style: "font-weight:400;opacity:.9", text: "2 check-in bags (23 kg each), 1 cabin bag and 1 laptop bag. Tick each thing as it goes into the bag." }),
+    el("div", { class: "hbar", html: `<i style="width:${t ? Math.round(d / t * 100) : 0}%"></i>` }), el("p", { text: t ? `${d} of ${t} things are in the bags` : "Nothing to pack yet." }), el("div", { class: "big", html: ico("bags") }));
+  v.append(hero);
+  const uns = E.filter(e => !e.bag);
+  if (uns.length) v.append(el("button", { class: "go-btn", type: "button", style: "font-size:16px", onclick: () => { packBag = "unsorted"; render(); scrollTo(0, 0); } }, [el("span", {}, [document.createTextNode(`${uns.length} thing${uns.length > 1 ? "s" : ""} without a bag`), el("small", { text: "Tap to choose a bag for each" })])]));
+  const g = el("div", { class: "tiles" });
+  for (const b of PACK_BAGS) {
+    const L = E.filter(e => e.bag === b.id), pd = L.filter(e => e.packed).length, wi = weighInfo(b), done = L.length && pd === L.length;
+    const tile = el("button", { class: "tile" + (done ? " done" : ""), type: "button", style: "--h:" + b.hue, onclick: () => { packBag = b.id; render(); scrollTo(0, 0); } });
+    tile.innerHTML = `<span class="tic">${ico(b.icon)}</span>`;
+    tile.append(el("b", { text: b.name }));
+    if (b.id !== "wear") tile.append(el("span", { class: "wchip " + wi.lv, text: wi.w == null ? (wi.lim ? `Limit ${wi.lim} kg` : "Not weighed") : `${wi.w}${wi.lim ? " / " + wi.lim : ""} kg` }));
+    tile.append(el("div", { class: "tbar", html: `<i style="width:${L.length ? Math.round(pd / L.length * 100) : 0}%"></i>` }), el("small", { text: done ? "All packed" : `${pd} of ${L.length} packed` }));
+    g.append(tile);
+  }
+  v.append(g);
+  const w1 = parseFloat(state.pack.weights.b1) || 0, w2 = parseFloat(state.pack.weights.b2) || 0;
+  const tips = el("div", { class: "card" }, [el("div", { class: "card-h" }, [el("h2", { html: "Weighing rules" })]),
+    el("ul", { class: "rules" }, [
+      el("li", { text: `Check-in bags: 23 kg each. Together now: ${(w1 + w2).toFixed(1)} of 46 kg.` }),
+      el("li", { text: "Weigh at home with a luggage scale. Keep each check-in bag near 22.5 kg." }),
+      el("li", { text: "Over 23 kg means extra charges or repacking at the airport." }),
+      el("li", { text: "Heavy, sturdy things at the bottom near the wheels. Liquids and pickles sealed, in the middle." }),
+      el("li", { text: "Power banks and spare batteries only in the cabin or laptop bag." })])]);
+  v.append(tips);
+  v.append(el("div", { class: "tools" }, [el("button", { class: "btn", type: "button", html: ico("down") + "Packing list PDF", onclick: makePackPdf })]));
+  v.append(el("p", { class: "foot", text: "Things you add to your lists show up here by themselves, in the bag you chose for them." }));
+}
+function renderPackBag(v) {
+  const E = state.pack.entries;
+  const b = packBag === "unsorted" ? { id: "unsorted", name: "Without a bag", hue: 40, icon: "bags", tip: "Choose a bag for each thing with the Move button." } : PACK_BAGS.find(x => x.id === packBag);
+  if (!b) { packBag = null; return renderPack(); }
+  const L = E.filter(e => b.id === "unsorted" ? !e.bag : e.bag === b.id), d = L.filter(e => e.packed).length;
+  const back = () => { packBag = null; packEdit = false; render(); scrollTo(0, 0); };
+  const hero = el("div", { class: "hero", style: "--h:" + b.hue });
+  hero.append(heroTop(back, "All bags", packEdit, () => { packEdit = !packEdit; render(); }), el("h2", { text: b.name }),
+    el("div", { class: "hbar", html: `<i style="width:${L.length ? Math.round(d / L.length * 100) : 0}%"></i>` }),
+    el("p", { text: L.length ? cheer(d, L.length).replace("Tap a box when it's packed.", "Tick each one as it goes in.") : "Empty. Add things below." }), el("div", { class: "big", html: ico(b.icon) }));
+  v.append(hero);
+  if (b.id !== "unsorted" && b.id !== "wear") {
+    const wi = weighInfo(b), lim = bagLimit(b);
+    const wIn = el("input", { id: "wIn", type: "number", inputmode: "decimal", step: "0.1", min: "0", placeholder: "0.0", value: state.pack.weights[b.id] ?? "" });
+    const lIn = el("input", { id: "lIn", type: "number", inputmode: "decimal", step: "0.5", min: "0", placeholder: "No limit", value: lim ?? "" });
+    wIn.addEventListener("change", () => { state.pack.weights[b.id] = wIn.value; markDirty(); });
+    lIn.addEventListener("change", () => { state.pack.limits[b.id] = lIn.value; markDirty(); });
+    const pct = wi.w != null && wi.lim ? Math.min(100, wi.w / wi.lim * 100) : 0;
+    v.append(el("div", { class: "card weigh" }, [
+      el("div", { class: "two" }, [el("div", { class: "fld" }, [el("label", { for: "wIn", text: "Weight now (kg)" }), wIn]), el("div", { class: "fld" }, [el("label", { for: "lIn", text: "Allowed (kg)" }), lIn])]),
+      wi.lim ? el("div", { class: "wbar", html: `<i class="${wi.lv}" style="width:${pct}%"></i>` }) : null,
+      el("p", { class: "wmsg " + wi.lv, text: wi.text })]));
+  }
+  v.append(packEdit ? editHint() : el("p", { class: "note", style: "margin:0", text: b.tip }));
+  const card = el("div", { class: "card", style: "overflow:hidden" });
+  for (const e of L) {
+    const row = el("div", { class: "ez" + (e.packed ? " done" : "") + (lastTick === e.id && e.packed ? " flash" : "") });
+    const box = el("input", { type: "checkbox", class: "cb" + (lastTick === e.id ? " pop" : "") }); box.checked = !!e.packed;
+    box.addEventListener("change", () => {
+      const was = L.every(x => x.packed); e.packed = box.checked; lastTick = e.id;
+      try { navigator.vibrate && navigator.vibrate(12); } catch (er) {}
+      if (!was && L.every(x => x.packed) && b.id !== "unsorted") { setTimeout(confetti, 120); toast(`${b.name}: all packed! \u{1F389}`); }
+      markDirty(); setTimeout(() => { lastTick = null; }, 900);
+    });
+    const det = entryDetail(e);
+    const mv = el("select", { class: "pill move", "aria-label": "Move " + entryText(e) + " to another bag" }, [el("option", { value: "", text: b.id === "unsorted" ? "Choose bag" : "Move" }), ...PACK_BAGS.filter(x => x.id !== e.bag).map(x => el("option", { value: x.id, text: x.name }))]);
+    mv.addEventListener("change", () => { if (!mv.value) return; const to = PACK_BAGS.find(x => x.id === mv.value); e.bag = mv.value; markDirty(); toast(`Moved to ${to.name}`); });
+    row.append(el("div", { class: "ez-line" }, [
+      el("label", { class: "ez-row" }, [box, el("span", { class: "ez-t" }, [el("span", { text: entryText(e) }), det ? el("small", { class: "clamp", text: det }) : null])]),
+      packEdit ? trashBtn("Remove " + entryText(e), () => removeWithUndo(E, e, entryText(e), back2 => { const sk = state.pack.skip; if (!e.src) return; if (back2) { const i = sk.indexOf(e.src); if (i >= 0) sk.splice(i, 1); } else sk.push(e.src); })) : el("span", { class: "mvw" }, [mv])]));
+    card.append(row);
+  }
+  if (!L.length) card.append(el("p", { class: "empty", text: b.id === "unsorted" ? "Every thing has a bag now." : "Nothing in this bag yet." }));
+  if (b.id !== "unsorted") {
+    const inp = el("input", { placeholder: "Add something to this bag", "aria-label": "Add to " + b.name, id: "pkadd" });
+    const add = () => { const val = inp.value.trim(); if (!val) return; E.push({ id: newId("p"), src: null, text: val, bag: b.id, packed: false }); markDirty(); setTimeout(() => $("#pkadd")?.focus()); };
+    inp.addEventListener("keydown", ev => { if (ev.key === "Enter") add(); });
+    card.append(el("div", { class: "add", style: "border-top:1px solid var(--line)" }, [inp, el("button", { type: "button", text: "Add", onclick: add })]));
+  }
+  v.append(card);
+  v.append(el("button", { class: "ez-next", type: "button", text: packEdit ? "Done editing" : "Back to all bags", onclick: packEdit ? () => { packEdit = false; render(); } : back }));
+}
+async function makePackPdf() {
+  if (!window.jspdf) { toast("PDF tool did not load. Connect to the internet and try again."); return; }
+  const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: "mm", format: "a4" });
+  const W = 210, M = 15, maxW = W - 2 * M; let y = 18;
+  const clean = s => String(s).replace(/[^\x20-\x7E -ÿ]/g, "-");
+  const need = h => { if (y + h > 282) { doc.addPage(); y = 16; } };
+  doc.setFont("helvetica", "bold"); doc.setFontSize(18); doc.setTextColor(27, 45, 91); doc.text("Leena's Udaan - Final bag packing", M, y); y += 6;
+  doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(110); doc.text(`2 check-in bags (23 kg each) + cabin bag + laptop bag  |  printed ${new Date().toLocaleDateString("en-IN")}`, M, y); y += 9;
+  const box = (x, yy, s, ok) => { doc.setDrawColor(27, 45, 91); doc.setLineWidth(.35); doc.rect(x, yy - s + .6, s, s); if (ok) { doc.setDrawColor(30, 122, 70); doc.setLineWidth(.6); doc.line(x + .7, yy - s / 2 + .6, x + s * .4, yy + .1); doc.line(x + s * .4, yy + .1, x + s - .5, yy - s + 1.2); } };
+  const bags = [...PACK_BAGS]; if (state.pack.entries.some(e => !e.bag)) bags.push({ id: "", name: "Without a bag", limit: null });
+  for (const b of bags) {
+    const L = state.pack.entries.filter(e => (e.bag || "") === b.id); if (!L.length) continue;
+    need(20); doc.setFillColor(27, 45, 91); doc.rect(M, y - 5, maxW, 7.5, "F"); doc.setFont("helvetica", "bold"); doc.setFontSize(11.5); doc.setTextColor(255);
+    doc.text(b.name, M + 2, y);
+    if (b.id && b.id !== "wear") { const lim = bagLimit(b), w = state.pack.weights[b.id]; doc.text(`Weight: ${w ? w + " kg" : "______ kg"}${lim ? "  (max " + lim + " kg)" : ""}`, W - M - 2, y, { align: "right" }); }
+    y += 7.5;
+    for (const e of L) {
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.setTextColor(25);
+      const lines = doc.splitTextToSize(clean(entryText(e)), maxW - 10), det = entryDetail(e), dl = det ? doc.splitTextToSize(clean(det), maxW - 10) : [];
+      need(lines.length * 4.6 + dl.length * 3.8 + 2);
+      box(M + 1, y, 4, e.packed); doc.text(lines, M + 8, y); y += lines.length * 4.6;
+      if (dl.length) { doc.setFontSize(8.5); doc.setTextColor(110); doc.text(dl, M + 8, y - .6); y += dl.length * 3.8; }
+      doc.setDrawColor(225); doc.setLineWidth(.2); doc.line(M, y - 1.4, W - M, y - 1.4); y += 1.4;
+    }
+    y += 4;
+  }
+  const pages = doc.getNumberOfPages();
+  for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFontSize(8); doc.setTextColor(140); doc.text(`Page ${p} of ${pages}`, W - M, 290, { align: "right" }); doc.text("No power banks in check-in bags. Declare all food at US customs.", M, 290); }
+  doc.save("Leenas_Udaan_Bag_Packing.pdf"); toast("PDF downloaded");
+}
+
+// ---------- my files ----------
+const DOC_FOLDERS = [["passport", "Passport & visa", 265], ["travel", "Tickets & travel", 205], ["uni", "University & J-1", 18], ["edu", "Certificates", 38], ["money", "Money & bank", 150], ["health", "Medical & insurance", 330], ["photos", "Photos", 188], ["other", "Other", 232]];
+let docFolder = "all";
+function fmtSize(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+function docKind(d) { return (d.mime || "").startsWith("image/") ? "img" : (d.mime === "application/pdf" || /^pdf$/i.test(d.ext || "")) ? "pdf" : "file"; }
+function folderOf(id) { return DOC_FOLDERS.find(f => f[0] === id) || DOC_FOLDERS[DOC_FOLDERS.length - 1]; }
+function docBadge(d) { const k = docKind(d); return k === "pdf" ? "PDF" : (d.ext || "FILE").toUpperCase().slice(0, 4); }
+function downloadBlob(blob, name) { const u = URL.createObjectURL(blob); const a = el("a", { href: u, download: name }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 60000); }
+function docFileName(d) { const base = (d.name || "file").replace(/[\\/:*?"<>|]+/g, "_"); return d.ext && !base.toLowerCase().endsWith("." + d.ext.toLowerCase()) ? base + "." + d.ext : base; }
+function renderFiles() {
+  const v = $("#v-files"); v.replaceChildren();
+  const docs = state.docs || [], total = docs.reduce((a, d) => a + (d.size || 0), 0);
+  const hero = el("div", { class: "hero", style: "--h:188" });
+  hero.append(el("h2", { text: "My files" }), el("p", { style: "font-weight:400;opacity:.92", text: "Passport and visa scans, DS-2019, tickets, letters, photos and PDFs. All in one place, and they open even without internet." }),
+    el("p", { text: docs.length ? `${docs.length} file${docs.length > 1 ? "s" : ""} saved · ${fmtSize(total)}` : "No files yet" }), el("div", { class: "big", html: ico("folder") }));
+  v.append(hero);
+  const chips = el("div", { class: "fchips", role: "group", "aria-label": "Folders" });
+  const chip = (id, label, n) => el("button", { class: "fchip", type: "button", "aria-pressed": String(docFolder === id), text: n != null ? `${label} (${n})` : label, onclick: () => { docFolder = id; render(); } });
+  chips.append(chip("all", "All", docs.length));
+  for (const [id, label] of DOC_FOLDERS) { const n = docs.filter(d => d.folder === id).length; if (n || docFolder === id) chips.append(chip(id, label, n)); }
+  if (docs.length) v.append(chips);
+  const shown = docs.filter(d => docFolder === "all" || d.folder === docFolder).sort((a, b) => (b.added || "").localeCompare(a.added || ""));
+  if (!shown.length) {
+    v.append(el("div", { class: "card", style: "padding:20px 16px;display:flex;flex-direction:column;gap:12px;align-items:flex-start" }, [
+      el("p", { class: "ez-hint", style: "margin:0", text: docs.length ? "Nothing in this folder yet." : "Save your passport scan, visa, DS-2019, flight tickets, offer letter, insurance card or any photo or PDF here." }),
+      el("button", { class: "btn primary", type: "button", html: ico("plus") + "Add your first file", onclick: addFiles })]));
+  } else {
+    const grid = el("div", { class: "docs" });
+    for (const d of shown) {
+      const f = folderOf(d.folder), k = docKind(d);
+      const th = el("div", { class: "dth" + (k === "pdf" ? " pdf" : ""), text: k === "img" ? "" : docBadge(d) });
+      if (k === "img") fileUrl(d.id).then(u => u && th.append(el("img", { src: u, alt: "" })));
+      grid.append(el("button", { class: "doc", type: "button", style: "--h:" + f[2], onclick: () => docView(d) }, [th, el("div", { class: "dtx" }, [el("b", { text: d.name }), el("small", { text: `${f[1]} · ${fmtSize(d.size || 0)}` })])]));
+    }
+    v.append(grid);
+  }
+  v.append(el("p", { class: "foot", text: "Files are stored only on this phone. Also keep copies in Google Drive or email, in case the phone is lost." }));
+}
+function addFiles() {
+  openSheet("Add files", b => {
+    const picked = [];
+    const listBox = el("div", { class: "plist" });
+    const folder = el("select", { id: "dFolder" }, DOC_FOLDERS.map(([id, l]) => el("option", { value: id, text: l })));
+    folder.value = docFolder !== "all" ? docFolder : "passport";
+    const scan = el("input", { type: "checkbox", id: "dScan" });
+    const saveB = el("button", { class: "btn primary", type: "button", text: "Save files", disabled: true });
+    const draw = () => {
+      listBox.replaceChildren();
+      picked.forEach((p, i) => {
+        const inp = el("input", { value: p.name, "aria-label": "File name" }); inp.addEventListener("input", () => p.name = inp.value);
+        listBox.append(el("div", { class: "pf" }, [el("span", { class: "pf-k" + (p.kind === "pdf" ? " pdf" : ""), text: p.kind === "img" ? "IMG" : p.kind === "pdf" ? "PDF" : (p.ext || "FILE").toUpperCase().slice(0, 4) }), inp, el("button", { class: "mini", type: "button", "aria-label": "Remove " + p.name, html: ico("x"), onclick: () => { picked.splice(i, 1); draw(); } })]));
+      });
+      if (!picked.length) listBox.append(el("p", { class: "tip", style: "margin:0", text: "Nothing picked yet." }));
+      saveB.disabled = !picked.length; saveB.textContent = picked.length > 1 ? `Save ${picked.length} files` : "Save file";
+    };
+    const handle = async (files, fromCam) => {
+      for (const f of files) {
+        let blob = f, ext = ((f.name || "").match(/\.([A-Za-z0-9]{1,6})$/) || [])[1] || "";
+        const isImg = (f.type || "").startsWith("image/");
+        if (isImg && (fromCam || f.size > 4e6)) { const out = await processImage(f, fromCam && scan.checked); if (out !== f) { blob = out; ext = "jpg"; } }
+        if (blob.size > 60e6) { toast(`${f.name} is too big (over 60 MB)`); continue; }
+        const mime = blob.type || f.type || (ext.toLowerCase() === "pdf" ? "application/pdf" : "application/octet-stream");
+        const name = fromCam ? "Photo " + new Date().toLocaleString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : (f.name || "File").replace(/\.[^.]+$/, "");
+        picked.push({ blob, name, mime, ext, kind: mime.startsWith("image/") ? "img" : (mime === "application/pdf" || /^pdf$/i.test(ext)) ? "pdf" : "file" });
+      }
+      draw();
+    };
+    const cam = el("input", { type: "file", accept: "image/*", capture: "environment", hidden: true, id: "dCam" });
+    const up = el("input", { type: "file", multiple: true, hidden: true, id: "dUp" });
+    cam.addEventListener("change", () => { handle([...cam.files], true); cam.value = ""; });
+    up.addEventListener("change", () => { handle([...up.files], false); up.value = ""; });
+    b.append(el("div", { class: "scanbox" }, [
+      el("div", { class: "scanbtns" }, [el("label", { class: "btn primary", for: "dCam", html: ico("cam") + "Take a photo" }), el("label", { class: "btn", for: "dUp", html: ico("up") + "Choose files" }), cam, up]),
+      el("label", { class: "chk", for: "dScan" }, [scan, document.createTextNode("Make camera photos look like a scan (black and white)")]),
+      el("p", { class: "tip", style: "margin:0", text: "Photos, PDFs, Word files: any file from your phone." }),
+      listBox]));
+    b.append(el("div", { class: "fld" }, [el("label", { for: "dFolder", text: "Folder" }), folder]));
+    saveB.addEventListener("click", async () => {
+      saveB.disabled = true;
+      try {
+        for (const p of picked) { const id = newId("d"); await putFile(id, p.blob); state.docs.push({ id, name: p.name.trim() || "File", folder: folder.value, mime: p.mime, ext: p.ext, size: p.blob.size, added: new Date().toISOString() }); }
+      } catch (e) { toast("Could not store the file. The phone may be out of space."); saveB.disabled = false; return; }
+      try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
+      const n = picked.length; docFolder = folder.value; closeSheet(); markDirty(); toast(n > 1 ? `${n} files saved` : "File saved"); if (tab !== "files") go("files");
+    });
+    b.append(el("div", { class: "actions" }, [saveB, el("button", { class: "btn", type: "button", text: "Cancel", onclick: closeSheet })]));
+    draw();
+  });
+}
+function docView(d) {
+  openSheet(d.name, b => {
+    const k = docKind(d), f = folderOf(d.folder);
+    const pv = el("div", { class: "viewer" });
+    if (k === "img") fileUrl(d.id).then(u => u ? pv.append(el("img", { src: u, alt: d.name })) : pv.append(el("p", { class: "tip", text: "This file is missing on this phone." })));
+    else pv.append(el("div", { class: "bigdoc" + (k === "pdf" ? " pdf" : ""), style: "--h:" + f[2] }, [el("span", { text: docBadge(d) }), el("small", { text: fmtSize(d.size || 0) })]));
+    b.append(pv);
+    const get = async () => { const bl = await getFile(d.id); if (!bl) toast("This file is missing on this phone."); return bl; };
+    b.append(el("div", { class: "actions" }, [
+      el("button", { class: "btn primary", type: "button", html: ico("open") + "Open", onclick: async () => { const bl = await get(); if (!bl) return; const u = URL.createObjectURL(bl); const w = window.open(u, "_blank"); if (!w) downloadBlob(bl, docFileName(d)); } }),
+      el("button", { class: "btn", type: "button", html: ico("share") + "Share", onclick: async () => {
+        const bl = await get(); if (!bl) return;
+        const file = new File([bl], docFileName(d), { type: bl.type || d.mime || "application/octet-stream" });
+        try { if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], title: d.name }); else { downloadBlob(bl, docFileName(d)); toast("Sharing isn't available here, so it was saved instead"); } }
+        catch (e) { if (e && e.name !== "AbortError") toast("Could not share this file"); }
+      } }),
+      el("button", { class: "btn", type: "button", html: ico("down") + "Save to phone", onclick: async () => { const bl = await get(); if (bl) { downloadBlob(bl, docFileName(d)); toast("Saved to Downloads"); } } })]));
+    const nm = el("input", { id: "dName", value: d.name });
+    const fo = el("select", { id: "dFo" }, DOC_FOLDERS.map(([id, l]) => el("option", { value: id, text: l }))); fo.value = d.folder;
+    b.append(el("div", { class: "two" }, [el("div", { class: "fld" }, [el("label", { for: "dName", text: "Name" }), nm]), el("div", { class: "fld" }, [el("label", { for: "dFo", text: "Folder" }), fo])]));
+    b.append(el("p", { class: "tip", style: "margin:0", text: `Added ${new Date(d.added).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })} · ${fmtSize(d.size || 0)}` }));
+    b.append(el("div", { class: "actions" }, [
+      el("button", { class: "btn", type: "button", text: "Save changes", onclick: () => { d.name = nm.value.trim() || d.name; d.folder = fo.value; closeSheet(); markDirty(); toast("Updated"); } }),
+      armedBtn("Delete file", () => { state.docs = state.docs.filter(x => x !== d); delFile(d.id); urlCache.delete(d.id); closeSheet(); markDirty(); toast("File deleted"); })]));
+  });
+}
+
 // ---------- tabs ----------
-const TABS = { overview: ["Overview", "home"], list: ["Checklist", "list"], bills: ["Bills", "bill"] };
+const TABS = { overview: ["Home", "home"], list: ["Lists", "list"], pack: ["Pack", "bags"], files: ["Files", "folder"], bills: ["Bills", "bill"] };
 function renderTabs() {
   const due = (state.bills || []).filter(b => ["soon", "late"].includes(dueLevel(b))).length;
   document.querySelectorAll(".tabs button").forEach(b => {
@@ -878,9 +1255,9 @@ function renderTabs() {
     b.setAttribute("aria-current", k === tab ? "page" : "false");
   });
   $("#title").textContent = k2title(tab);
-  const fab = $("#fab"); fab.hidden = tab !== "bills"; fab.innerHTML = ico("cam") + "Scan bill";
+  const fab = $("#fab"); fab.hidden = !["bills", "files"].includes(tab); fab.innerHTML = tab === "files" ? ico("plus") + "Add file" : ico("cam") + "Scan bill";
 }
-function k2title(k) { return k === "overview" ? "Leena's Udaan" : TABS[k][0]; }
+function k2title(k) { return { overview: "Leena's Udaan", list: "Checklist", pack: "Final bag packing", files: "My files", bills: "Bills" }[k]; }
 function go(k) {
   tab = k; try { sessionStorage.setItem(TAB_KEY, k); } catch (e) {}
   for (const key of Object.keys(TABS)) $("#v-" + key).hidden = key !== k;
@@ -955,7 +1332,7 @@ function boot() {
 $("#saveBtn").addEventListener("click", save);
 $("#pdfBtn").addEventListener("click", makePdf);
 $("#filter").addEventListener("change", render);
-$("#fab").addEventListener("click", () => billForm(null));
+$("#fab").addEventListener("click", () => tab === "files" ? addFiles() : billForm(null));
 $("#sheetClose").addEventListener("click", closeSheet);
 $("#sheet").addEventListener("click", e => { if (e.target === e.currentTarget) closeSheet(); });
 document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => go(b.dataset.tab)));
